@@ -20,6 +20,9 @@ class User extends Authenticatable
     protected $fillable = [
         'username',
         'password',
+        'name',
+        'email',
+        'user_type',
     ];
 
     /**
@@ -44,4 +47,36 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    
+    /**
+     * Check if the user is an admin.
+     *
+     * @return bool
+     */
+    public function isAdmin(): bool
+    {
+        return $this->user_type === 'admin';
+    }
+    
+    /**
+     * Check if the user is a client.
+     *
+     * @return bool
+     */
+    public function isClient(): bool
+    {
+        return $this->user_type === 'client';
+    }
+    
+    /**
+     * Check if the user is a contractor.
+     *
+     * @return bool
+     */
+    public function isContractor(): bool
+    {
+        return $this->user_type === 'contractor';
+    }
+    
+
 }

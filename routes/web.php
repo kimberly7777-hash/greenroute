@@ -1,16 +1,26 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\ProductController
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Auth\UserTypeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('landing');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Main dashboard route that redirects to the appropriate dashboard based on user type
+Route::get('/dashboard', [DashboardController::class, 'index'])
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
+
+// Type-specific dashboard routes
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/dashboard/client', [DashboardController::class, 'clientDashboard'])->name('dashboard.client');
+    Route::get('/dashboard/contractor', [DashboardController::class, 'contractorDashboard'])->name('dashboard.contractor');
+    Route::get('/dashboard/admin', [DashboardController::class, 'adminDashboard'])->name('dashboard.admin');
+});
 
 /*Route::middleware('auth')->group(function () {*/
     Route::get('/product', [ProductController::class, 'index'])->name('product.index');
@@ -26,16 +36,31 @@ Route::get('/dashboard', function () {
     
     
     
-    Route::get('/register', function () {
+    // Registration routes
+Route::get('/register', function () {
     return view('auth.register');
 })->name('register');
 
-Route::get('/create', function() {
-    return view('auth.register');
-})->name('create');
+// Client registration routes
+Route::get('/register/client', [UserTypeController::class, 'createClient'])->name('register.client');
+Route::post('/register/client', [UserTypeController::class, 'storeClient'])->name('register.client.store');
 
-    Route::get('/register2', function () {
-    return view('auth.register2');
-})->name('register2');
+// Contractor registration routes
+Route::get('/register/contractor', [UserTypeController::class, 'createContractor'])->name('register.contractor');
+Route::post('/register/contractor', [UserTypeController::class, 'storeContractor'])->name('register.contractor.store');
+
+// Login routes for different user types
+Route::get('/login/admin', [UserTypeController::class, 'loginAdmin'])->name('login.admin');
+Route::post('/login/admin', [UserTypeController::class, 'authenticateAdmin'])->name('login.admin.authenticate');
+
+Route::get('/login/client', [UserTypeController::class, 'loginClient'])->name('login.client');
+Route::post('/login/client', [UserTypeController::class, 'authenticateClient'])->name('login.client.authenticate');
+
+Route::get('/login/contractor', [UserTypeController::class, 'loginContractor'])->name('login.contractor');
+Route::post('/login/contractor', [UserTypeController::class, 'authenticateContractor'])->name('login.contractor.authenticate');
+
+// Admin registration routes
+Route::get('/register/admin', [UserTypeController::class, 'createAdmin'])->name('register.admin');
+Route::post('/register/admin', [UserTypeController::class, 'storeAdmin'])->name('register.admin.store');
 
 require __DIR__.'/auth.php';
