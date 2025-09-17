@@ -40,7 +40,11 @@ COPY --chown=www-data:www-data . /var/www/html
 RUN composer install --no-dev --optimize-autoloader --no-interaction
 
 # Install Node.js dependencies and build assets
-RUN npm install && npm run build
+RUN rm -f package-lock.json && \
+    npm install --no-audit --no-fund && \
+    npm run build && \
+    rm -rf node_modules && \
+    npm ci --only=production --no-audit --no-fund
 
 # Create SQLite database file
 RUN touch /var/www/html/database/database.sqlite
