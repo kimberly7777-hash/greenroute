@@ -1,0 +1,41 @@
+services:
+  - type: web
+    name: afia-orbit
+    runtime: docker
+    plan: free
+    branch: backend
+    dockerfilePath: ./Dockerfile
+    dockerContext: ./
+    envVars:
+      - key: APP_NAME
+        value: AFIA-ORBIT
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: false
+      - key: APP_URL
+        sync: false
+      - key: APP_KEY
+        generateValue: true
+      - key: DB_CONNECTION
+        value: sqlite
+      - key: DB_DATABASE
+        value: /var/www/html/database/database.sqlite
+      - key: SESSION_DRIVER
+        value: database
+      - key: SESSION_LIFETIME
+        value: 120
+      - key: CACHE_STORE
+        value: database
+      - key: QUEUE_CONNECTION
+        value: database
+      - key: LOG_CHANNEL
+        value: stderr
+      - key: LOG_LEVEL
+        value: info
+      - key: MAIL_MAILER
+        value: log
+      - key: MAIL_FROM_ADDRESS
+        value: hello@afia-orbit.com
+      - key: MAIL_FROM_NAME
+        value: AFIA-ORBIT
