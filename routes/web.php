@@ -51,7 +51,15 @@ Route::middleware(['auth', 'verified'])->group(function () {
     
     // Contractor routes
     Route::prefix('dashboard/contractor')->group(function () {
-        Route::resource('clients', ClientController::class);
+        Route::resource('clients', ClientController::class)->names([
+            'index' => 'contractor.clients.index',
+            'create' => 'contractor.clients.create',
+            'store' => 'contractor.clients.store',
+            'show' => 'contractor.clients.show',
+            'edit' => 'contractor.clients.edit',
+            'update' => 'contractor.clients.update',
+            'destroy' => 'contractor.clients.destroy'
+        ]);
         Route::get('feedback', [ContractorFeedbackController::class, 'index'])->name('contractor.feedback.index');
     });
     
