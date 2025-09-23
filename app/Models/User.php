@@ -96,4 +96,19 @@ class User extends Authenticatable
     {
         return $this->hasMany(Invoice::class, 'contractor_id');
     }
+
+    public function contractor()
+    {
+        return $this->hasOne(Contractor::class);
+    }
+
+    public function contractorLocations(): HasMany
+    {
+        return $this->hasMany(ContractorLocation::class, 'contractor_id');
+    }
+
+    public function latestLocation()
+    {
+        return $this->contractorLocations()->latest()->first();
+    }
 }

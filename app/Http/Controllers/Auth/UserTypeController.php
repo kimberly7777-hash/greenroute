@@ -75,6 +75,8 @@ class UserTypeController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'phone' => ['required', 'string', 'max:20'],
             'address' => ['required', 'string', 'max:255'],
+            'latitude' => ['nullable', 'numeric', 'between:-90,90'],
+            'longitude' => ['nullable', 'numeric', 'between:-180,180'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
@@ -83,6 +85,21 @@ class UserTypeController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'user_type' => 'client',
+        ]);
+
+        // Create client record with location data
+        \App\Models\Client::create([
+            'user_id' => $user->id,
+            'contractor_id' => 1, // Default contractor, can be changed later
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'address' => $request->address,
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude,
+            'city' => '',
+            'state' => '',
+            'zip_code' => '',
         ]);
 
         event(new Registered($user));

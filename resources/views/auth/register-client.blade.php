@@ -57,7 +57,10 @@
             <div>
                 <label for="address" class="block text-sm font-medium text-gray-700 mb-2">Physical Address</label>
                 <input id="address" type="text" name="address" value="{{ old('address') }}" required
-                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors">
+                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
+                       placeholder="Enter your full address">
+                <input type="hidden" id="latitude" name="latitude">
+                <input type="hidden" id="longitude" name="longitude">
             </div>
         </div>
         
@@ -73,6 +76,13 @@
                 <input id="password_confirmation" type="password" name="password_confirmation" required
                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors">
             </div>
+        </div>
+        
+        <!-- Map Container -->
+        <div class="bg-gray-50 border border-gray-200 rounded-lg p-4">
+            <label class="block text-sm font-medium text-gray-700 mb-2">Confirm Your Location</label>
+            <div id="map" style="height: 300px; width: 100%; border-radius: 8px;"></div>
+            <p class="text-sm text-gray-600 mt-2">The pin shows your address location. This helps us provide accurate service.</p>
         </div>
         
         <div class="bg-green-50 border border-green-200 rounded-lg p-4">
@@ -107,4 +117,38 @@
             <a href="{{ route('login.client') }}" class="text-green-600 hover:text-green-700 font-medium">Sign in here</a>
         </p>
     </div>
+
+    <script>
+        let map, marker, geocoder;
+        
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 13,
+                center: { lat: 40.7128, lng: -74.0060 }
+            });
+            
+            geocoder = new google.maps.Geocoder();
+            marker = new google.maps.Marker({ map: map });
+            
+            document.getElementById('address').addEventListener('blur', geocodeAddress);
+        }
+        
+        function geocodeAddress() {
+            const address = document.getElementById('address').value;
+            if (!address) return;
+            
+            geocoder.geocode({ address: address }, (results, status) => {
+                if (status === 'OK') {
+                    const location = results[0].geometry.location;
+                    map.setCenter(location);
+                    marker.setPosition(location);
+                    
+                    document.getElementById('latitude').value = location.lat();
+                    document.getElementById('longitude').value = location.lng();
+                }
+            });
+        }
+    </script>
+    
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ config('services.google_maps.api_key') }}&callback=initMap&libraries=geometry"></script>
 </x-guest-layout>
