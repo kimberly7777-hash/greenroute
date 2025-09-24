@@ -8,6 +8,7 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\Rules;
 use Illuminate\Http\RedirectResponse;
 
@@ -18,7 +19,7 @@ class UserTypeController extends Controller
      */
     public function createClient()
     {
-        return view('auth.register-client');
+        return view('auth.register-client-simple');
     }
     
     /**
@@ -75,10 +76,53 @@ class UserTypeController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'phone' => ['required', 'string', 'max:20'],
             'address' => ['required', 'string', 'max:255'],
-            'latitude' => ['nullable', 'numeric', 'between:-90,90'],
-            'longitude' => ['nullable', 'numeric', 'between:-180,180'],
+            'latitude' => ['required', 'numeric', 'between:-90,90'],
+            'longitude' => ['required', 'numeric', 'between:-180,180'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
+
+        // Validate that coordinates are not default/placeholder values
+        if (empty($request->latitude) || empty($request->longitude)) {
+            return back()->withErrors([
+                'location' => 'Please click "Get My Precise Location" to capture your GPS coordinates before registering.'
+            ])->withInput();
+        }
+
+        // Log the received coordinates for debugging
+        Log::info('Client registration location data', [
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude,
+            'address' => $request->address,
+            'user_email' => $request->email,
+            'timestamp' => now()
+        ]);
+        
+        // Additional validation for Tanzania coordinates (rough bounds)
+        $lat = (float) $request->latitude;
+        $lng = (float) $request->longitude;
+        
+        if ($lat < -11.7 || $lat > -0.95 || $lng < 29.3 || $lng > 40.5) {
+            Log::warning('Client registration with coordinates outside Tanzania', [
+                'latitude' => $lat,
+                'longitude' => $lng,
+                'address' => $request->address,
+                'user_email' => $request->email
+            ]);
+            
+            return back()->withErrors([
+                'location' => 'The detected location does not appear to be in Tanzania. Please ensure location services are enabled and try again.'
+            ])->withInput();
+        }
+        
+        // Check if coordinates are in Moshi area for additional validation
+        $inMoshi = ($lat >= -3.5 && $lat <= -3.2 && $lng >= 37.2 && $lng <= 37.4);
+        if ($inMoshi) {
+            Log::info('Client registered in Moshi area', [
+                'latitude' => $lat,
+                'longitude' => $lng,
+                'user_email' => $request->email
+            ]);
+        }
 
         $user = User::create([
             'name' => $request->name,
@@ -87,7 +131,7 @@ class UserTypeController extends Controller
             'user_type' => 'client',
         ]);
 
-        // Create client record with location data
+        // Create client record with precise location data
         \App\Models\Client::create([
             'user_id' => $user->id,
             'contractor_id' => 1, // Default contractor, can be changed later
@@ -100,13 +144,15 @@ class UserTypeController extends Controller
             'city' => '',
             'state' => '',
             'zip_code' => '',
+            'status' => 'active',
         ]);
 
         event(new Registered($user));
 
         Auth::login($user);
 
-        return redirect()->route('dashboard.client');
+        return redirect()->route('dashboard.client')
+            ->with('success', 'Registration successful! Your precise location has been recorded.');
     }
 
     /**

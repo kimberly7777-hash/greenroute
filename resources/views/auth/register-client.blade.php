@@ -1,120 +1,127 @@
 <x-guest-layout>
-    <div class="text-center mb-8">
-        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <span class="text-2xl">👤</span>
+    <div class="text-center mb-4">
+        <div class="icon-circle">
+            <i class="bi bi-person-fill text-success"></i>
         </div>
-        <h1 class="text-2xl font-bold text-gray-900 mb-2">Client Registration</h1>
-        <p class="text-gray-600">Create your account to start managing your waste collection services</p>
+        <h2 class="fw-bold text-dark mb-2">Client Registration</h2>
+        <p class="text-muted">Create your account to start managing your waste collection services</p>
     </div>
 
     @if($errors->any())
-        <div class="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
-            <div class="flex">
-                <div class="flex-shrink-0">
-                    <svg class="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
-                    </svg>
-                </div>
-                <div class="ml-3">
-                    <h3 class="text-sm font-medium text-red-800">Please correct the following errors:</h3>
-                    <div class="mt-2 text-sm text-red-700">
-                        <ul class="list-disc list-inside space-y-1">
-                            @foreach($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
+        <div class="alert alert-danger mb-4">
+            <div class="d-flex align-items-start">
+                <i class="bi bi-exclamation-triangle-fill me-2 mt-1"></i>
+                <div>
+                    <strong>Please correct the following errors:</strong>
+                    <ul class="mb-0 mt-2">
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
                 </div>
             </div>
         </div>
     @endif
 
-    <form method="POST" action="{{ route('register.client.store') }}" class="space-y-6">
+    @if($errors->has('location'))
+        <div class="alert alert-warning mb-4">
+            <div class="d-flex align-items-start">
+                <i class="bi bi-geo-alt-fill me-2 mt-1"></i>
+                <div>
+                    <strong>Location Required:</strong>
+                    <p class="mb-0 mt-1">{{ $errors->first('location') }}</p>
+                </div>
+            </div>
+        </div>
+    @endif
+
+    <form method="POST" action="{{ route('register.client.store') }}">
         @csrf
         <input type="hidden" name="user_type" value="client">
         
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-                <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="name" class="form-label fw-medium">Full Name</label>
                 <input id="name" type="text" name="name" value="{{ old('name') }}" required autofocus
-                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors">
+                       class="form-control form-control-lg">
             </div>
             
-            <div>
-                <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+            <div class="col-md-6">
+                <label for="email" class="form-label fw-medium">Email Address</label>
                 <input id="email" type="email" name="email" value="{{ old('email') }}" required
-                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors">
+                       class="form-control form-control-lg">
             </div>
         </div>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-                <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="phone" class="form-label fw-medium">Phone Number</label>
                 <input id="phone" type="text" name="phone" value="{{ old('phone') }}" required
-                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors">
+                       class="form-control form-control-lg">
             </div>
             
-            <div>
-                <label for="address" class="block text-sm font-medium text-gray-700 mb-2">Physical Address</label>
+            <div class="col-md-6">
+                <label for="address" class="form-label fw-medium">Physical Address</label>
                 <input id="address" type="text" name="address" value="{{ old('address') }}" required
-                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
-                       placeholder="Enter your full address">
+                       class="form-control form-control-lg" placeholder="Enter your full address">
                 <input type="hidden" id="latitude" name="latitude">
                 <input type="hidden" id="longitude" name="longitude">
             </div>
         </div>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-                <label for="password" class="block text-sm font-medium text-gray-700 mb-2">Password</label>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="password" class="form-label fw-medium">Password</label>
                 <input id="password" type="password" name="password" required
-                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors">
+                       class="form-control form-control-lg">
             </div>
             
-            <div>
-                <label for="password_confirmation" class="block text-sm font-medium text-gray-700 mb-2">Confirm Password</label>
+            <div class="col-md-6">
+                <label for="password_confirmation" class="form-label fw-medium">Confirm Password</label>
                 <input id="password_confirmation" type="password" name="password_confirmation" required
-                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors">
+                       class="form-control form-control-lg">
             </div>
         </div>
         
-        <!-- Map Container -->
-        <div class="bg-gray-50 border border-gray-200 rounded-lg p-4">
-            <label class="block text-sm font-medium text-gray-700 mb-2">Confirm Your Location</label>
-            <div id="map" style="height: 300px; width: 100%; border-radius: 8px;"></div>
-            <p class="text-sm text-gray-600 mt-2">The pin shows your address location. This helps us provide accurate service.</p>
+        <!-- Location Capture -->
+        <div class="card border-primary mb-4">
+            <div class="card-body">
+                <h6 class="card-title"><i class="bi bi-geo-alt-fill text-primary me-2"></i>Location Services</h6>
+                <div class="mb-3">
+                    <button type="button" id="watchLocation" class="btn btn-success">
+                        <i class="bi bi-crosshair me-2"></i>Get My Precise Location (Required)
+                    </button>
+                    <small class="d-block text-muted mt-1">This will detect your exact GPS coordinates in Moshi, Tanzania</small>
+                </div>
+                <div id="locationStatus" class="alert alert-info py-2 mb-3"></div>
+                <div id="map" style="height: 300px; width: 100%; border-radius: 8px;"></div>
+                <small class="text-muted">Your precise GPS location is required for accurate waste collection services</small>
+            </div>
         </div>
         
-        <div class="bg-green-50 border border-green-200 rounded-lg p-4">
-            <div class="flex">
-                <div class="flex-shrink-0">
-                    <svg class="h-5 w-5 text-green-400" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                    </svg>
-                </div>
-                <div class="ml-3">
-                    <h3 class="text-sm font-medium text-green-800">What you'll get:</h3>
-                    <div class="mt-2 text-sm text-green-700">
-                        <ul class="list-disc list-inside space-y-1">
-                            <li>Schedule waste pickups</li>
-                            <li>Track your collection history</li>
-                            <li>Manage your account settings</li>
-                            <li>View invoices and payments</li>
-                        </ul>
-                    </div>
+        <div class="alert alert-success mb-4">
+            <div class="d-flex align-items-start">
+                <i class="bi bi-check-circle-fill me-2 mt-1"></i>
+                <div>
+                    <strong>What you'll get:</strong>
+                    <ul class="mb-0 mt-2">
+                        <li>Schedule waste pickups</li>
+                        <li>Track your collection history</li>
+                        <li>Manage your account settings</li>
+                        <li>View invoices and payments</li>
+                    </ul>
                 </div>
             </div>
         </div>
         
-        <button type="submit" 
-                class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-all duration-200">
-            Create Account
+        <button type="submit" class="btn btn-success btn-lg w-100 mb-3" onclick="return validateLocation()">
+            <i class="bi bi-person-plus me-2"></i>Create Account
         </button>
     </form>
 
-    <div class="mt-8 text-center">
-        <p class="text-gray-600">Already have an account? 
-            <a href="{{ route('login.client') }}" class="text-green-600 hover:text-green-700 font-medium">Sign in here</a>
+    <div class="text-center">
+        <p class="text-muted mb-0">Already have an account? 
+            <a href="{{ route('login.client') }}" class="text-success text-decoration-none fw-medium">Sign in here</a>
         </p>
     </div>
 
@@ -122,31 +129,216 @@
         let map, marker, geocoder;
         
         function initMap() {
+            // Initialize map centered on Tanzania
             map = new google.maps.Map(document.getElementById('map'), {
                 zoom: 13,
-                center: { lat: 40.7128, lng: -74.0060 }
+                center: { lat: -3.3731, lng: 36.8822 } // Moshi, Tanzania coordinates
             });
             
             geocoder = new google.maps.Geocoder();
             marker = new google.maps.Marker({ map: map });
             
-            document.getElementById('address').addEventListener('blur', geocodeAddress);
+
+            document.getElementById('watchLocation').addEventListener('click', watchPreciseLocation);
+            
+            document.getElementById('locationStatus').innerHTML = '📍 Click "Get My Precise Location" to detect your exact GPS coordinates in Moshi, Tanzania';
         }
         
-        function geocodeAddress() {
-            const address = document.getElementById('address').value;
-            if (!address) return;
+        let watchId = null;
+        let locationAttempts = 0;
+        
+        function watchPreciseLocation() {
+            // Clear any existing watch
+            if (watchId) {
+                navigator.geolocation.clearWatch(watchId);
+                watchId = null;
+            }
             
-            geocoder.geocode({ address: address }, (results, status) => {
-                if (status === 'OK') {
-                    const location = results[0].geometry.location;
-                    map.setCenter(location);
-                    marker.setPosition(location);
+            // Reset attempts counter
+            locationAttempts = 0;
+            
+            document.getElementById('locationStatus').innerHTML = '🎯 Acquiring your precise GPS location in Moshi, Tanzania... Please ensure location services are enabled and wait for the best accuracy.';
+            
+            let bestAccuracy = Infinity;
+            let bestPosition = null;
+            const maxAttempts = 25;
+            const targetAccuracy = 20; // Target accuracy in meters
+            
+            if (!navigator.geolocation) {
+                document.getElementById('locationStatus').innerHTML = '❌ GPS not supported by this browser.';
+                return;
+            }
+            
+
+            
+            // Then start watching for high accuracy position
+            watchId = navigator.geolocation.watchPosition(
+                function(position) {
+                    locationAttempts++;
+                    const lat = position.coords.latitude;
+                    const lng = position.coords.longitude;
+                    const accuracy = position.coords.accuracy;
+                    const timestamp = new Date(position.timestamp);
                     
-                    document.getElementById('latitude').value = location.lat();
-                    document.getElementById('longitude').value = location.lng();
+                    console.log(`GPS Reading ${locationAttempts}: ${lat.toFixed(8)}, ${lng.toFixed(8)} (±${Math.round(accuracy)}m) at ${timestamp.toLocaleTimeString()}`);
+                    
+                    document.getElementById('locationStatus').innerHTML = `📍 Reading ${locationAttempts}/${maxAttempts} - Current: ${Math.round(accuracy)}m accuracy`;
+                    
+                    // Update if this is more accurate than previous readings
+                    if (accuracy < bestAccuracy) {
+                        bestAccuracy = accuracy;
+                        bestPosition = position;
+                        updateLocation(lat, lng, accuracy, `GPS Reading ${locationAttempts}`);
+                        
+                        // Show accuracy status
+                        let accuracyStatus = '';
+                        if (accuracy < 10) {
+                            accuracyStatus = '🎯 Excellent accuracy!';
+                        } else if (accuracy < 30) {
+                            accuracyStatus = '✅ Good accuracy';
+                        } else if (accuracy < 100) {
+                            accuracyStatus = '⚠️ Fair accuracy';
+                        } else {
+                            accuracyStatus = '📍 Basic accuracy';
+                        }
+                        
+                        document.getElementById('locationStatus').innerHTML = `📍 Reading ${locationAttempts}/${maxAttempts} - Best: ${Math.round(bestAccuracy)}m ${accuracyStatus}`;
+                    }
+                    
+                    // Stop if we have excellent accuracy or reached max attempts
+                    if (accuracy <= targetAccuracy || locationAttempts >= maxAttempts) {
+                        navigator.geolocation.clearWatch(watchId);
+                        watchId = null;
+                        
+                        const finalAccuracy = bestPosition ? Math.round(bestPosition.coords.accuracy) : Math.round(accuracy);
+                        let locationMessage = `✅ Location detection complete! Final accuracy: ${finalAccuracy}m`;
+                        
+                        // Add location quality indicator
+                        if (finalAccuracy < 20) {
+                            locationMessage += ' 🎯 (Excellent - Perfect for waste collection routing!)';
+                        } else if (finalAccuracy < 50) {
+                            locationMessage += ' ✅ (Good - Suitable for service delivery)';
+                        } else {
+                            locationMessage += ' ⚠️ (Fair - Location detected but may need refinement)';
+                        }
+                        
+                        document.getElementById('locationStatus').innerHTML = locationMessage;
+                        
+                        // Ensure we use the best position found
+                        if (bestPosition && bestPosition !== position) {
+                            updateLocation(bestPosition.coords.latitude, bestPosition.coords.longitude, bestPosition.coords.accuracy, 'Final Best Position');
+                        }
+                        
+                        // Validate the final location
+                        validateLocationWithServer(bestPosition ? bestPosition.coords : position.coords);
+                    }
+                },
+                function(error) {
+                    let errorMessage = '';
+                    switch(error.code) {
+                        case error.PERMISSION_DENIED:
+                            errorMessage = 'Location access denied. Please enable location services and refresh the page.';
+                            break;
+                        case error.POSITION_UNAVAILABLE:
+                            errorMessage = 'Location information unavailable. Please try again.';
+                            break;
+                        case error.TIMEOUT:
+                            errorMessage = 'Location request timed out. Please try again.';
+                            break;
+                        default:
+                            errorMessage = 'An unknown error occurred while retrieving location.';
+                            break;
+                    }
+                    
+                    document.getElementById('locationStatus').innerHTML = `❌ GPS Error: ${errorMessage}`;
+                    console.error('GPS Error:', error);
+                    
+                    // Clear the watch on error
+                    if (watchId) {
+                        navigator.geolocation.clearWatch(watchId);
+                        watchId = null;
+                    }
+                },
+                {
+                    enableHighAccuracy: true,
+                    timeout: 20000,
+                    maximumAge: 0 // Always get fresh location data
                 }
+            );
+        }
+        
+        function updateLocation(lat, lng, accuracy, source) {
+            const location = { lat: lat, lng: lng };
+            
+            // Update map view
+            map.setCenter(location);
+            map.setZoom(18);
+            marker.setPosition(location);
+            
+            // Store coordinates with high precision
+            document.getElementById('latitude').value = lat.toFixed(8);
+            document.getElementById('longitude').value = lng.toFixed(8);
+            
+            console.log(`GPS Update: ${lat.toFixed(8)}, ${lng.toFixed(8)} (±${Math.round(accuracy)}m) - ${source}`);
+            
+            console.log('GPS Location:', {
+                coordinates: `${lat.toFixed(8)}, ${lng.toFixed(8)}`,
+                accuracy: `±${Math.round(accuracy)}m`,
+                source: source,
+                timestamp: new Date().toLocaleString()
             });
+        }
+        
+
+        
+        function validateLocationWithServer(coords) {
+            fetch('/location/validate-public', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                },
+                body: JSON.stringify({
+                    latitude: coords.latitude,
+                    longitude: coords.longitude,
+                    accuracy: coords.accuracy
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                const statusEl = document.getElementById('locationStatus');
+                if (data.in_moshi) {
+                    statusEl.innerHTML += ' 🎯 Perfect! Location confirmed in Moshi, Tanzania.';
+                } else if (data.in_tanzania) {
+                    statusEl.innerHTML += ' ✅ Location confirmed in Tanzania.';
+                } else {
+                    statusEl.innerHTML += ' ⚠️ Warning: Location may not be in Tanzania.';
+                }
+            })
+            .catch(error => {
+                console.warn('Location validation failed:', error);
+            });
+        }
+        
+        function validateLocation() {
+            const lat = document.getElementById('latitude').value;
+            const lng = document.getElementById('longitude').value;
+            
+            if (!lat || !lng || lat === '' || lng === '') {
+                alert('Please click "Get My Precise Location" to capture your GPS coordinates before registering.');
+                return false;
+            }
+            
+            // Check if coordinates are within Tanzania bounds
+            const latitude = parseFloat(lat);
+            const longitude = parseFloat(lng);
+            
+            if (latitude < -11.7 || latitude > -0.95 || longitude < 29.3 || longitude > 40.5) {
+                alert('The detected location does not appear to be in Tanzania. Please ensure location services are enabled and try "Get My Precise Location" again.');
+                return false;
+            }
+            
+            return true;
         }
     </script>
     

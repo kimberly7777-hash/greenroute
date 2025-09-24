@@ -6,6 +6,7 @@ use App\Models\ContractorLocation;
 use App\Models\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class LocationController extends Controller
 {
@@ -71,5 +72,34 @@ class LocationController extends Controller
         }
         
         return response()->json(['success' => false], 400);
+    }
+    
+    public function validateLocationAccuracy(Request $request)
+    {
+        $request->validate([
+            'latitude' => 'required|numeric|between:-90,90',
+            'longitude' => 'required|numeric|between:-180,180',
+            'accuracy' => 'nullable|numeric'
+        ]);
+        
+        $lat = (float) $request->latitude;
+        $lng = (float) $request->longitude;
+        $accuracy = $request->accuracy;
+        
+        // Check if coordinates are within Tanzania bounds
+        $inTanzania = ($lat >= -11.7 && $lat <= -0.95 && $lng >= 29.3 && $lng <= 40.5);
+        
+        // Check if coordinates are within Moshi area (more specific)
+        $inMoshi = ($lat >= -3.5 && $lat <= -3.2 && $lng >= 37.2 && $lng <= 37.4);
+        
+        return response()->json([
+            'valid' => $inTanzania,
+            'in_tanzania' => $inTanzania,
+            'in_moshi' => $inMoshi,
+            'accuracy_good' => $accuracy ? $accuracy < 50 : null,
+            'message' => $inTanzania ? 
+                ($inMoshi ? 'Location confirmed in Moshi, Tanzania' : 'Location confirmed in Tanzania') :
+                'Location appears to be outside Tanzania'
+        ]);
     }
 }

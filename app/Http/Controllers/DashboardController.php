@@ -48,7 +48,7 @@ class DashboardController extends Controller
             return redirect()->route('dashboard');
         }
         
-        return view('dashboards.client');
+        return view('client.dashboard');
     }
 
     /**
@@ -62,7 +62,7 @@ class DashboardController extends Controller
             return redirect()->route('dashboard');
         }
         
-        return view('contractor.dashboard');
+        return view('contractor.mapping-dashboard');
     }
 
     /**
@@ -76,6 +76,6 @@ class DashboardController extends Controller
             return redirect()->route('dashboard');
         }
         
-        return view('admin.dashboard');
+        return view('admin.tracking-dashboard');
     }
 }

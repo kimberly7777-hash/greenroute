@@ -112,12 +112,16 @@ Route::post('/login/contractor', [UserTypeController::class, 'authenticateContra
 Route::get('/register/admin', [UserTypeController::class, 'createAdmin'])->name('register.admin');
 Route::post('/register/admin', [UserTypeController::class, 'storeAdmin'])->name('register.admin.store');
 
+// Public location validation for registration
+Route::post('/location/validate-public', [App\Http\Controllers\LocationController::class, 'validateLocationAccuracy'])->name('location.validate.public');
+
 // Location and mapping routes
 Route::middleware(['auth'])->group(function () {
     Route::post('/location/update', [App\Http\Controllers\LocationController::class, 'updateContractorLocation'])->name('location.update');
     Route::get('/location/contractors', [App\Http\Controllers\LocationController::class, 'getContractorLocations'])->name('location.contractors');
     Route::get('/location/clients', [App\Http\Controllers\LocationController::class, 'getClientLocations'])->name('location.clients');
     Route::post('/location/geocode', [App\Http\Controllers\LocationController::class, 'geocodeAddress'])->name('location.geocode');
+    Route::post('/location/validate', [App\Http\Controllers\LocationController::class, 'validateLocationAccuracy'])->name('location.validate');
     
     // Admin routes
     Route::middleware(['auth'])->prefix('admin')->group(function () {
