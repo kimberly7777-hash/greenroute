@@ -274,10 +274,7 @@
 
                 <!-- Other tabs (simplified) -->
                 <div id="billing-tab" class="tab-content" style="display: none;">
-                    <div class="card">
-                        <div class="card-header"><h5 class="text-success mb-0">Billing & Payments</h5></div>
-                        <div class="card-body"><p>Billing management interface coming soon...</p></div>
-                    </div>
+                    <iframe src="/billing" width="100%" height="600" frameborder="0"></iframe>
                 </div>
 
                 <div id="collection-tab" class="tab-content" style="display: none;">

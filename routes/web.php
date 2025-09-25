@@ -10,6 +10,7 @@ use App\Http\Controllers\Auth\UserTypeController;
 use App\Http\Controllers\ClientPortalController;
 use App\Http\Controllers\ContractorFeedbackController;
 use App\Http\Controllers\SubscriptionController;
+use App\Http\Controllers\BillingController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -147,6 +148,17 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/clients/locations', [App\Http\Controllers\ContractorController::class, 'getAssignedClients'])->name('contractor.clients.locations');
         Route::get('/clients/{client}', [ClientController::class, 'show']);
         Route::get('/clients/{client}/edit', [ClientController::class, 'edit']);
+    });
+    
+    // Billing routes
+    Route::middleware(['auth'])->prefix('billing')->group(function () {
+        Route::get('/', [App\Http\Controllers\BillingController::class, 'index'])->name('billing.index');
+        Route::get('/create', [App\Http\Controllers\BillingController::class, 'create'])->name('billing.create');
+        Route::post('/', [App\Http\Controllers\BillingController::class, 'store'])->name('billing.store');
+        Route::get('/{invoice}', [App\Http\Controllers\BillingController::class, 'show'])->name('billing.show');
+        Route::post('/{invoice}/mark-paid', [App\Http\Controllers\BillingController::class, 'markPaid'])->name('billing.mark-paid');
+        Route::post('/{invoice}/send', [App\Http\Controllers\BillingController::class, 'sendInvoice'])->name('billing.send');
+        Route::post('/{invoice}/remind', [App\Http\Controllers\BillingController::class, 'sendReminder'])->name('billing.remind');
     });
 });
 
