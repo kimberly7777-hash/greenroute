@@ -1,4 +1,5 @@
 <x-guest-layout>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <div class="container py-4">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h4 class="text-success">Billing & Payments</h4>
@@ -110,7 +111,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Record Payment</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    <button type="button" class="btn-close" onclick="closeModal()"></button>
                 </div>
                 <form id="paymentForm" method="POST">
                     @csrf
@@ -131,7 +132,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-secondary" onclick="closeModal()">Cancel</button>
                         <button type="submit" class="btn btn-success">Record Payment</button>
                     </div>
                 </form>
@@ -141,9 +142,27 @@
 
     <script>
         function markPaid(invoiceId) {
-            document.getElementById('paymentForm').action = `/billing/${invoiceId}/mark-paid`;
-            new bootstrap.Modal(document.getElementById('markPaidModal')).show();
+            const form = document.getElementById('paymentForm');
+            form.action = `/billing/${invoiceId}/mark-paid`;
+            const modal = document.getElementById('markPaidModal');
+            modal.style.display = 'block';
+            modal.classList.add('show');
+            document.body.classList.add('modal-open');
         }
+        
+        function closeModal() {
+            const modal = document.getElementById('markPaidModal');
+            modal.style.display = 'none';
+            modal.classList.remove('show');
+            document.body.classList.remove('modal-open');
+        }
+        
+        // Close modal when clicking backdrop
+        document.getElementById('markPaidModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
 
         function sendInvoice(invoiceId) {
             if (confirm('Send invoice to client?')) {

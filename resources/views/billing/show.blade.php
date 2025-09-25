@@ -1,4 +1,5 @@
 <x-guest-layout>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <div class="container py-4">
         <div class="card">
             <div class="card-header d-flex justify-content-between align-items-center">
@@ -120,8 +121,15 @@
 
     <script>
         function markPaid(invoiceId) {
-            document.getElementById('paymentForm').action = `/billing/${invoiceId}/mark-paid`;
-            new bootstrap.Modal(document.getElementById('markPaidModal')).show();
+            const form = document.getElementById('paymentForm');
+            form.action = `/billing/${invoiceId}/mark-paid`;
+            const modal = document.getElementById('markPaidModal');
+            if (typeof bootstrap !== 'undefined') {
+                new bootstrap.Modal(modal).show();
+            } else {
+                modal.style.display = 'block';
+                modal.classList.add('show');
+            }
         }
 
         function sendInvoice(invoiceId) {
