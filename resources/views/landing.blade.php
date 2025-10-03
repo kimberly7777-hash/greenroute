@@ -9,9 +9,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-green: #198754;
-            --light-green: #d1e7dd;
-            --dark-green: #146c43;
+            --primary-teal: #055c5c;
+            --primary-red: #640404;
+            --light-teal: rgba(5, 92, 92, 0.1);
+            --dark-teal: #044a4a;
         }
         
         * {
@@ -28,9 +29,9 @@
         }
         
         .hero-section {
-            background: linear-gradient(135deg, var(--primary-green) 0%, var(--dark-green) 100%);
+            background: linear-gradient(135deg, rgba(5, 92, 92, 0.8) 0%, rgba(4, 74, 74, 0.9) 100%);
             color: white;
-            padding: 100px 0;
+            padding: 120px 0;
             position: relative;
             overflow: hidden;
         }
@@ -54,15 +55,30 @@
         .logo-text {
             font-size: 4rem;
             font-weight: 800;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 2rem;
+            text-shadow: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .logo-text img {
+            height: 120px;
+            max-width: 400px;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
         }
         
         .hero-subtitle {
             font-size: 1.5rem;
-            font-weight: 300;
+            font-weight: 400;
             margin-bottom: 3rem;
-            opacity: 0.9;
+            color: rgba(255,255,255,0.9);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         .cards-section {
@@ -78,7 +94,7 @@
         .section-title h2 {
             font-size: 2.5rem;
             font-weight: 700;
-            color: var(--primary-green);
+            color: var(--primary-teal);
             margin-bottom: 1rem;
         }
         
@@ -109,30 +125,31 @@
             left: 0;
             right: 0;
             height: 5px;
-            background: linear-gradient(135deg, var(--primary-green) 0%, var(--dark-green) 100%);
+            background: linear-gradient(135deg, var(--primary-teal) 0%, var(--dark-teal) 100%);
         }
         
         .role-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(25,135,84,0.2);
+            box-shadow: 0 20px 40px rgba(5, 92, 92, 0.2);
         }
         
         .card-icon {
             width: 80px;
             height: 80px;
             margin: 0 auto 2rem;
-            background: linear-gradient(135deg, var(--light-green) 0%, #a3d9a5 100%);
+            background: linear-gradient(135deg, var(--light-teal) 0%, rgba(5, 92, 92, 0.3) 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 2rem;
+            color: var(--primary-teal);
             transition: all 0.3s ease;
         }
         
         .role-card:hover .card-icon {
             transform: scale(1.1);
-            background: linear-gradient(135deg, var(--primary-green) 0%, var(--dark-green) 100%);
+            background: linear-gradient(135deg, var(--primary-teal) 0%, var(--dark-teal) 100%);
             color: white;
         }
         
@@ -163,30 +180,30 @@
         }
         
         .btn-primary-custom {
-            background: linear-gradient(135deg, var(--primary-green) 0%, var(--dark-green) 100%);
+            background: linear-gradient(135deg, var(--primary-teal) 0%, var(--dark-teal) 100%);
             color: white;
             border: 2px solid transparent;
-            box-shadow: 0 4px 15px rgba(25,135,84,0.3);
+            box-shadow: 0 4px 15px rgba(5, 92, 92, 0.3);
         }
         
         .btn-primary-custom:hover {
-            background: linear-gradient(135deg, var(--dark-green) 0%, #0f5132 100%);
+            background: linear-gradient(135deg, var(--dark-teal) 0%, #033333 100%);
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(25,135,84,0.4);
+            box-shadow: 0 6px 20px rgba(5, 92, 92, 0.4);
             color: white;
         }
         
         .btn-outline-custom {
             background: transparent;
-            color: var(--primary-green);
-            border: 2px solid var(--primary-green);
+            color: var(--primary-teal);
+            border: 2px solid var(--primary-teal);
         }
         
         .btn-outline-custom:hover {
-            background: var(--primary-green);
+            background: var(--primary-teal);
             color: white;
             transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(25,135,84,0.3);
+            box-shadow: 0 4px 15px rgba(5, 92, 92, 0.3);
         }
         
         .features-section {
@@ -201,12 +218,12 @@
         
         .feature-icon {
             font-size: 3rem;
-            color: var(--primary-green);
+            color: var(--primary-teal);
             margin-bottom: 1.5rem;
         }
         
         .footer-section {
-            background: #212529;
+            background: linear-gradient(135deg, rgba(5, 92, 92, 0.9) 0%, rgba(4, 74, 74, 0.95) 100%);
             color: white;
             padding: 60px 0 30px;
             text-align: center;
@@ -216,7 +233,17 @@
             font-size: 2rem;
             font-weight: 700;
             margin-bottom: 1rem;
-            color: var(--light-green);
+            color: white;
+        }
+        
+        .footer-section p {
+            color: rgba(255,255,255,0.9);
+            font-weight: 500;
+        }
+        
+        .footer-section small {
+            color: rgba(255,255,255,0.8);
+            font-weight: 500;
         }
         
         @media (max-width: 768px) {
@@ -255,11 +282,11 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 hero-content text-center">
-                    <div class="logo-text animate-fade-in">🌱 AFIA ORBIT</div>
-                    <p class="hero-subtitle animate-fade-in">Smart Waste Management Solutions for a Sustainable Future</p>
-                    <div class="animate-fade-in">
-                        <i class="bi bi-recycle" style="font-size: 4rem; opacity: 0.7;"></i>
+                    <div class="logo-text animate-fade-in">
+                        <img src="/your-logo.png" alt="AFIA ORBIT Logo">
                     </div>
+                    <p class="hero-subtitle animate-fade-in">Smart Waste Management Solutions for a Sustainable Future</p>
+
                 </div>
             </div>
         </div>
@@ -353,7 +380,7 @@
         <div class="container">
             <div class="footer-logo">AFIA ORBIT</div>
             <p class="mb-3">Building a sustainable future, one pickup at a time.</p>
-            <p>&copy; {{ date('Y') }} AFIA IT Orbit Department. All rights reserved.</p>
+            <p>&copy; {{ date('Y') }} AFIA Orbit. All rights reserved.</p>
             <div class="mt-4">
                 <i class="bi bi-shield-check me-2"></i>
                 <small>Secure • Reliable • Sustainable</small>
