@@ -312,10 +312,10 @@
                             Schedule waste pickups, track collection history, manage invoices, and access support through our intuitive client dashboard.
                         </p>
                         <div>
-                            <a href="{{ route('register.client') }}" class="btn-custom btn-primary-custom">
+                            <a href="{{ route('client.register') }}" class="btn-custom btn-primary-custom">
                                 <i class="bi bi-person-plus me-2"></i>Get Started
                             </a>
-                            <a href="{{ route('login.client') }}" class="btn-custom btn-outline-custom">
+                            <a href="{{ route('client.login') }}" class="btn-custom btn-outline-custom">
                                 <i class="bi bi-box-arrow-in-right me-2"></i>Sign In
                             </a>
                         </div>
