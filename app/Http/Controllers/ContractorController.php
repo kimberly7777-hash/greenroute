@@ -51,7 +51,7 @@ class ContractorController extends Controller
             'total_clients' => Client::where('contractor_id', $contractorId)->count(),
             'total_invoices' => Invoice::where('contractor_id', $contractorId)->count(),
             'pending_payments' => Invoice::where('contractor_id', $contractorId)
-                ->where('status', '!=', 'paid')
+                ->whereIn('status', ['draft', 'sent', 'overdue'])
                 ->sum('total_amount'),
             'active_routes' => Schedule::where('contractor_id', $contractorId)
                 ->distinct('pickup_location')

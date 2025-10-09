@@ -62,9 +62,7 @@ Route::get('/dashboard', [DashboardController::class, 'index'])
 Route::get('/dashboard/client', [DashboardController::class, 'clientDashboard'])->name('dashboard.client');
 
 // Client dashboard without auth (for client-side authentication)
-Route::get('/client/dashboard', function() {
-    return view('client.dashboard');
-})->name('client.dashboard.public');
+Route::get('/client/dashboard', [ClientPortalController::class, 'dashboard'])->name('client.dashboard.public');
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard/contractor', [DashboardController::class, 'contractorDashboard'])->name('dashboard.contractor');
     Route::get('/dashboard/admin', [DashboardController::class, 'adminDashboard'])->name('dashboard.admin');
@@ -72,9 +70,16 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Client portal (client views)
     Route::prefix('dashboard/client')->group(function () {
         Route::get('/', [ClientPortalController::class, 'dashboard'])->name('client.dashboard');
+        Route::get('profile', [ClientPortalController::class, 'profile'])->name('client.profile');
+        Route::put('profile', [ClientPortalController::class, 'updateProfile'])->name('client.profile.update');
         Route::get('schedules', [ClientPortalController::class, 'schedules'])->name('client.schedules');
+        Route::get('request-service', [ClientPortalController::class, 'requestService'])->name('client.request.service');
+        Route::post('request-service', [ClientPortalController::class, 'storeServiceRequest'])->name('client.request.service.store');
+        Route::get('equipment', [ClientPortalController::class, 'equipment'])->name('client.equipment');
+        Route::get('contractor-info', [ClientPortalController::class, 'contractorInfo'])->name('client.contractor.info');
         Route::get('invoices', [ClientPortalController::class, 'invoices'])->name('client.invoices');
-        Route::view('support', 'client_portal.support')->name('client.support');
+        Route::get('payments', [ClientPortalController::class, 'payments'])->name('client.payments');
+        Route::get('feedback', [ClientPortalController::class, 'feedback'])->name('client.feedback');
         Route::post('feedback', [ClientPortalController::class, 'storeFeedback'])->name('client.feedback.store');
     });
     
