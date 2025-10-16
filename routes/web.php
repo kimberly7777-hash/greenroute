@@ -79,10 +79,9 @@ Route::middleware(['auth'])->group(function () {
     });
 });
 
-// Contractor and Admin routes (require email verification)
+// Contractor routes (require email verification)
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard/contractor', [DashboardController::class, 'contractorDashboard'])->name('dashboard.contractor');
-    Route::get('/dashboard/admin', [DashboardController::class, 'adminDashboard'])->name('dashboard.admin');
     
     // Contractor routes
     Route::prefix('dashboard/contractor')->group(function () {
@@ -172,11 +171,6 @@ Route::post('/register/admin', [UserTypeController::class, 'storeAdmin'])->name(
 // Admin login routes (separate from main login)
 Route::prefix('admin')->group(function () {
     Route::get('/login', function () {
-        // If already logged in as admin, go to dashboard
-        if (Auth::check() && Auth::user()->user_type === 'admin') {
-            return redirect()->route('dashboard.admin');
-        }
-        
         // If logged in as non-admin, logout first
         if (Auth::check() && Auth::user()->user_type !== 'admin') {
             Auth::logout();
@@ -189,6 +183,13 @@ Route::prefix('admin')->group(function () {
     
     Route::post('/login', [App\Http\Controllers\Auth\AuthenticatedSessionController::class, 'store'])
         ->name('admin.login.submit')->middleware('guest');
+    
+    Route::post('/logout', function () {
+        Auth::logout();
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
+        return redirect()->route('admin.login')->with('success', 'You have been logged out successfully.');
+    })->name('admin.logout')->middleware('auth');
 });
 
 // Public location validation for registration
@@ -202,18 +203,41 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/location/clients', [App\Http\Controllers\LocationController::class, 'getClientLocations'])->name('location.clients');
     Route::post('/location/geocode', [App\Http\Controllers\LocationController::class, 'geocodeAddress'])->name('location.geocode');
     Route::post('/location/validate', [App\Http\Controllers\LocationController::class, 'validateLocationAccuracy'])->name('location.validate');
-    
-    // Admin routes (protected with admin middleware)
-    Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
+});
+
+// Admin routes (protected with admin middleware)
+Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
         Route::get('/dashboard', [App\Http\Controllers\AdminController::class, 'dashboard'])->name('dashboard.admin');
         Route::get('/verification', [App\Http\Controllers\AdminController::class, 'verification'])->name('admin.verification');
         Route::post('/verification/approve/{user}', [App\Http\Controllers\AdminController::class, 'approveContractor'])->name('admin.verification.approve');
         Route::post('/verification/reject/{user}', [App\Http\Controllers\AdminController::class, 'rejectContractor'])->name('admin.verification.reject');
         Route::get('/clients', [App\Http\Controllers\AdminController::class, 'clients'])->name('admin.clients');
+        Route::get('/clients/create', [App\Http\Controllers\AdminController::class, 'createClient'])->name('admin.clients.create');
+        Route::post('/clients', [App\Http\Controllers\AdminController::class, 'storeClient'])->name('admin.clients.store');
+        Route::get('/clients/{client}/edit', [App\Http\Controllers\AdminController::class, 'editClient'])->name('admin.clients.edit');
+        Route::put('/clients/{client}', [App\Http\Controllers\AdminController::class, 'updateClient'])->name('admin.clients.update');
+        Route::delete('/clients/{client}', [App\Http\Controllers\AdminController::class, 'deleteClient'])->name('admin.clients.delete');
         Route::get('/billing', [App\Http\Controllers\AdminController::class, 'billing'])->name('admin.billing');
         Route::get('/schedules', [App\Http\Controllers\AdminController::class, 'schedules'])->name('admin.schedules');
+        Route::get('/schedules/{schedule}/edit', [App\Http\Controllers\AdminController::class, 'editSchedule'])->name('admin.schedules.edit');
+        Route::put('/schedules/{schedule}', [App\Http\Controllers\AdminController::class, 'updateSchedule'])->name('admin.schedules.update');
         Route::get('/users', [App\Http\Controllers\AdminController::class, 'users'])->name('admin.users');
+        Route::get('/users/{user}/edit', [App\Http\Controllers\AdminController::class, 'editUser'])->name('admin.users.edit');
+        Route::put('/users/{user}', [App\Http\Controllers\AdminController::class, 'updateUser'])->name('admin.users.update');
+        Route::delete('/users/{user}', [App\Http\Controllers\AdminController::class, 'deleteUser'])->name('admin.users.delete');
         Route::get('/contractors/locations', [App\Http\Controllers\AdminController::class, 'getContractorLocations'])->name('admin.contractors.locations');
+        
+        // SMS Campaign routes
+        Route::get('/sms-campaign', [App\Http\Controllers\AdminController::class, 'smsCampaign'])->name('admin.sms.campaign');
+        Route::post('/sms-campaign/send', [App\Http\Controllers\AdminController::class, 'sendSmsCampaign'])->name('admin.sms.send');
+        
+        // Billing Rates Management routes
+        Route::get('/billing-rates', [App\Http\Controllers\AdminController::class, 'billingRates'])->name('admin.billing.rates');
+        Route::get('/billing-rates/create', [App\Http\Controllers\AdminController::class, 'createBillingRate'])->name('admin.billing.rates.create');
+        Route::post('/billing-rates', [App\Http\Controllers\AdminController::class, 'storeBillingRate'])->name('admin.billing.rates.store');
+        Route::get('/billing-rates/{rate}/edit', [App\Http\Controllers\AdminController::class, 'editBillingRate'])->name('admin.billing.rates.edit');
+        Route::put('/billing-rates/{rate}', [App\Http\Controllers\AdminController::class, 'updateBillingRate'])->name('admin.billing.rates.update');
+        Route::delete('/billing-rates/{rate}', [App\Http\Controllers\AdminController::class, 'deleteBillingRate'])->name('admin.billing.rates.delete');
     });
     
     // Contractor routes
@@ -298,6 +322,5 @@ Route::middleware(['auth'])->group(function () {
         Route::put('/{contractorRoute}', [App\Http\Controllers\RouteManagementController::class, 'update'])->name('route-management.update');
         Route::delete('/{contractorRoute}', [App\Http\Controllers\RouteManagementController::class, 'destroy'])->name('route-management.destroy');
     });
-});
 
 require __DIR__.'/auth.php';

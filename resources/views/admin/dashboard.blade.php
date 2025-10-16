@@ -363,6 +363,10 @@
                     <span><i class="bi bi-credit-card"></i>Billing & Payments</span>
                     <i class="bi bi-chevron-right"></i>
                 </a>
+                <a href="{{ route('admin.billing.rates') }}" class="menu-item">
+                    <span><i class="bi bi-currency-dollar"></i>Billing Rates</span>
+                    <i class="bi bi-chevron-right"></i>
+                </a>
                 <a href="{{ route('admin.schedules') }}" class="menu-item">
                     <span><i class="bi bi-calendar3"></i>Schedules</span>
                     <i class="bi bi-chevron-right"></i>
@@ -371,6 +375,14 @@
                     <span><i class="bi bi-person-gear"></i>Users</span>
                     <i class="bi bi-chevron-right"></i>
                 </a>
+                
+                <div class="menu-header" style="margin-top: 1rem;">ACCOUNT</div>
+                <form method="POST" action="{{ route('admin.logout') }}" style="margin: 0;">
+                    @csrf
+                    <button type="submit" class="menu-item" style="width: 100%; background: none; border: none; text-align: left; cursor: pointer;">
+                        <span><i class="bi bi-box-arrow-right"></i>Logout</span>
+                    </button>
+                </form>
             </div>
         </div>
 
@@ -402,7 +414,7 @@
                             <li><a class="dropdown-item" href="{{ route('profile.edit') }}"><i class="bi bi-person me-2"></i>Profile</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li>
-                                <form method="POST" action="{{ route('logout') }}">
+                                <form method="POST" action="{{ route('admin.logout') }}">
                                     @csrf
                                     <button type="submit" class="dropdown-item text-danger">
                                         <i class="bi bi-box-arrow-right me-2"></i>Logout

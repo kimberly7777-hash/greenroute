@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clients Information - AFIA ORBIT Admin</title>
+    <title>Billing Rates Management - AFIA ORBIT Admin</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     
@@ -39,6 +39,9 @@
         }
         
         .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 2rem;
         }
         
@@ -51,6 +54,21 @@
         
         .page-description {
             color: #666;
+        }
+        
+        .btn-primary {
+            display: inline-block;
+            padding: 12px 24px;
+            background: var(--primary-teal);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+        
+        .btn-primary:hover {
+            background: #044a4a;
+            color: white;
         }
         
         /* Stats Cards */
@@ -207,6 +225,30 @@
             color: #d1d5db;
             margin-bottom: 1rem;
         }
+        
+        .alert {
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .alert-success {
+            background: #d1fae5;
+            color: #065f46;
+            border: 1px solid #10b981;
+        }
+        
+        .alert-error {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #ef4444;
+        }
+        
+        .price-display {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary-teal);
+        }
     </style>
 </head>
 <body>
@@ -217,116 +259,99 @@
             </a>
         </div>
         
-        <div class="page-header" style="display: flex; justify-content: space-between; align-items: center;">
+        <div class="page-header">
             <div>
-                <h1 class="page-title">Clients Information</h1>
-                <p class="page-description">Manage all clients across the system</p>
+                <h1 class="page-title">Billing Rates Management</h1>
+                <p class="page-description">Manage collection fees by category and location</p>
             </div>
             <div>
-                <a href="{{ route('admin.clients.create') }}" class="btn-primary" style="display: inline-block; padding: 12px 24px; background: var(--primary-teal); color: white; text-decoration: none; border-radius: 8px; font-weight: 600;">
-                    <i class="bi bi-plus-circle me-2"></i>Register New Client
-                </a>
-                <a href="{{ route('admin.sms.campaign') }}" class="btn-secondary" style="display: inline-block; padding: 12px 24px; background: #3b82f6; color: white; text-decoration: none; border-radius: 8px; font-weight: 600; margin-left: 10px;">
-                    <i class="bi bi-chat-dots me-2"></i>SMS Campaign
+                <a href="{{ route('admin.billing.rates.create') }}" class="btn-primary">
+                    <i class="bi bi-plus-circle me-2"></i>Add New Rate
                 </a>
             </div>
         </div>
 
+        @if(session('success'))
+            <div class="alert alert-success">
+                <i class="bi bi-check-circle me-2"></i>{{ session('success') }}
+            </div>
+        @endif
+
+        @if(session('error'))
+            <div class="alert alert-error">
+                <i class="bi bi-exclamation-circle me-2"></i>{{ session('error') }}
+            </div>
+        @endif
+
         <!-- Statistics -->
         <div class="stats-grid">
             <div class="stat-card">
-                <div class="stat-label">Total Clients</div>
-                <div class="stat-value">{{ $totalClients }}</div>
+                <div class="stat-label">Total Rates</div>
+                <div class="stat-value">{{ $totalRates }}</div>
             </div>
             <div class="stat-card green">
-                <div class="stat-label">Residential</div>
-                <div class="stat-value">{{ $residentialCount }}</div>
+                <div class="stat-label">Active Rates</div>
+                <div class="stat-value">{{ $activeRates }}</div>
             </div>
             <div class="stat-card blue">
-                <div class="stat-label">Commercial</div>
-                <div class="stat-value">{{ $commercialCount }}</div>
+                <div class="stat-label">Residential Rates</div>
+                <div class="stat-value">{{ $residentialRates }}</div>
             </div>
             <div class="stat-card orange">
-                <div class="stat-label">Active</div>
-                <div class="stat-value">{{ $activeCount }}</div>
+                <div class="stat-label">Commercial Rates</div>
+                <div class="stat-value">{{ $commercialRates }}</div>
             </div>
         </div>
 
         <!-- Search -->
         <div class="search-box">
             <input type="text" id="searchInput" class="search-input" 
-                   placeholder="Search by name, email, phone, or address..." 
+                   placeholder="Search by category, location, or frequency..." 
                    onkeyup="filterTable()">
         </div>
 
-        <!-- Clients Table -->
-        @if($clients->count() > 0)
+        <!-- Billing Rates Table -->
+        @if($rates->count() > 0)
             <div class="table-container">
-                <table id="clientsTable">
+                <table id="ratesTable">
                     <thead>
                         <tr>
-                            <th>Reg #</th>
-                            <th>Name</th>
-                            <th>Contact</th>
-                            <th>Address</th>
-                            <th>Contractor</th>
                             <th>Category</th>
+                            <th>Location</th>
+                            <th>Frequency</th>
+                            <th>Collection Fee</th>
+                            <th>Description</th>
                             <th>Status</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($clients as $client)
+                        @foreach($rates as $rate)
                             <tr>
-                                <td><strong>{{ $client->registration_number }}</strong></td>
-                                <td>{{ $client->name }}</td>
                                 <td>
-                                    <div><i class="bi bi-telephone me-1"></i>{{ $client->phone }}</div>
-                                    @if($client->email)
-                                        <div class="small text-muted">
-                                            <i class="bi bi-envelope me-1"></i>{{ $client->email }}
-                                        </div>
-                                    @endif
+                                    <span class="badge badge-{{ $rate->category }}">
+                                        {{ ucfirst($rate->category) }}
+                                    </span>
                                 </td>
+                                <td><strong>{{ $rate->location }}</strong></td>
+                                <td>{{ $rate->frequency ? ucfirst(str_replace('-', ' ', $rate->frequency)) : 'Any' }}</td>
                                 <td>
-                                    <div>{{ $client->address }}</div>
-                                    <div class="small text-muted">
-                                        {{ $client->city }}, {{ $client->state }} {{ $client->zip_code }}
-                                    </div>
+                                    <span class="price-display">${{ number_format($rate->collection_fee, 2) }}</span>
                                 </td>
-                                <td>{{ $client->contractor->name ?? 'Unassigned' }}</td>
+                                <td>{{ $rate->description ?? '-' }}</td>
                                 <td>
-                                    <span class="badge badge-{{ $client->category }}">
-                                        {{ ucfirst($client->category) }}
+                                    <span class="badge badge-{{ $rate->is_active ? 'active' : 'inactive' }}">
+                                        {{ $rate->is_active ? 'Active' : 'Inactive' }}
                                     </span>
                                 </td>
                                 <td>
-                                    <span class="badge badge-{{ $client->status }}">
-                                        {{ ucfirst($client->status) }}
-                                    </span>
-                                </td>
-                                <td>
-                                    <a href="{{ route('admin.clients.edit', $client) }}" class="action-btn" title="Edit Client">
+                                    <a href="{{ route('admin.billing.rates.edit', $rate) }}" class="action-btn" title="Edit Rate">
                                         <i class="bi bi-pencil"></i>
                                     </a>
-                                    @if($client->email)
-                                        <a href="mailto:{{ $client->email }}" class="action-btn" title="Email">
-                                            <i class="bi bi-envelope"></i>
-                                        </a>
-                                    @endif
-                                    <a href="tel:{{ $client->phone }}" class="action-btn" title="Call">
-                                        <i class="bi bi-telephone"></i>
-                                    </a>
-                                    @if($client->latitude && $client->longitude)
-                                        <a href="https://www.google.com/maps?q={{ $client->latitude }},{{ $client->longitude }}" 
-                                           target="_blank" class="action-btn" title="View on Map">
-                                            <i class="bi bi-geo-alt"></i>
-                                        </a>
-                                    @endif
-                                    <form action="{{ route('admin.clients.delete', $client) }}" method="POST" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this client?');">
+                                    <form action="{{ route('admin.billing.rates.delete', $rate) }}" method="POST" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this billing rate?');">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="action-btn" style="background: #ef4444;" title="Delete Client">
+                                        <button type="submit" class="action-btn" style="background: #ef4444;" title="Delete Rate">
                                             <i class="bi bi-trash"></i>
                                         </button>
                                     </form>
@@ -336,16 +361,11 @@
                     </tbody>
                 </table>
             </div>
-
-            <!-- Pagination -->
-            <div class="mt-4">
-                {{ $clients->links() }}
-            </div>
         @else
             <div class="empty-state">
-                <i class="bi bi-people"></i>
-                <h3>No Clients Found</h3>
-                <p>There are no clients in the system yet.</p>
+                <i class="bi bi-currency-dollar"></i>
+                <h3>No Billing Rates Found</h3>
+                <p>Click "Add New Rate" to create your first billing rate.</p>
             </div>
         @endif
     </div>
@@ -354,7 +374,7 @@
     <script>
         function filterTable() {
             const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            const table = document.getElementById('clientsTable');
+            const table = document.getElementById('ratesTable');
             const rows = table.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
             
             for (let i = 0; i < rows.length; i++) {

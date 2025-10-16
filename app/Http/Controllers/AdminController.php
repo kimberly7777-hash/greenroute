@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Client;
 use App\Models\ContractorRoute;
 use App\Models\ContractorLocation;
+use App\Models\BillingRate;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -115,11 +116,41 @@ class AdminController extends Controller
         ]);
     }
 
-    public function schedules()
+    public function schedules(Request $request)
     {
-        // Get all schedules with client and contractor relationships
-        $schedules = \App\Models\Schedule::with(['client', 'contractor'])
-            ->orderBy('scheduled_date', 'desc')
+        // Build query with filters
+        $query = \App\Models\Schedule::with(['client', 'contractor']);
+        
+        // Filter by contractor
+        if ($request->filled('contractor_id')) {
+            $query->where('contractor_id', $request->contractor_id);
+        }
+        
+        // Filter by status
+        if ($request->filled('status')) {
+            $query->where('status', $request->status);
+        }
+        
+        // Filter by date range
+        if ($request->filled('date_from')) {
+            $query->whereDate('scheduled_date', '>=', $request->date_from);
+        }
+        if ($request->filled('date_to')) {
+            $query->whereDate('scheduled_date', '<=', $request->date_to);
+        }
+        
+        // Filter by organic waste
+        if ($request->filled('organic_waste')) {
+            $query->where('includes_organic_waste', $request->organic_waste === 'yes');
+        }
+        
+        // Filter by frequency
+        if ($request->filled('frequency')) {
+            $query->where('frequency', $request->frequency);
+        }
+        
+        $schedules = $query->orderBy('scheduled_date', 'desc')
+            ->orderBy('scheduled_time', 'asc')
             ->paginate(20);
         
         // Calculate statistics
@@ -127,24 +158,145 @@ class AdminController extends Controller
         $completedSchedules = \App\Models\Schedule::where('status', 'completed')->count();
         $pendingSchedules = \App\Models\Schedule::where('status', 'pending')->count();
         $todaySchedules = \App\Models\Schedule::whereDate('scheduled_date', today())->count();
+        $organicWasteSchedules = \App\Models\Schedule::where('includes_organic_waste', true)->count();
+        $upcomingSchedules = \App\Models\Schedule::where('scheduled_date', '>=', today())->where('status', '!=', 'completed')->count();
         
-        return view('admin.schedules', [
+        // Get contractors for filter dropdown
+        $contractors = User::where('user_type', 'contractor')
+            ->where('status', 'approved')
+            ->orderBy('name')
+            ->get();
+        
+        return view('admin.schedules-management', [
             'schedules' => $schedules,
             'totalSchedules' => $totalSchedules,
             'completedSchedules' => $completedSchedules,
             'pendingSchedules' => $pendingSchedules,
-            'todaySchedules' => $todaySchedules
+            'todaySchedules' => $todaySchedules,
+            'organicWasteSchedules' => $organicWasteSchedules,
+            'upcomingSchedules' => $upcomingSchedules,
+            'contractors' => $contractors,
+            'filters' => $request->only(['contractor_id', 'status', 'date_from', 'date_to', 'organic_waste', 'frequency'])
         ]);
     }
 
-    public function users()
+    public function editSchedule(\App\Models\Schedule $schedule)
     {
-        // Get all users
-        $users = User::orderBy('created_at', 'desc')->paginate(50);
+        $contractors = User::where('user_type', 'contractor')
+            ->where('status', 'approved')
+            ->orderBy('name')
+            ->get();
         
-        return view('admin.users', [
-            'users' => $users
+        $clients = Client::orderBy('name')->get();
+        
+        return view('admin.schedules-edit', compact('schedule', 'contractors', 'clients'));
+    }
+
+    public function updateSchedule(Request $request, \App\Models\Schedule $schedule)
+    {
+        $validated = $request->validate([
+            'contractor_id' => 'required|exists:users,id',
+            'client_id' => 'required|exists:clients,id',
+            'scheduled_date' => 'required|date',
+            'scheduled_time' => 'required',
+            'service_type' => 'required|string',
+            'frequency' => 'nullable|in:daily,weekly,bi-weekly,monthly',
+            'includes_organic_waste' => 'boolean',
+            'organic_waste_notes' => 'nullable|string',
+            'status' => 'required|in:pending,scheduled,in_progress,completed,cancelled',
+            'notes' => 'nullable|string'
         ]);
+
+        $validated['includes_organic_waste'] = $request->has('includes_organic_waste');
+        
+        $schedule->update($validated);
+        
+        return redirect()->route('admin.schedules')
+            ->with('success', 'Schedule updated successfully.');
+    }
+
+    public function users(Request $request)
+    {
+        // Build query with filters
+        $query = User::query();
+        
+        // Filter by user type
+        if ($request->filled('user_type')) {
+            $query->where('user_type', $request->user_type);
+        }
+        
+        // Filter by status
+        if ($request->filled('status')) {
+            $query->where('status', $request->status);
+        }
+        
+        // Search by name or email
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->where(function($q) use ($search) {
+                $q->where('name', 'like', "%{$search}%")
+                  ->orWhere('email', 'like', "%{$search}%")
+                  ->orWhere('username', 'like', "%{$search}%");
+            });
+        }
+        
+        $users = $query->orderBy('created_at', 'desc')->paginate(20);
+        
+        // Calculate statistics
+        $totalUsers = User::count();
+        $adminCount = User::where('user_type', 'admin')->count();
+        $contractorCount = User::where('user_type', 'contractor')->count();
+        $clientCount = User::where('user_type', 'client')->count();
+        $approvedCount = User::where('status', 'approved')->count();
+        $pendingCount = User::where('status', 'pending')->orWhereNull('status')->count();
+        
+        return view('admin.users-management', [
+            'users' => $users,
+            'totalUsers' => $totalUsers,
+            'adminCount' => $adminCount,
+            'contractorCount' => $contractorCount,
+            'clientCount' => $clientCount,
+            'approvedCount' => $approvedCount,
+            'pendingCount' => $pendingCount,
+            'filters' => $request->only(['user_type', 'status', 'search'])
+        ]);
+    }
+
+    public function editUser(User $user)
+    {
+        return view('admin.users-edit', compact('user'));
+    }
+
+    public function updateUser(Request $request, User $user)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email,' . $user->id,
+            'username' => 'required|string|max:255|unique:users,username,' . $user->id,
+            'user_type' => 'required|in:admin,contractor,client',
+            'status' => 'nullable|in:pending,approved,rejected',
+            'subscription_status' => 'nullable|in:active,inactive,expired'
+        ]);
+
+        $user->update($validated);
+        
+        return redirect()->route('admin.users')
+            ->with('success', "User {$user->name} has been updated successfully.");
+    }
+
+    public function deleteUser(User $user)
+    {
+        // Prevent deleting current admin
+        if ($user->id === auth()->id()) {
+            return redirect()->route('admin.users')
+                ->with('error', 'You cannot delete your own account.');
+        }
+        
+        $userName = $user->name;
+        $user->delete();
+        
+        return redirect()->route('admin.users')
+            ->with('success', "User {$userName} has been deleted successfully.");
     }
 
     public function getContractorLocations()
@@ -203,5 +355,279 @@ class AdminController extends Controller
 
         return redirect()->route('admin.verification')
             ->with('success', "Contractor {$user->name} has been rejected. A notification email has been sent.");
+    }
+
+    // Client Management Methods
+
+    public function createClient()
+    {
+        // Get all approved contractors for assignment
+        $contractors = User::where('user_type', 'contractor')
+            ->where('status', 'approved')
+            ->orderBy('name')
+            ->get();
+        
+        return view('admin.clients-create', compact('contractors'));
+    }
+
+    public function storeClient(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'nullable|email|max:255',
+            'phone' => 'required|string|max:20',
+            'address' => 'required|string|max:500',
+            'city' => 'required|string|max:100',
+            'state' => 'required|string|max:100',
+            'zip_code' => 'required|string|max:20',
+            'category' => 'required|in:residential,commercial',
+            'contractor_id' => 'nullable|exists:users,id',
+            'latitude' => 'nullable|numeric',
+            'longitude' => 'nullable|numeric',
+            'service_frequency' => 'nullable|string',
+            'notes' => 'nullable|string'
+        ]);
+
+        // Generate registration number
+        $validated['registration_number'] = 'CL-' . strtoupper(substr(uniqid(), -8));
+        $validated['status'] = 'active';
+
+        $client = Client::create($validated);
+
+        return redirect()->route('admin.clients')
+            ->with('success', "Client {$client->name} has been successfully registered.");
+    }
+
+    public function editClient(Client $client)
+    {
+        // Get all approved contractors for assignment
+        $contractors = User::where('user_type', 'contractor')
+            ->where('status', 'approved')
+            ->orderBy('name')
+            ->get();
+        
+        return view('admin.clients-edit', compact('client', 'contractors'));
+    }
+
+    public function updateClient(Request $request, Client $client)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'nullable|email|max:255',
+            'phone' => 'required|string|max:20',
+            'address' => 'required|string|max:500',
+            'city' => 'required|string|max:100',
+            'state' => 'required|string|max:100',
+            'zip_code' => 'required|string|max:20',
+            'category' => 'required|in:residential,commercial',
+            'status' => 'required|in:active,inactive',
+            'contractor_id' => 'nullable|exists:users,id',
+            'latitude' => 'nullable|numeric',
+            'longitude' => 'nullable|numeric',
+            'service_frequency' => 'nullable|string',
+            'notes' => 'nullable|string'
+        ]);
+
+        $client->update($validated);
+
+        return redirect()->route('admin.clients')
+            ->with('success', "Client {$client->name} has been successfully updated.");
+    }
+
+    public function deleteClient(Client $client)
+    {
+        $clientName = $client->name;
+        $client->delete();
+
+        return redirect()->route('admin.clients')
+            ->with('success', "Client {$clientName} has been successfully deleted.");
+    }
+
+    // SMS Campaign Methods
+
+    public function smsCampaign()
+    {
+        // Get all clients with phone numbers
+        $clients = Client::whereNotNull('phone')
+            ->orderBy('name')
+            ->get();
+        
+        // Group by contractor for filtering
+        $contractors = User::where('user_type', 'contractor')
+            ->where('status', 'approved')
+            ->has('clients')
+            ->withCount('clients')
+            ->orderBy('name')
+            ->get();
+        
+        return view('admin.sms-campaign', compact('clients', 'contractors'));
+    }
+
+    public function sendSmsCampaign(Request $request)
+    {
+        $validated = $request->validate([
+            'recipients' => 'required|in:all,residential,commercial,contractor,selected',
+            'selected_clients' => 'required_if:recipients,selected|array',
+            'selected_clients.*' => 'exists:clients,id',
+            'contractor_id' => 'required_if:recipients,contractor|exists:users,id',
+            'message' => 'required|string|max:500',
+            'campaign_name' => 'required|string|max:255'
+        ]);
+
+        // Get recipients based on selection
+        $recipients = $this->getSmsCampaignRecipients($request);
+
+        // Send SMS to each recipient (integrate with SMS service)
+        $successCount = 0;
+        $failCount = 0;
+
+        foreach ($recipients as $client) {
+            try {
+                // This is a placeholder - integrate with your SMS service (Twilio, Africa's Talking, etc.)
+                $this->sendSms($client->phone, $validated['message']);
+                $successCount++;
+            } catch (\Exception $e) {
+                $failCount++;
+                \Log::error("Failed to send SMS to {$client->phone}: " . $e->getMessage());
+            }
+        }
+
+        // Log campaign
+        \Log::info("SMS Campaign '{$validated['campaign_name']}': {$successCount} sent, {$failCount} failed");
+
+        return redirect()->route('admin.sms.campaign')
+            ->with('success', "SMS Campaign sent successfully! {$successCount} messages sent, {$failCount} failed.");
+    }
+
+    private function getSmsCampaignRecipients(Request $request)
+    {
+        switch ($request->recipients) {
+            case 'all':
+                return Client::whereNotNull('phone')->get();
+            case 'residential':
+                return Client::where('category', 'residential')->whereNotNull('phone')->get();
+            case 'commercial':
+                return Client::where('category', 'commercial')->whereNotNull('phone')->get();
+            case 'contractor':
+                return Client::where('contractor_id', $request->contractor_id)->whereNotNull('phone')->get();
+            case 'selected':
+                return Client::whereIn('id', $request->selected_clients)->whereNotNull('phone')->get();
+            default:
+                return collect();
+        }
+    }
+
+    private function sendSms($phone, $message)
+    {
+        // Placeholder for SMS integration
+        // TODO: Integrate with SMS service provider (Twilio, Africa's Talking, etc.)
+        
+        // Example for Africa's Talking (popular in Africa):
+        /*
+        $gateway = new \AfricasTalking\SMS\SMS(config('services.africastalking.username'), config('services.africastalking.api_key'));
+        $result = $gateway->send([
+            'to' => $phone,
+            'message' => $message,
+            'from' => config('services.africastalking.shortcode')
+        ]);
+        */
+        
+        // For now, just log it
+        \Log::info("SMS to {$phone}: {$message}");
+        
+        return true;
+    }
+
+    // Billing Rates Management Methods
+
+    public function billingRates()
+    {
+        // Get all billing rates with grouping
+        $rates = BillingRate::orderBy('category')
+            ->orderBy('location')
+            ->orderBy('frequency')
+            ->get();
+        
+        // Get unique locations for filtering
+        $locations = BillingRate::select('location')
+            ->distinct()
+            ->orderBy('location')
+            ->pluck('location');
+        
+        // Statistics
+        $totalRates = BillingRate::count();
+        $activeRates = BillingRate::where('is_active', true)->count();
+        $residentialRates = BillingRate::where('category', 'residential')->count();
+        $commercialRates = BillingRate::where('category', 'commercial')->count();
+        
+        return view('admin.billing-rates', compact('rates', 'locations', 'totalRates', 'activeRates', 'residentialRates', 'commercialRates'));
+    }
+
+    public function createBillingRate()
+    {
+        return view('admin.billing-rates-create');
+    }
+
+    public function storeBillingRate(Request $request)
+    {
+        $validated = $request->validate([
+            'category' => 'required|in:residential,commercial',
+            'location' => 'required|string|max:255',
+            'collection_fee' => 'required|numeric|min:0',
+            'frequency' => 'nullable|in:daily,weekly,bi-weekly,monthly',
+            'description' => 'nullable|string',
+            'is_active' => 'boolean'
+        ]);
+
+        $validated['is_active'] = $request->has('is_active');
+
+        try {
+            BillingRate::create($validated);
+            
+            return redirect()->route('admin.billing.rates')
+                ->with('success', 'Billing rate created successfully.');
+        } catch (\Exception $e) {
+            return redirect()->back()
+                ->withInput()
+                ->with('error', 'Error: This category-location-frequency combination already exists.');
+        }
+    }
+
+    public function editBillingRate(BillingRate $rate)
+    {
+        return view('admin.billing-rates-edit', compact('rate'));
+    }
+
+    public function updateBillingRate(Request $request, BillingRate $rate)
+    {
+        $validated = $request->validate([
+            'category' => 'required|in:residential,commercial',
+            'location' => 'required|string|max:255',
+            'collection_fee' => 'required|numeric|min:0',
+            'frequency' => 'nullable|in:daily,weekly,bi-weekly,monthly',
+            'description' => 'nullable|string',
+            'is_active' => 'boolean'
+        ]);
+
+        $validated['is_active'] = $request->has('is_active');
+
+        try {
+            $rate->update($validated);
+            
+            return redirect()->route('admin.billing.rates')
+                ->with('success', 'Billing rate updated successfully.');
+        } catch (\Exception $e) {
+            return redirect()->back()
+                ->withInput()
+                ->with('error', 'Error: This category-location-frequency combination already exists.');
+        }
+    }
+
+    public function deleteBillingRate(BillingRate $rate)
+    {
+        $rate->delete();
+        
+        return redirect()->route('admin.billing.rates')
+            ->with('success', 'Billing rate deleted successfully.');
     }
 }

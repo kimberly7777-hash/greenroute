@@ -172,6 +172,12 @@
             color: var(--primary-red);
         }
         
+        .alert-success {
+            background-color: #d1fae5;
+            color: #065f46;
+            border: 1px solid #10b981;
+        }
+        
         .back-link {
             text-align: center;
             margin-top: 1.5rem;
@@ -222,6 +228,13 @@
 
         <!-- Login Body -->
         <div class="login-body">
+            <!-- Success Message -->
+            @if (session('success'))
+                <div class="alert alert-success mb-4">
+                    <i class="bi bi-check-circle-fill me-2"></i>{{ session('success') }}
+                </div>
+            @endif
+
             <!-- Session Status -->
             @if (session('status'))
                 <div class="alert alert-success mb-4">

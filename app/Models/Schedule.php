@@ -17,12 +17,17 @@ class Schedule extends Model
         'route_group_id',
         'pickup_date',
         'pickup_time',
+        'scheduled_date',
+        'scheduled_time',
         'pickup_location',
         'pickup_address',
         'city',
         'state',
         'zip_code',
         'service_type',
+        'frequency',
+        'includes_organic_waste',
+        'organic_waste_notes',
         'status',
         'notes',
         'estimated_duration',
@@ -35,8 +40,12 @@ class Schedule extends Model
     protected $casts = [
         'pickup_date' => 'date',
         'pickup_time' => 'datetime:H:i',
+        'scheduled_date' => 'date',
+        'scheduled_time' => 'datetime:H:i',
         'estimated_duration' => 'decimal:2',
         'service_type' => 'string',
+        'frequency' => 'string',
+        'includes_organic_waste' => 'boolean',
         'status' => 'string'
     ];
 
