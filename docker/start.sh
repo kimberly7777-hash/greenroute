@@ -5,6 +5,14 @@ if [ -z "$APP_KEY" ]; then
     php artisan key:generate --force
 fi
 
+# Ensure storage directories exist with proper permissions
+mkdir -p storage/app/public/certificates
+mkdir -p storage/framework/{sessions,views,cache}
+mkdir -p storage/logs
+chmod -R 775 storage
+chmod -R 775 bootstrap/cache
+chown -R www-data:www-data storage bootstrap/cache
+
 # Clear and cache configuration
 php artisan config:clear
 php artisan config:cache
@@ -14,8 +22,8 @@ php artisan view:cache
 # Run database migrations
 php artisan migrate --force
 
-# Create storage link
-php artisan storage:link
+# Create storage link (force recreate if exists)
+php artisan storage:link --force || true
 
 # Start Apache in foreground
 apache2-foreground

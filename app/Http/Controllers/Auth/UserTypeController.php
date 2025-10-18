@@ -147,7 +147,15 @@ class UserTypeController extends Controller
             'status' => 'active',
         ]);
 
-        event(new Registered($user));
+        try {
+            event(new Registered($user));
+        } catch (\Exception $e) {
+            Log::error('Registered event failed for client', [
+                'error' => $e->getMessage(),
+                'user_id' => $user->id
+            ]);
+            // Continue even if event fails (email notification)
+        }
 
         Auth::login($user);
 
@@ -182,7 +190,16 @@ class UserTypeController extends Controller
         // Handle file upload
         $certificatePath = null;
         if ($request->hasFile('certificate')) {
-            $certificatePath = $request->file('certificate')->store('certificates', 'public');
+            try {
+                $certificatePath = $request->file('certificate')->store('certificates', 'public');
+            } catch (\Exception $e) {
+                Log::error('Certificate upload failed', [
+                    'error' => $e->getMessage(),
+                    'user_email' => $request->email
+                ]);
+                // Continue registration even if file upload fails
+                $certificatePath = null;
+            }
         }
 
         // Create contractor record
@@ -198,7 +215,15 @@ class UserTypeController extends Controller
             'certificate_path' => $certificatePath,
         ]);
 
-        event(new Registered($user));
+        try {
+            event(new Registered($user));
+        } catch (\Exception $e) {
+            Log::error('Registered event failed', [
+                'error' => $e->getMessage(),
+                'user_id' => $user->id
+            ]);
+            // Continue even if event fails (email notification)
+        }
 
         Auth::login($user);
 
@@ -226,7 +251,15 @@ class UserTypeController extends Controller
             'user_type' => 'admin',
         ]);
 
-        event(new Registered($user));
+        try {
+            event(new Registered($user));
+        } catch (\Exception $e) {
+            Log::error('Registered event failed for admin', [
+                'error' => $e->getMessage(),
+                'user_id' => $user->id
+            ]);
+            // Continue even if event fails (email notification)
+        }
 
         Auth::login($user);
 
