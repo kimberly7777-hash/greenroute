@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'AFIA ORBIT') }}</title>
+        <title>{{ config('app.name', 'Afia Orbit') }}</title>
 
         <!-- Bootstrap CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -137,12 +137,15 @@
             <div class="auth-card">
                 <div class="logo-section">
                     <a href="/" class="logo text-decoration-none">
-                        AFIA ORBIT
+                        Afia Orbit
                     </a>
                 </div>
                 {{ $slot }}
             </div>
         </div>
+        
+        <!-- Footer -->
+        <x-footer />
         
         <!-- Bootstrap JS -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

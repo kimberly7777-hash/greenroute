@@ -34,6 +34,9 @@
                     {{ $slot }}
                 @endisset
             </main>
+            
+            <!-- Footer -->
+            <x-footer />
         </div>
     </body>
 </html>

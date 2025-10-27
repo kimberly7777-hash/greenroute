@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AFIA ORBIT - Waste Management System</title>
+    <title>Afia Orbit - Waste Management System</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -222,30 +222,6 @@
             margin-bottom: 1.5rem;
         }
         
-        .footer-section {
-            background: linear-gradient(135deg, rgba(5, 92, 92, 0.9) 0%, rgba(4, 74, 74, 0.95) 100%);
-            color: white;
-            padding: 60px 0 30px;
-            text-align: center;
-        }
-        
-        .footer-logo {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: white;
-        }
-        
-        .footer-section p {
-            color: rgba(255,255,255,0.9);
-            font-weight: 500;
-        }
-        
-        .footer-section small {
-            color: rgba(255,255,255,0.8);
-            font-weight: 500;
-        }
-        
         @media (max-width: 768px) {
             .logo-text {
                 font-size: 3rem;
@@ -283,7 +259,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8 hero-content text-center">
                     <div class="logo-text animate-fade-in">
-                        <img src="/your-logo.png" alt="AFIA ORBIT Logo">
+                        <img src="/your-logo.png" alt="Afia Orbit Logo">
                     </div>
                     <p class="hero-subtitle animate-fade-in">Smart Waste Management Solutions for a Sustainable Future</p>
 
@@ -376,17 +352,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="footer-section">
-        <div class="container">
-            <div class="footer-logo">AFIA ORBIT</div>
-            <p class="mb-3">Building a sustainable future, one pickup at a time.</p>
-            <p>&copy; {{ date('Y') }} AFIA Orbit. All rights reserved.</p>
-            <div class="mt-4">
-                <i class="bi bi-shield-check me-2"></i>
-                <small>Secure • Reliable • Sustainable</small>
-            </div>
-        </div>
-    </footer>
+    <x-footer />
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>

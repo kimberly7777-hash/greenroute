@@ -1,7 +1,7 @@
 @props(['class' => 'h-12 w-auto'])
 
 <div class="flex items-center {{ $class }}">
-    <!-- AFIA ORBIT Logo -->
+    <!-- Afia Orbit Logo -->
     <div class="flex items-center space-x-3">
         <!-- Logo Icon -->
         <div class="relative">

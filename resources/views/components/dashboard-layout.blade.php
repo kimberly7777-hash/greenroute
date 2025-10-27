@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'AFIA ORBIT') }} - {{ $title ?? 'Dashboard' }}</title>
+    <title>{{ config('app.name', 'Afia Orbit') }} - {{ $title ?? 'Dashboard' }}</title>
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -232,6 +232,9 @@
                     <div class="p-4">
                         {{ $slot }}
                     </div>
+                    
+                    <!-- Footer -->
+                    <x-footer />
                 </div>
             </div>
         </div>

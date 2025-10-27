@@ -18,6 +18,15 @@ Route::get('/', function () {
     return view('landing');
 });
 
+// Legal pages
+Route::get('/terms-of-service', function () {
+    return view('legal.terms-of-service');
+})->name('terms-of-service');
+
+Route::get('/privacy-policy', function () {
+    return view('legal.privacy-policy');
+})->name('privacy-policy');
+
 // Test route for dashboard component
 Route::get('/test-dashboard', function () {
     // Create a mock user for testing
