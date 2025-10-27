@@ -422,24 +422,39 @@
                     <!-- Location Section -->
                     <div class="location-section">
                         <div class="location-header">
-                            <h4 class="location-title">GPS Coordinates</h4>
-                            <button type="button" class="btn-info" onclick="getLocation()">
-                                <i class="bi bi-geo-alt"></i> Get Current Location
+                            <h4 class="location-title">GPS Coordinates <span style="color: var(--secondary-color);">* (REQUIRED)</span></h4>
+                            <button type="button" class="btn-info" id="getLocationBtn" onclick="getLocation()">
+                                <i class="bi bi-geo-alt"></i> Get Current Location (Required)
                             </button>
                         </div>
+                        
+                        @error('location')
+                            <div class="alert alert-danger mt-3" style="background: #f8d7da; color: #721c24; padding: 1rem; border-radius: 8px; border: 1px solid #f5c6cb;">
+                                <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                                <strong>Location Error:</strong> {{ $message }}
+                            </div>
+                        @enderror
+                        
+                        <div id="locationStatus" class="mt-3"></div>
+                        
+                        <p class="text-muted mt-2 mb-3" style="font-size: 0.9rem;">
+                            <i class="bi bi-info-circle me-1"></i>
+                            <strong>IMPORTANT:</strong> GPS location is mandatory. Click the button above to capture precise coordinates.
+                        </p>
+                        
                         <div class="form-row">
                             <div>
                                 <label for="latitude" class="form-label required">Latitude</label>
                                 <input type="number" step="any" class="form-control @error('latitude') is-invalid @enderror" 
                                        id="latitude" name="latitude" value="{{ old('latitude') }}" required readonly 
-                                       placeholder="Will be auto-filled">
+                                       placeholder="Will be auto-filled from GPS">
                                 @error('latitude')<div class="invalid-feedback">{{ $message }}</div>@enderror
                             </div>
                             <div>
                                 <label for="longitude" class="form-label required">Longitude</label>
                                 <input type="number" step="any" class="form-control @error('longitude') is-invalid @enderror" 
                                        id="longitude" name="longitude" value="{{ old('longitude') }}" required readonly 
-                                       placeholder="Will be auto-filled">
+                                       placeholder="Will be auto-filled from GPS">
                                 @error('longitude')<div class="invalid-feedback">{{ $message }}</div>@enderror
                             </div>
                         </div>
@@ -489,53 +504,77 @@
 
     <script>
         function getLocation() {
-            if (navigator.geolocation) {
-                // Show loading state
-                const locationBtn = document.querySelector('.btn-info');
-                const originalText = locationBtn.innerHTML;
-                locationBtn.innerHTML = '<i class="bi bi-arrow-repeat spinner"></i> Getting Location...';
-                locationBtn.disabled = true;
-                
-                navigator.geolocation.getCurrentPosition(function(position) {
-                    document.getElementById('latitude').value = position.coords.latitude.toFixed(6);
-                    document.getElementById('longitude').value = position.coords.longitude.toFixed(6);
+            const locationBtn = document.getElementById('getLocationBtn');
+            const statusDiv = document.getElementById('locationStatus');
+            const latInput = document.getElementById('latitude');
+            const lngInput = document.getElementById('longitude');
+            
+            if (!navigator.geolocation) {
+                statusDiv.innerHTML = '<div class="alert alert-danger" style="background: #f8d7da; color: #721c24; padding: 1rem; border-radius: 8px;"><i class="bi bi-x-circle me-2"></i><strong>Error:</strong> Geolocation is not supported by your browser.</div>';
+                showNotification('Geolocation is not supported by this browser.', 'error');
+                return;
+            }
+            
+            // Show loading state
+            const originalText = locationBtn.innerHTML;
+            locationBtn.innerHTML = '<i class="bi bi-arrow-repeat spinner"></i> Getting Location...';
+            locationBtn.disabled = true;
+            statusDiv.innerHTML = '<div class="alert alert-info" style="background: #d1ecf1; color: #0c5460; padding: 1rem; border-radius: 8px;"><i class="bi bi-info-circle me-2"></i>Requesting location access...</div>';
+            
+            navigator.geolocation.getCurrentPosition(
+                function(position) {
+                    const lat = position.coords.latitude.toFixed(6);
+                    const lng = position.coords.longitude.toFixed(6);
                     
-                    // Restore button
-                    locationBtn.innerHTML = originalText;
+                    latInput.value = lat;
+                    lngInput.value = lng;
+                    
+                    // CRITICAL: Validate Tanzania bounds
+                    if (lat < -11.7 || lat > -0.95 || lng < 29.3 || lng > 40.5) {
+                        statusDiv.innerHTML = '<div class="alert alert-warning" style="background: #fff3cd; color: #856404; padding: 1rem; border-radius: 8px;"><i class="bi bi-exclamation-triangle me-2"></i><strong>Warning:</strong> Location appears to be outside Tanzania (Lat: ' + lat + ', Lng: ' + lng + '). Please verify coordinates are correct.</div>';
+                        showNotification('Warning: Location appears to be outside Tanzania', 'error');
+                    } else {
+                        statusDiv.innerHTML = '<div class="alert alert-success" style="background: #d1e7dd; color: #0f5132; padding: 1rem; border-radius: 8px;"><i class="bi bi-check-circle me-2"></i><strong>Success!</strong> Location captured: ' + lat + ', ' + lng + '</div>';
+                        showNotification('Location captured successfully!', 'success');
+                    }
+                    
+                    // Update button
+                    locationBtn.innerHTML = '<i class="bi bi-check2"></i> Location Captured';
                     locationBtn.disabled = false;
-                    
-                    // Show success message
-                    showNotification('Location updated successfully!', 'success');
-                }, function(error) {
+                    locationBtn.classList.remove('btn-info');
+                    locationBtn.classList.add('btn-success');
+                },
+                function(error) {
                     let errorMessage = 'Error getting location: ';
                     switch(error.code) {
                         case error.PERMISSION_DENIED:
-                            errorMessage += 'User denied the request for Geolocation.';
+                            errorMessage += 'Location access denied. Please enable location services and try again.';
                             break;
                         case error.POSITION_UNAVAILABLE:
-                            errorMessage += 'Location information is unavailable.';
+                            errorMessage += 'Location information is unavailable. Please check your device settings.';
                             break;
                         case error.TIMEOUT:
-                            errorMessage += 'The request to get user location timed out.';
+                            errorMessage += 'Location request timed out. Please try again.';
                             break;
-                        case error.UNKNOWN_ERROR:
+                        default:
                             errorMessage += 'An unknown error occurred.';
                             break;
                     }
+                    
+                    statusDiv.innerHTML = '<div class="alert alert-danger" style="background: #f8d7da; color: #721c24; padding: 1rem; border-radius: 8px;"><i class="bi bi-x-circle me-2"></i><strong>Error:</strong> ' + errorMessage + '</div>';
                     
                     // Restore button
                     locationBtn.innerHTML = originalText;
                     locationBtn.disabled = false;
                     
                     showNotification(errorMessage, 'error');
-                }, {
+                },
+                {
                     enableHighAccuracy: true,
                     timeout: 10000,
-                    maximumAge: 60000
-                });
-            } else {
-                showNotification('Geolocation is not supported by this browser.', 'error');
-            }
+                    maximumAge: 0
+                }
+            );
         }
         
         function showNotification(message, type) {
@@ -600,6 +639,30 @@
             document.head.appendChild(style);
             
             form.addEventListener('submit', function(e) {
+                // CRITICAL: Check location first
+                const lat = document.getElementById('latitude').value;
+                const lng = document.getElementById('longitude').value;
+                
+                if (!lat || !lng || lat === '' || lng === '') {
+                    e.preventDefault();
+                    alert('CRITICAL: GPS location is required! Please click "Get Current Location (Required)" button before submitting.');
+                    document.getElementById('getLocationBtn').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    showNotification('GPS location is mandatory! Click the location button.', 'error');
+                    return false;
+                }
+                
+                // Validate Tanzania bounds before submission
+                const latNum = parseFloat(lat);
+                const lngNum = parseFloat(lng);
+                
+                if (latNum < -11.7 || latNum > -0.95 || lngNum < 29.3 || lngNum > 40.5) {
+                    if (!confirm('Warning: The location appears to be outside Tanzania. Do you want to proceed anyway?')) {
+                        e.preventDefault();
+                        return false;
+                    }
+                }
+                
+                // Check other required fields
                 let isValid = true;
                 
                 requiredFields.forEach(field => {

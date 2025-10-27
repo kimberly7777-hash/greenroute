@@ -343,29 +343,49 @@
                     </div>
                 </div>
 
-                <!-- GPS Coordinates (Optional) -->
+                <!-- GPS Coordinates (REQUIRED) -->
                 <div class="form-section">
-                    <h3><i class="bi bi-pin-map me-2"></i>GPS Coordinates (Optional)</h3>
+                    <h3><i class="bi bi-pin-map me-2"></i>GPS Coordinates <span class="required">*</span> (REQUIRED)</h3>
+                    
+                    @error('location')
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                            {{ $message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                    @enderror
+                    
+                    <div class="mb-3">
+                        <button type="button" id="getLocationBtn" class="btn btn-success">
+                            <i class="bi bi-crosshair me-2"></i>Update Location
+                        </button>
+                        <div class="help-text mt-2">
+                            <i class="bi bi-info-circle me-1"></i>
+                            <strong>IMPORTANT:</strong> GPS location is mandatory. Update if client has moved.
+                        </div>
+                    </div>
                     
                     <div class="form-row">
                         <div class="form-group">
-                            <label>Latitude</label>
-                            <input type="number" step="any" name="latitude" class="form-control" value="{{ old('latitude', $client->latitude) }}">
-                            <div class="help-text">Example: 5.6037</div>
+                            <label>Latitude <span class="required">*</span></label>
+                            <input type="number" step="any" name="latitude" id="latitude" class="form-control" value="{{ old('latitude', $client->latitude) }}" required>
+                            <div class="help-text">Click button above to update</div>
                             @error('latitude')
                                 <div class="error-message">{{ $message }}</div>
                             @enderror
                         </div>
 
                         <div class="form-group">
-                            <label>Longitude</label>
-                            <input type="number" step="any" name="longitude" class="form-control" value="{{ old('longitude', $client->longitude) }}">
-                            <div class="help-text">Example: -0.1870</div>
+                            <label>Longitude <span class="required">*</span></label>
+                            <input type="number" step="any" name="longitude" id="longitude" class="form-control" value="{{ old('longitude', $client->longitude) }}" required>
+                            <div class="help-text">Click button above to update</div>
                             @error('longitude')
                                 <div class="error-message">{{ $message }}</div>
                             @enderror
                         </div>
                     </div>
+                    
+                    <div id="locationStatus" class="mt-2"></div>
                 </div>
 
                 <!-- Additional Notes -->
@@ -396,5 +416,86 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // CRITICAL: Location capture functionality - MANDATORY for client updates
+        document.getElementById('getLocationBtn').addEventListener('click', function() {
+            const btn = this;
+            const statusDiv = document.getElementById('locationStatus');
+            const latInput = document.getElementById('latitude');
+            const lngInput = document.getElementById('longitude');
+            
+            btn.disabled = true;
+            btn.innerHTML = '<i class="bi bi-hourglass-split me-2"></i>Getting location...';
+            statusDiv.innerHTML = '<div class="alert alert-info"><i class="bi bi-info-circle me-2"></i>Requesting location access...</div>';
+            
+            if (!navigator.geolocation) {
+                statusDiv.innerHTML = '<div class="alert alert-danger"><i class="bi bi-x-circle me-2"></i>Geolocation is not supported by your browser.</div>';
+                btn.disabled = false;
+                btn.innerHTML = '<i class="bi bi-crosshair me-2"></i>Update Location';
+                return;
+            }
+            
+            navigator.geolocation.getCurrentPosition(
+                function(position) {
+                    const lat = position.coords.latitude.toFixed(6);
+                    const lng = position.coords.longitude.toFixed(6);
+                    
+                    latInput.value = lat;
+                    lngInput.value = lng;
+                    
+                    // Validate Tanzania bounds
+                    if (lat < -11.7 || lat > -0.95 || lng < 29.3 || lng > 40.5) {
+                        statusDiv.innerHTML = '<div class="alert alert-warning"><i class="bi bi-exclamation-triangle me-2"></i><strong>Warning:</strong> Location appears to be outside Tanzania. Please verify coordinates are correct.</div>';
+                    } else {
+                        statusDiv.innerHTML = '<div class="alert alert-success"><i class="bi bi-check-circle me-2"></i><strong>Success!</strong> Location updated: ' + lat + ', ' + lng + '</div>';
+                    }
+                    
+                    btn.disabled = false;
+                    btn.innerHTML = '<i class="bi bi-check2 me-2"></i>Location Updated';
+                    btn.classList.remove('btn-success');
+                    btn.classList.add('btn-primary');
+                },
+                function(error) {
+                    let errorMessage = '';
+                    switch(error.code) {
+                        case error.PERMISSION_DENIED:
+                            errorMessage = 'Location access denied. Please enable location services and try again.';
+                            break;
+                        case error.POSITION_UNAVAILABLE:
+                            errorMessage = 'Location information unavailable. Please check your device settings.';
+                            break;
+                        case error.TIMEOUT:
+                            errorMessage = 'Location request timed out. Please try again.';
+                            break;
+                        default:
+                            errorMessage = 'An unknown error occurred while getting location.';
+                    }
+                    
+                    statusDiv.innerHTML = '<div class="alert alert-danger"><i class="bi bi-x-circle me-2"></i><strong>Error:</strong> ' + errorMessage + '</div>';
+                    btn.disabled = false;
+                    btn.innerHTML = '<i class="bi bi-crosshair me-2"></i>Try Again';
+                },
+                {
+                    enableHighAccuracy: true,
+                    timeout: 10000,
+                    maximumAge: 0
+                }
+            );
+        });
+        
+        // Prevent form submission if location not valid
+        document.querySelector('form').addEventListener('submit', function(e) {
+            const lat = document.getElementById('latitude').value;
+            const lng = document.getElementById('longitude').value;
+            
+            if (!lat || !lng || lat === '' || lng === '') {
+                e.preventDefault();
+                alert('CRITICAL: GPS location is required! Please click "Update Location" button before submitting.');
+                document.getElementById('getLocationBtn').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return false;
+            }
+        });
+    </script>
 </body>
 </html>

@@ -382,11 +382,28 @@ class AdminController extends Controller
             'zip_code' => 'required|string|max:20',
             'category' => 'required|in:residential,commercial',
             'contractor_id' => 'nullable|exists:users,id',
-            'latitude' => 'nullable|numeric',
-            'longitude' => 'nullable|numeric',
+            'latitude' => 'required|numeric|between:-90,90',
+            'longitude' => 'required|numeric|between:-180,180',
             'service_frequency' => 'nullable|string',
             'notes' => 'nullable|string'
         ]);
+
+        // CRITICAL: Validate location is captured properly
+        if (empty($request->latitude) || empty($request->longitude)) {
+            return back()->withErrors([
+                'location' => 'GPS location is required. Please click "Get My Location" to capture precise coordinates before creating the client.'
+            ])->withInput();
+        }
+
+        // Validate Tanzania bounds
+        $lat = (float) $request->latitude;
+        $lng = (float) $request->longitude;
+        
+        if ($lat < -11.7 || $lat > -0.95 || $lng < 29.3 || $lng > 40.5) {
+            return back()->withErrors([
+                'location' => 'The detected location does not appear to be in Tanzania. Please ensure location services are enabled and try again.'
+            ])->withInput();
+        }
 
         // Generate registration number
         $validated['registration_number'] = 'CL-' . strtoupper(substr(uniqid(), -8));
@@ -422,11 +439,28 @@ class AdminController extends Controller
             'category' => 'required|in:residential,commercial',
             'status' => 'required|in:active,inactive',
             'contractor_id' => 'nullable|exists:users,id',
-            'latitude' => 'nullable|numeric',
-            'longitude' => 'nullable|numeric',
+            'latitude' => 'required|numeric|between:-90,90',
+            'longitude' => 'required|numeric|between:-180,180',
             'service_frequency' => 'nullable|string',
             'notes' => 'nullable|string'
         ]);
+
+        // CRITICAL: Validate location is captured properly
+        if (empty($request->latitude) || empty($request->longitude)) {
+            return back()->withErrors([
+                'location' => 'GPS location is required. Please ensure valid coordinates are entered.'
+            ])->withInput();
+        }
+
+        // Validate Tanzania bounds
+        $lat = (float) $request->latitude;
+        $lng = (float) $request->longitude;
+        
+        if ($lat < -11.7 || $lat > -0.95 || $lng < 29.3 || $lng > 40.5) {
+            return back()->withErrors([
+                'location' => 'The location does not appear to be in Tanzania. Please verify the coordinates.'
+            ])->withInput();
+        }
 
         $client->update($validated);
 
