@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\ContractorLinkingController;
 use App\Http\Controllers\Api\InvoiceApiController;
 use App\Http\Controllers\Api\ScheduleApiController;
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\Api\LocationInvoiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -106,3 +107,22 @@ Route::get('/locations/streets', [LocationController::class, 'getStreets']);
 
 // Search locations by keyword
 Route::get('/locations/search', [LocationController::class, 'searchLocations']);
+
+// Get location statistics
+Route::get('/locations/statistics', [LocationController::class, 'getStatistics']);
+
+// Validate location exists
+Route::post('/locations/validate', [LocationController::class, 'validateLocation']);
+
+// ===================================
+// Location-Based Invoice Creation (CRITICAL FEATURE)
+// ===================================
+
+// Get clients by site location for invoice creation
+Route::post('/invoices/clients-by-location', [LocationInvoiceController::class, 'getClientsByLocation']);
+
+// Create bulk invoices for multiple clients at a site location
+Route::post('/invoices/bulk-create', [LocationInvoiceController::class, 'createBulkInvoices']);
+
+// Get location statistics for contractor's clients
+Route::get('/invoices/location-statistics', [LocationInvoiceController::class, 'getLocationStatistics']);

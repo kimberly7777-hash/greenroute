@@ -1,0 +1,5249 @@
+SKIPPED LOCATIONS REPORT
+Generated: 2025-10-28 11:32:20
+======================================================================
+
+SUMMARY
+----------------------------------------------------------------------
+Total rows: 70,337
+Valid rows: 68,593
+Skipped rows: 1,744
+
+REASONS BREAKDOWN
+----------------------------------------------------------------------
+Missing District         : 95
+Missing Ward             : 1,649
+
+DETAILED LIST OF SKIPPED RECORDS
+----------------------------------------------------------------------
+Line 2260: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2262: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2264: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2266: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2268: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2270: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2272: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2274: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2276: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2278: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2280: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2282: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2284: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2286: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2288: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2290: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2292: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2294: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2296: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2298: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2300: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2302: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2304: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2306: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2308: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2310: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2312: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2314: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2316: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2318: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2320: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2322: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2324: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2326: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2328: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2330: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2332: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2334: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2336: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2338: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2340: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2342: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2344: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2346: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2348: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2350: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2352: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2354: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2356: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2358: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2360: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2362: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2364: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2366: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2368: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2370: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2372: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2374: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2376: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2378: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2380: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2382: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2384: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2386: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2388: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2390: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2391: Missing ward
+   Data: Region: 'CBD"', District: '"KIWANJA CHA', Street: ''
+
+Line 2392: Missing ward
+   Data: Region: 'NDEGE"', District: 'OSTERBAY', Street: ''
+
+Line 2393: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2394: Missing ward
+   Data: Region: 'CBD"', District: '"KIWANJA CHA', Street: ''
+
+Line 2395: Missing ward
+   Data: Region: 'NDEGE"', District: 'MAKONGORO', Street: ''
+
+Line 2396: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2397: Missing ward
+   Data: Region: 'CBD"', District: '"KIWANJA CHA', Street: ''
+
+Line 2398: Missing ward
+   Data: Region: 'NDEGE"', District: 'MLIMWA', Street: ''
+
+Line 2399: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2400: Missing ward
+   Data: Region: 'CBD"', District: '"KIWANJA CHA', Street: ''
+
+Line 2401: Missing ward
+   Data: Region: 'NDEGE"', District: 'CHUO CHA MIPANGO', Street: ''
+
+Line 2402: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2403: Missing ward
+   Data: Region: 'CBD"', District: '"KIWANJA CHA', Street: ''
+
+Line 2404: Missing ward
+   Data: Region: 'NDEGE"', District: 'KIWANJA CHA NDEGE', Street: ''
+
+Line 2405: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2406: Missing ward
+   Data: Region: 'CBD"', District: '"KIWANJA CHA', Street: ''
+
+Line 2407: Missing ward
+   Data: Region: 'NDEGE"', District: 'MKWAJUNI', Street: ''
+
+Line 2408: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2410: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2412: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2414: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2416: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2418: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2420: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2422: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2424: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2426: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2428: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2430: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2432: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2434: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2436: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2438: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2440: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2442: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2444: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2446: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2448: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2450: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2452: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2454: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2456: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2458: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2460: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2462: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2464: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2466: Missing ward
+   Data: Region: 'DODOMA', District: '"DODOMA', Street: ''
+
+Line 2525: Missing ward
+   Data: Region: 'BWAWANI"', District: 'MKOYO', Street: ''
+
+Line 2527: Missing ward
+   Data: Region: 'BWAWANI"', District: 'MKOYO', Street: ''
+
+Line 2529: Missing ward
+   Data: Region: 'BWAWANI"', District: 'MKOYO', Street: ''
+
+Line 2531: Missing ward
+   Data: Region: 'BWAWANI"', District: 'MKOYO', Street: ''
+
+Line 2533: Missing ward
+   Data: Region: 'BWAWANI"', District: 'MKOYO', Street: ''
+
+Line 2535: Missing ward
+   Data: Region: 'BWAWANI"', District: 'MKOYO', Street: ''
+
+Line 2537: Missing ward
+   Data: Region: 'BWAWANI"', District: 'MKOYO', Street: ''
+
+Line 2539: Missing ward
+   Data: Region: 'BWAWANI"', District: 'MKOYO', Street: ''
+
+Line 2541: Missing ward
+   Data: Region: 'BWAWANI"', District: 'HOMBOLO BWAWANI A', Street: ''
+
+Line 2543: Missing ward
+   Data: Region: 'BWAWANI"', District: 'KOLIMBA', Street: ''
+
+Line 2545: Missing ward
+   Data: Region: 'BWAWANI"', District: 'HOMBOLO BWAWANI B', Street: ''
+
+Line 4064: Missing ward
+   Data: Region: 'BARABARANI"', District: 'MLODA', Street: ''
+
+Line 4066: Missing ward
+   Data: Region: 'BARABARANI"', District: 'MLODA', Street: ''
+
+Line 4068: Missing ward
+   Data: Region: 'BARABARANI"', District: 'MLODA', Street: ''
+
+Line 4070: Missing ward
+   Data: Region: 'BARABARANI"', District: 'MLODA', Street: ''
+
+Line 4072: Missing ward
+   Data: Region: 'BARABARANI"', District: 'MLODA', Street: ''
+
+Line 4074: Missing ward
+   Data: Region: 'BARABARANI"', District: 'MLODA', Street: ''
+
+Line 4076: Missing ward
+   Data: Region: 'BARABARANI"', District: 'MLODA', Street: ''
+
+Line 4078: Missing ward
+   Data: Region: 'BARABARANI"', District: 'MLOWA BARABARANI', Street: ''
+
+Line 4080: Missing ward
+   Data: Region: 'BARABARANI"', District: 'MLOWA BARABARANI', Street: ''
+
+Line 4082: Missing ward
+   Data: Region: 'BARABARANI"', District: 'MLOWA BARABARANI', Street: ''
+
+Line 4084: Missing ward
+   Data: Region: 'BARABARANI"', District: 'MLOWA BARABARANI', Street: ''
+
+Line 4086: Missing ward
+   Data: Region: 'BARABARANI"', District: 'MLOWA BARABARANI', Street: ''
+
+Line 4088: Missing ward
+   Data: Region: 'BARABARANI"', District: 'MLOWA BARABARANI', Street: ''
+
+Line 4090: Missing ward
+   Data: Region: 'BARABARANI"', District: 'MLOWA B', Street: ''
+
+Line 4092: Missing ward
+   Data: Region: 'BARABARANI"', District: 'MLOWA B', Street: ''
+
+Line 4094: Missing ward
+   Data: Region: 'BARABARANI"', District: 'MLOWA B', Street: ''
+
+Line 4096: Missing ward
+   Data: Region: 'BARABARANI"', District: 'MLOWA B', Street: ''
+
+Line 4098: Missing ward
+   Data: Region: 'BARABARANI"', District: 'MLOWA B', Street: ''
+
+Line 4100: Missing ward
+   Data: Region: 'BARABARANI"', District: 'MLOWA B', Street: ''
+
+Line 4102: Missing ward
+   Data: Region: 'BARABARANI"', District: 'MLOWA B', Street: ''
+
+Line 4104: Missing ward
+   Data: Region: 'BARABARANI"', District: 'MLOWA B', Street: ''
+
+Line 5635: Missing district
+   Data: Region: '/CHANG’OMBE"', Ward: '', Street: ''
+
+Line 14244: Missing ward
+   Data: Region: 'NDEGE"', District: 'MNAZI MMOJA', Street: ''
+
+Line 14246: Missing ward
+   Data: Region: 'NDEGE"', District: 'AIRTEL', Street: ''
+
+Line 14248: Missing ward
+   Data: Region: 'NDEGE"', District: 'MSUFINI', Street: ''
+
+Line 15155: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15157: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15159: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15161: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15163: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15165: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15167: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15169: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15171: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15173: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15175: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15177: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15179: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15181: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15183: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15185: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15187: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15189: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15191: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15193: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15195: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15197: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15199: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15201: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15203: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15205: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15207: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15209: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15211: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15213: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15215: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15217: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15219: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15221: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15223: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15225: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15227: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15229: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15231: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15233: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15235: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15237: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15239: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15241: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15243: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15245: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15247: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15249: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15251: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15253: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15255: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15257: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15259: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15261: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15263: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15265: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15267: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15269: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15271: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15273: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15275: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15277: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15279: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15281: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15283: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15285: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15287: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15289: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15291: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15293: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15295: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15297: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15299: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15301: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15303: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15305: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15307: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15309: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15311: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15313: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15315: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15317: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15319: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15321: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15323: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15325: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15327: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15329: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15331: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15333: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15335: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15337: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15339: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15341: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15343: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15345: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15347: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15349: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15351: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15353: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15355: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15357: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15359: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15361: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15363: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15365: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15367: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15369: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15371: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15373: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15375: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15377: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15379: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15381: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15383: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15385: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15387: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15389: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15391: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15393: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15395: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15397: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15399: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15401: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15403: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15405: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15407: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15409: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15411: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 15413: Missing ward
+   Data: Region: 'KIGOMA', District: '"KIGOMA', Street: ''
+
+Line 26843: Missing district
+   Data: Region: 'CENTRE"', Ward: '', Street: ''
+
+Line 26849: Missing district
+   Data: Region: 'KASKAZINI"', Ward: '', Street: ''
+
+Line 26854: Missing district
+   Data: Region: 'MAGHARIBI"', Ward: '', Street: ''
+
+Line 26996: Missing district
+   Data: Region: 'NTANGANO"', Ward: '', Street: ''
+
+Line 26998: Missing district
+   Data: Region: 'NTANGANO"', Ward: '', Street: ''
+
+Line 27000: Missing district
+   Data: Region: 'NTANGANO"', Ward: '', Street: ''
+
+Line 27002: Missing district
+   Data: Region: 'NTANGANO"', Ward: '', Street: ''
+
+Line 27004: Missing district
+   Data: Region: 'NTANGANO"', Ward: '', Street: ''
+
+Line 27006: Missing district
+   Data: Region: 'NTANGANO"', Ward: '', Street: ''
+
+Line 27008: Missing district
+   Data: Region: 'MANTANJI"', Ward: '', Street: ''
+
+Line 27010: Missing district
+   Data: Region: 'MANTANJI"', Ward: '', Street: ''
+
+Line 27012: Missing district
+   Data: Region: 'MANTANJI"', Ward: '', Street: ''
+
+Line 27014: Missing district
+   Data: Region: 'MANTANJI"', Ward: '', Street: ''
+
+Line 27016: Missing district
+   Data: Region: 'MANTANJI"', Ward: '', Street: ''
+
+Line 27083: Missing district
+   Data: Region: 'NJIAPANDA"', Ward: '', Street: ''
+
+Line 27085: Missing district
+   Data: Region: 'NJIAPANDA"', Ward: '', Street: ''
+
+Line 27087: Missing district
+   Data: Region: 'NJIAPANDA"', Ward: '', Street: ''
+
+Line 27089: Missing district
+   Data: Region: 'NJIAPANDA"', Ward: '', Street: ''
+
+Line 27091: Missing district
+   Data: Region: 'NJIAPANDA"', Ward: '', Street: ''
+
+Line 27093: Missing district
+   Data: Region: 'NJIAPANDA"', Ward: '', Street: ''
+
+Line 27095: Missing district
+   Data: Region: 'NJIAPANDA"', Ward: '', Street: ''
+
+Line 27097: Missing district
+   Data: Region: 'NJIAPANDA"', Ward: '', Street: ''
+
+Line 27233: Missing district
+   Data: Region: 'MAPINDUZI"', Ward: '', Street: ''
+
+Line 27235: Missing district
+   Data: Region: 'MAPINDUZI"', Ward: '', Street: ''
+
+Line 27237: Missing district
+   Data: Region: 'MAPINDUZI"', Ward: '', Street: ''
+
+Line 27239: Missing district
+   Data: Region: 'MAPINDUZI"', Ward: '', Street: ''
+
+Line 27241: Missing district
+   Data: Region: 'MAPINDUZI"', Ward: '', Street: ''
+
+Line 27243: Missing district
+   Data: Region: 'MAPINDUZI"', Ward: '', Street: ''
+
+Line 27245: Missing district
+   Data: Region: 'MAPINDUZI"', Ward: '', Street: ''
+
+Line 27247: Missing district
+   Data: Region: 'MAPINDUZI"', Ward: '', Street: ''
+
+Line 27353: Missing district
+   Data: Region: 'VIWANDANI"', Ward: '', Street: ''
+
+Line 27355: Missing district
+   Data: Region: 'VIWANDANI"', Ward: '', Street: ''
+
+Line 27357: Missing district
+   Data: Region: 'VIWANDANI"', Ward: '', Street: ''
+
+Line 27359: Missing district
+   Data: Region: 'VIWANDANI"', Ward: '', Street: ''
+
+Line 27361: Missing district
+   Data: Region: 'VIWANDANI"', Ward: '', Street: ''
+
+Line 27363: Missing district
+   Data: Region: 'VIWANDANI"', Ward: '', Street: ''
+
+Line 27365: Missing district
+   Data: Region: 'VIWANDANI"', Ward: '', Street: ''
+
+Line 27367: Missing district
+   Data: Region: 'VIWANDANI"', Ward: '', Street: ''
+
+Line 27369: Missing district
+   Data: Region: 'VIWANDANI"', Ward: '', Street: ''
+
+Line 27371: Missing district
+   Data: Region: 'VIWANDANI"', Ward: '', Street: ''
+
+Line 27373: Missing district
+   Data: Region: 'VIWANDANI"', Ward: '', Street: ''
+
+Line 27375: Missing district
+   Data: Region: 'VIWANDANI"', Ward: '', Street: ''
+
+Line 27729: Missing district
+   Data: Region: 'USAFWA"', Ward: '', Street: ''
+
+Line 27731: Missing district
+   Data: Region: 'USAFWA"', Ward: '', Street: ''
+
+Line 27733: Missing district
+   Data: Region: 'USAFWA"', Ward: '', Street: ''
+
+Line 27735: Missing district
+   Data: Region: 'MUUNGANO"', Ward: '', Street: ''
+
+Line 27737: Missing district
+   Data: Region: 'MUUNGANO"', Ward: '', Street: ''
+
+Line 27739: Missing district
+   Data: Region: 'MUUNGANO"', Ward: '', Street: ''
+
+Line 27741: Missing district
+   Data: Region: 'MUUNGANO"', Ward: '', Street: ''
+
+Line 27743: Missing district
+   Data: Region: 'MUUNGANO"', Ward: '', Street: ''
+
+Line 27745: Missing district
+   Data: Region: 'MUUNGANO"', Ward: '', Street: ''
+
+Line 27747: Missing district
+   Data: Region: 'MUUNGANO"', Ward: '', Street: ''
+
+Line 27749: Missing district
+   Data: Region: 'MUUNGANO"', Ward: '', Street: ''
+
+Line 28946: Missing district
+   Data: Region: 'MSWISWI"', Ward: '', Street: ''
+
+Line 28948: Missing district
+   Data: Region: 'MSWISWI"', Ward: '', Street: ''
+
+Line 28950: Missing district
+   Data: Region: 'MSWISWI"', Ward: '', Street: ''
+
+Line 28952: Missing district
+   Data: Region: 'MSWISWI"', Ward: '', Street: ''
+
+Line 28954: Missing district
+   Data: Region: 'MSWISWI"', Ward: '', Street: ''
+
+Line 28956: Missing district
+   Data: Region: 'MSWISWI"', Ward: '', Street: ''
+
+Line 28972: Missing district
+   Data: Region: 'USANGU"', Ward: '', Street: ''
+
+Line 28974: Missing district
+   Data: Region: 'USANGU"', Ward: '', Street: ''
+
+Line 28976: Missing district
+   Data: Region: 'USANGU"', Ward: '', Street: ''
+
+Line 28978: Missing district
+   Data: Region: 'USANGU"', Ward: '', Street: ''
+
+Line 28980: Missing district
+   Data: Region: 'USANGU"', Ward: '', Street: ''
+
+Line 28982: Missing district
+   Data: Region: 'USANGU"', Ward: '', Street: ''
+
+Line 28984: Missing district
+   Data: Region: 'USANGU"', Ward: '', Street: ''
+
+Line 29057: Missing district
+   Data: Region: 'MAHANGO"', Ward: '', Street: ''
+
+Line 29059: Missing district
+   Data: Region: 'MAHANGO"', Ward: '', Street: ''
+
+Line 29061: Missing district
+   Data: Region: 'MAHANGO"', Ward: '', Street: ''
+
+Line 29063: Missing district
+   Data: Region: 'MAHANGO"', Ward: '', Street: ''
+
+Line 29065: Missing district
+   Data: Region: 'MAHANGO"', Ward: '', Street: ''
+
+Line 29067: Missing district
+   Data: Region: 'MAHANGO"', Ward: '', Street: ''
+
+Line 29069: Missing district
+   Data: Region: 'MAHANGO"', Ward: '', Street: ''
+
+Line 29071: Missing district
+   Data: Region: 'MAHANGO"', Ward: '', Street: ''
+
+Line 29073: Missing district
+   Data: Region: 'MAHANGO"', Ward: '', Street: ''
+
+Line 29083: Missing district
+   Data: Region: 'MADIBIRA"', Ward: '', Street: ''
+
+Line 29085: Missing district
+   Data: Region: 'MADIBIRA"', Ward: '', Street: ''
+
+Line 29087: Missing district
+   Data: Region: 'MADIBIRA"', Ward: '', Street: ''
+
+Line 29089: Missing district
+   Data: Region: 'MADIBIRA"', Ward: '', Street: ''
+
+Line 29091: Missing district
+   Data: Region: 'MADIBIRA"', Ward: '', Street: ''
+
+Line 29093: Missing district
+   Data: Region: 'MADIBIRA"', Ward: '', Street: ''
+
+Line 29195: Missing district
+   Data: Region: 'MUUNGANO"', Ward: '', Street: ''
+
+Line 29197: Missing district
+   Data: Region: 'MUUNGANO"', Ward: '', Street: ''
+
+Line 29199: Missing district
+   Data: Region: 'MUUNGANO"', Ward: '', Street: ''
+
+Line 29201: Missing district
+   Data: Region: 'MUUNGANO"', Ward: '', Street: ''
+
+Line 29203: Missing district
+   Data: Region: 'MUUNGANO"', Ward: '', Street: ''
+
+Line 29205: Missing district
+   Data: Region: 'MUUNGANO"', Ward: '', Street: ''
+
+Line 29207: Missing district
+   Data: Region: 'MUUNGANO"', Ward: '', Street: ''
+
+Line 29357: Missing district
+   Data: Region: 'MSWISWI"', Ward: '', Street: ''
+
+Line 30037: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30039: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30041: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30043: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30045: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30047: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30049: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30051: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30053: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30055: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30057: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30059: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30061: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30063: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30065: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30067: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30069: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30071: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30073: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30075: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30077: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30079: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30081: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30083: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30085: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30087: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30089: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30091: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30093: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30095: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30097: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30099: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30101: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30103: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30105: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30107: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30109: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30111: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30113: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30115: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30117: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30119: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30121: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30123: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30125: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30127: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30129: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30131: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30133: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30135: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30137: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30139: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30141: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30143: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30145: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30147: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30149: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30151: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30153: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30155: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30157: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30159: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30161: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30163: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30165: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30167: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30169: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30171: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30173: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30175: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30177: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30179: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30180: Missing ward
+   Data: Region: 'CBD"', District: '"KIWANJA CHA', Street: ''
+
+Line 30181: Missing ward
+   Data: Region: 'NDEGE"', District: 'TUMBAKU', Street: ''
+
+Line 30182: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30183: Missing ward
+   Data: Region: 'CBD"', District: '"KIWANJA CHA', Street: ''
+
+Line 30184: Missing ward
+   Data: Region: 'NDEGE"', District: 'LUKWAGULE', Street: ''
+
+Line 30185: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30186: Missing ward
+   Data: Region: 'CBD"', District: '"KIWANJA CHA', Street: ''
+
+Line 30187: Missing ward
+   Data: Region: 'NDEGE"', District: 'AZIMIO', Street: ''
+
+Line 30188: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30189: Missing ward
+   Data: Region: 'CBD"', District: '"KIWANJA CHA', Street: ''
+
+Line 30190: Missing ward
+   Data: Region: 'NDEGE"', District: 'MTAGWA', Street: ''
+
+Line 30191: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30192: Missing ward
+   Data: Region: 'CBD"', District: '"KIWANJA CHA', Street: ''
+
+Line 30193: Missing ward
+   Data: Region: 'NDEGE"', District: 'KIWALANI', Street: ''
+
+Line 30194: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30195: Missing ward
+   Data: Region: 'CBD"', District: '"KIWANJA CHA', Street: ''
+
+Line 30196: Missing ward
+   Data: Region: 'NDEGE"', District: 'LUSOGO', Street: ''
+
+Line 30197: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30198: Missing ward
+   Data: Region: 'CBD"', District: '"KIWANJA CHA', Street: ''
+
+Line 30199: Missing ward
+   Data: Region: 'NDEGE"', District: 'UJENZI', Street: ''
+
+Line 30200: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30201: Missing ward
+   Data: Region: 'CBD"', District: '"KIWANJA CHA', Street: ''
+
+Line 30202: Missing ward
+   Data: Region: 'NDEGE"', District: 'KIMUNYU', Street: ''
+
+Line 30203: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30204: Missing ward
+   Data: Region: 'CBD"', District: '"KIWANJA CHA', Street: ''
+
+Line 30205: Missing ward
+   Data: Region: 'NDEGE"', District: 'BONDWA', Street: ''
+
+Line 30206: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30207: Missing ward
+   Data: Region: 'CBD"', District: '"KIWANJA CHA', Street: ''
+
+Line 30208: Missing ward
+   Data: Region: 'NDEGE"', District: 'NGAZENGWA', Street: ''
+
+Line 30209: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30210: Missing ward
+   Data: Region: 'CBD"', District: '"KIWANJA CHA', Street: ''
+
+Line 30211: Missing ward
+   Data: Region: 'NDEGE"', District: 'LUNGO', Street: ''
+
+Line 30212: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30213: Missing ward
+   Data: Region: 'CBD"', District: '"KIWANJA CHA', Street: ''
+
+Line 30214: Missing ward
+   Data: Region: 'NDEGE"', District: 'LUSANGA', Street: ''
+
+Line 30215: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30216: Missing ward
+   Data: Region: 'CBD"', District: '"KIWANJA CHA', Street: ''
+
+Line 30217: Missing ward
+   Data: Region: 'NDEGE"', District: 'MKOTA', Street: ''
+
+Line 30218: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30220: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30222: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30224: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30226: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30228: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30230: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30232: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30234: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30236: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30238: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30240: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30242: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30244: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30246: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30248: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30250: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30252: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30254: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30256: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30258: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30260: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30262: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30264: Missing district
+   Data: Region: 'MIZAMBARAUNI"', Ward: '', Street: ''
+
+Line 30265: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30267: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30269: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30271: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30273: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30275: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30277: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30279: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30281: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30283: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30285: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30287: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30289: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30291: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30293: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30295: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30297: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30299: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30301: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30303: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30305: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30307: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30309: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30311: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30313: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30315: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30317: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30319: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30321: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30323: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30325: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30327: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30329: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30331: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30333: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30335: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30337: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30339: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30341: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30343: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30345: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30347: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30349: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30351: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30353: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30355: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30357: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30359: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30361: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30363: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30365: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30367: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30369: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30371: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30373: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30375: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30377: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30379: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30381: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30383: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30385: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30387: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30389: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30391: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30393: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30395: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30397: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30399: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30401: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30403: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30405: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30407: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30409: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30411: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30413: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30415: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30417: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30419: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30421: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30423: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30425: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30427: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30429: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30431: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30433: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30435: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30437: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30439: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30441: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30443: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30445: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30447: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30449: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30451: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30453: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30455: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30457: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30459: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30461: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30463: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30465: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30467: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30469: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30471: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30473: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30475: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30477: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30479: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30481: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30483: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30485: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30487: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30489: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30491: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30493: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30495: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30497: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30499: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30501: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30503: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30505: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30507: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30509: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30511: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30513: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30515: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30517: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30519: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30521: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30523: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30525: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30527: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30529: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30531: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30533: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30535: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30537: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30539: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30541: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30543: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30545: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30547: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30549: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30551: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30553: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30555: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30557: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30559: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30561: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30563: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30565: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30567: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30569: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30571: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30573: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30575: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30577: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30579: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30581: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30583: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30585: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30587: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30589: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30591: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30593: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30595: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30597: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30599: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30601: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30603: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30605: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30607: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30608: Missing ward
+   Data: Region: 'CBD"', District: '"KIHONDA', Street: ''
+
+Line 30609: Missing ward
+   Data: Region: 'MAGHOROFANI"', District: 'KIHONDA MAGHOROFANI', Street: ''
+
+Line 30610: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30611: Missing ward
+   Data: Region: 'CBD"', District: '"KIHONDA', Street: ''
+
+Line 30612: Missing ward
+   Data: Region: 'MAGHOROFANI"', District: 'KIHONDA MAGHOROFANI B', Street: ''
+
+Line 30613: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30614: Missing ward
+   Data: Region: 'CBD"', District: '"KIHONDA', Street: ''
+
+Line 30615: Missing ward
+   Data: Region: 'MAGHOROFANI"', District: 'MSAMVU B', Street: ''
+
+Line 30616: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30617: Missing ward
+   Data: Region: 'CBD"', District: '"KIHONDA', Street: ''
+
+Line 30618: Missing ward
+   Data: Region: 'MAGHOROFANI"', District: 'GODES', Street: ''
+
+Line 30619: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30620: Missing ward
+   Data: Region: 'CBD"', District: '"KIHONDA', Street: ''
+
+Line 30621: Missing ward
+   Data: Region: 'MAGHOROFANI"', District: 'AIR PORT', Street: ''
+
+Line 30622: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30623: Missing ward
+   Data: Region: 'CBD"', District: '"KIHONDA', Street: ''
+
+Line 30624: Missing ward
+   Data: Region: 'MAGHOROFANI"', District: 'BIMA', Street: ''
+
+Line 30625: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30626: Missing ward
+   Data: Region: 'CBD"', District: '"KIHONDA', Street: ''
+
+Line 30627: Missing ward
+   Data: Region: 'MAGHOROFANI"', District: 'NGERENGERE', Street: ''
+
+Line 30628: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30629: Missing ward
+   Data: Region: 'CBD"', District: '"KIHONDA', Street: ''
+
+Line 30630: Missing ward
+   Data: Region: 'MAGHOROFANI"', District: 'MBUYUNI', Street: ''
+
+Line 30631: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30632: Missing ward
+   Data: Region: 'CBD"', District: '"KIHONDA', Street: ''
+
+Line 30633: Missing ward
+   Data: Region: 'MAGHOROFANI"', District: 'KITATA', Street: ''
+
+Line 30634: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30636: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30638: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30640: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30642: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30644: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30646: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 30648: Missing ward
+   Data: Region: 'MOROGORO', District: '"MOROGORO', Street: ''
+
+Line 38253: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38255: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38257: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38259: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38261: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38263: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38265: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38267: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38269: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38271: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38273: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38275: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38277: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38279: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38281: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38283: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38285: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38287: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38289: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38291: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38293: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38295: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38297: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38299: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38301: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38303: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38305: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38307: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38309: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38311: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38313: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38315: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38317: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38319: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38321: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38323: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38325: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38327: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38329: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38331: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38333: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38335: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38337: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38339: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38341: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38343: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38345: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38347: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38349: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38351: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38353: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38355: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38357: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38359: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38361: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38363: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38365: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38367: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38369: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38371: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38373: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38375: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38377: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38379: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38381: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38383: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38385: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38387: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38389: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38391: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38393: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38395: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38397: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38399: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38401: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38403: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38405: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38407: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38409: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38411: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38413: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38415: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38417: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38419: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38421: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38423: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38425: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38427: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38429: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38431: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38433: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38435: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38437: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38439: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38441: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38443: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38445: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38447: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38449: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38451: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38453: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38455: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38457: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38459: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38461: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38463: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38465: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38467: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38469: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38471: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38473: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38475: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38477: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38479: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38481: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38483: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38485: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38487: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38489: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38491: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38493: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38495: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38497: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38499: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38501: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38503: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38505: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38507: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38509: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38511: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38513: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38515: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38517: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38519: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38521: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38523: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38525: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38527: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38529: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38531: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38533: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38535: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38537: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38539: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38541: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38543: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38545: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38547: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38549: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38551: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38553: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38555: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38557: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38559: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38561: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38563: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38565: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38567: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38569: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38571: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38573: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38575: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38577: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38579: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38581: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38583: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38585: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38587: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38589: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38591: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38593: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38595: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38597: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38599: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38601: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38603: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38605: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38607: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38609: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38611: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38613: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38615: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38617: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38619: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38621: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38623: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38625: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38627: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38629: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38631: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38633: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38635: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38637: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38639: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38641: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38643: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38645: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38647: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38649: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38651: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38653: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38655: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38657: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38659: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38661: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38663: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38665: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38667: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38669: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38671: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38673: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38675: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38677: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38679: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38681: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38683: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38685: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38687: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38689: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38691: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38693: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38695: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38697: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38699: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38701: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38703: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38705: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38707: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38709: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38711: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38713: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38715: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38717: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38719: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38721: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38723: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38725: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38727: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38729: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38731: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38733: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38735: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38737: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38739: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38741: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38743: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38745: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38747: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38749: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38751: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38753: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38755: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38757: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38759: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38761: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38763: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38765: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38767: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38769: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38771: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38773: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38775: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38777: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38779: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38781: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38783: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38785: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38787: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38789: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38791: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38793: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38795: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38797: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38799: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38801: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38803: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38805: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38807: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38809: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38811: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38813: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38815: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38817: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38819: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38821: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38823: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38825: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38827: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38829: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38831: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38833: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38835: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38837: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38839: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38841: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38843: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38845: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38847: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38849: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38851: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38853: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38855: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38857: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38859: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38861: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38863: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38865: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38867: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38869: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38871: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38873: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38875: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38877: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38879: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38881: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38883: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38885: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38887: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38889: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38891: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38893: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38895: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38897: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38899: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38901: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38903: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38905: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38907: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38909: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38911: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38913: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38915: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38917: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38919: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38921: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38923: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38925: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38927: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38929: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38931: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38933: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38935: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38937: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38939: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38941: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38943: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38945: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38947: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38949: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38951: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38953: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38955: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38957: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38959: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38961: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38963: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38965: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38967: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38969: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38971: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38973: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38975: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38977: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38979: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38981: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38983: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38985: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38987: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38989: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38991: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38993: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38995: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38997: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 38999: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39001: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39003: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39005: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39007: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39009: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39011: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39013: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39015: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39017: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39019: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39021: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39023: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39025: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39027: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39029: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39031: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39033: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39035: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39037: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39039: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39041: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39043: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39045: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39047: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39049: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39051: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39053: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39055: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39057: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39059: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39061: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39063: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39065: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39067: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39069: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39071: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39073: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39075: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39077: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39079: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39081: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39083: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39085: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39087: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39089: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39091: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39093: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39095: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39097: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39099: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39101: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39103: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39105: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39107: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39109: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39111: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39113: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39115: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39117: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39119: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39121: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39123: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39125: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39127: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39129: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39131: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39133: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39135: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39137: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39139: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39141: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39143: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39145: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39147: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39149: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39151: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39153: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39155: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39157: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39159: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39161: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39163: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39165: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39167: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39169: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39171: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39173: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39175: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39177: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39179: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39181: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39183: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39185: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39187: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39189: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39191: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39193: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39195: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39197: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39199: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39201: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39203: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39205: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39207: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39209: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39211: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39213: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39215: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39217: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39219: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39221: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39223: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39225: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39227: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39229: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39231: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39233: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39235: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39237: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39239: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39241: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39243: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39245: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39247: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39249: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39251: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39253: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39255: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39257: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39259: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39261: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39263: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39265: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39267: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39269: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39271: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39273: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39275: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39277: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39279: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39281: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39283: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39285: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39287: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39289: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39291: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39293: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39295: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39297: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39299: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 39301: Missing ward
+   Data: Region: 'NJOMBE', District: '"WANGING'O', Street: ''
+
+Line 41830: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41832: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41834: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41836: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41838: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41840: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41842: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41844: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41846: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41848: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41850: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41852: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41854: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41856: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41858: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41860: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41862: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41864: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41866: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41868: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41870: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41872: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41874: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41876: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41878: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41880: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41882: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41884: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41886: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41888: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41890: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41892: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41894: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41896: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41898: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41900: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41902: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41904: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41906: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41908: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41910: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41912: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41914: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41916: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41918: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41920: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41922: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41924: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41926: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41928: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41930: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41932: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41934: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41936: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41938: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41940: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41942: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41944: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41946: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41948: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41950: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41952: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41954: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41956: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41958: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41960: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41962: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41964: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41966: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41968: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41970: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41972: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41974: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41976: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41978: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41980: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41982: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41984: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41986: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41988: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41990: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41992: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41994: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41996: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 41998: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42000: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42002: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42004: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42006: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42008: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42010: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42012: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42014: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42016: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42018: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42020: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42022: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42024: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42026: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42028: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42030: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42032: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42034: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42036: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42038: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42040: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42042: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42044: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42046: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42048: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42050: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42052: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42054: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42056: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42058: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42060: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42062: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42064: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42066: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42068: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42070: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42072: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42074: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42076: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42078: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42080: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42082: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42084: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42086: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42088: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42090: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42092: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42094: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42096: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42098: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42100: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42102: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42104: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42106: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42108: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42110: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42112: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42114: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42116: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42118: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42120: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42122: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42124: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42126: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42128: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42130: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42132: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42134: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42136: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42138: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42140: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42142: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42144: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42146: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42148: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42150: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42152: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42154: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42156: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42158: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42160: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42162: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42164: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42166: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42168: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42170: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42172: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42174: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42176: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42178: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42180: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42182: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42184: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42186: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42188: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42190: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42192: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42194: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42196: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42198: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42200: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42202: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42204: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42206: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42208: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42210: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42212: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42214: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42216: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42218: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42220: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42222: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42224: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42226: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42228: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42230: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42232: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42234: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42236: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42238: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42240: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42242: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42244: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42246: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42248: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42250: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42252: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42254: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42256: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42258: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42260: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42262: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42264: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42266: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42268: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42270: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42272: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42274: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42276: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42278: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42280: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42282: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42284: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42286: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42288: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42290: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42292: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42294: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42296: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42298: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42300: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42302: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42304: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42306: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42308: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42310: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42312: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42314: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42316: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42318: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42320: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42322: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42324: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42326: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42328: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42330: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42332: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42334: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42336: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42338: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42340: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42342: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42344: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42346: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42348: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42350: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42352: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42354: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42356: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42358: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42360: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42362: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42364: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42366: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42368: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42370: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42372: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42374: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42376: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42378: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42380: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42382: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42384: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42386: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42388: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42390: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42392: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42394: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42396: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42398: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42400: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42402: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42404: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42406: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42408: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42410: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42412: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42414: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42416: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42418: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42420: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42422: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42424: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42426: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42428: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42430: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42432: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42434: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42436: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42438: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42440: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42442: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42444: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42446: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42448: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42450: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42452: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42454: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42456: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42458: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42460: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42462: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42464: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42466: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42468: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42470: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42472: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42474: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42476: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42478: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42480: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42482: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42484: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42486: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42488: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42490: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42492: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42494: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42496: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42498: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42500: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42502: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42504: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42506: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42508: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42510: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42512: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42514: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42516: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42518: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42520: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42522: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42524: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42526: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42528: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42530: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42532: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42534: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42536: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42538: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42540: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42542: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42544: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42546: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42548: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42550: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42552: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42554: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42556: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42558: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42560: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42562: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 42564: Missing ward
+   Data: Region: 'RUKWA', District: '"SUMBAWANGA', Street: ''
+
+Line 48112: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48114: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48116: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48118: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48120: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48122: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48124: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48126: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48128: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48130: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48132: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48134: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48136: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48138: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48140: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48142: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48144: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48146: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48148: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48150: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48152: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48154: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48156: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48158: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48160: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48162: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48164: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48166: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48168: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48170: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48172: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48174: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48176: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48178: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48180: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48182: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48184: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48186: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48188: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48190: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48192: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48194: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48196: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48198: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48200: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48202: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48204: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48206: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48208: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48210: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48212: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48214: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48216: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48218: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48220: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48222: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48224: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48226: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48228: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48230: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48232: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48234: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48236: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48238: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48240: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48242: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48244: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48246: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48248: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48250: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48252: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48254: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48256: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48258: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48260: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48262: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48264: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48266: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48268: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48270: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48272: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48274: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48276: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48278: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48280: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48282: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48284: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48286: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48288: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48290: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48292: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48294: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48296: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48298: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48300: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48302: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48304: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48306: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48308: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48310: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48312: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48314: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48316: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48318: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48320: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48322: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48324: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48326: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48328: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48330: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48332: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48334: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48336: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48338: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48340: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48342: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48344: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48346: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48348: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48350: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48352: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48354: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48356: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48358: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48360: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48362: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48364: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48366: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48368: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48370: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48372: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48374: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48376: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48378: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48380: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48382: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48384: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48386: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 48388: Missing ward
+   Data: Region: 'SHINYANGA', District: '"SHINYANGA', Street: ''
+
+Line 62043: Missing district
+   Data: Region: 'KIPYA)"', Ward: '', Street: ''
+
+Line 62045: Missing district
+   Data: Region: 'KIPYA)"', Ward: '', Street: ''
+
+Line 62047: Missing district
+   Data: Region: 'KIPYA)"', Ward: '', Street: ''
+
+Line 62049: Missing district
+   Data: Region: 'KIPYA)"', Ward: '', Street: ''
+

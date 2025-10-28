@@ -6,9 +6,24 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
+use App\Services\LocationService;
+use App\Http\Resources\LocationResource;
 
 class LocationController extends Controller
 {
+    /**
+     * Location service instance
+     */
+    protected $locationService;
+
+    /**
+     * Create a new controller instance.
+     */
+    public function __construct(LocationService $locationService)
+    {
+        $this->locationService = $locationService;
+    }
+
     /**
      * Reverse geocode coordinates to get address
      */
@@ -113,24 +128,21 @@ class LocationController extends Controller
     }
 
     /**
-     * Get all regions from tbl_locations
+     * Get all regions from tbl_locations (with caching)
      */
     public function getRegions()
     {
-        $regions = DB::table('tbl_locations')
-            ->select('region')
-            ->distinct()
-            ->orderBy('region')
-            ->pluck('region');
+        $regions = $this->locationService->getRegions();
             
         return response()->json([
             'success' => true,
-            'data' => $regions
+            'data' => $regions,
+            'cached' => true
         ]);
     }
     
     /**
-     * Get districts for a specific region
+     * Get districts for a specific region (with caching)
      */
     public function getDistricts(Request $request)
     {
@@ -138,21 +150,17 @@ class LocationController extends Controller
             'region' => 'required|string'
         ]);
 
-        $districts = DB::table('tbl_locations')
-            ->where('region', $request->region)
-            ->select('district')
-            ->distinct()
-            ->orderBy('district')
-            ->pluck('district');
+        $districts = $this->locationService->getDistricts($request->region);
             
         return response()->json([
             'success' => true,
-            'data' => $districts
+            'data' => $districts,
+            'cached' => true
         ]);
     }
     
     /**
-     * Get wards for a specific district
+     * Get wards for a specific district (with caching)
      */
     public function getWards(Request $request)
     {
@@ -161,22 +169,17 @@ class LocationController extends Controller
             'district' => 'required|string'
         ]);
 
-        $wards = DB::table('tbl_locations')
-            ->where('region', $request->region)
-            ->where('district', $request->district)
-            ->select('ward')
-            ->distinct()
-            ->orderBy('ward')
-            ->pluck('ward');
+        $wards = $this->locationService->getWards($request->region, $request->district);
             
         return response()->json([
             'success' => true,
-            'data' => $wards
+            'data' => $wards,
+            'cached' => true
         ]);
     }
     
     /**
-     * Get streets for a specific ward
+     * Get streets for a specific ward (with caching)
      */
     public function getStreets(Request $request)
     {
@@ -186,20 +189,16 @@ class LocationController extends Controller
             'ward' => 'required|string'
         ]);
 
-        $streets = DB::table('tbl_locations')
-            ->where('region', $request->region)
-            ->where('district', $request->district)
-            ->where('ward', $request->ward)
-            ->whereNotNull('street')
-            ->where('street', '!=', '')
-            ->select('street')
-            ->distinct()
-            ->orderBy('street')
-            ->pluck('street');
+        $streets = $this->locationService->getStreets(
+            $request->region,
+            $request->district,
+            $request->ward
+        );
             
         return response()->json([
             'success' => true,
-            'data' => $streets
+            'data' => $streets,
+            'cached' => true
         ]);
     }
 
@@ -212,23 +211,53 @@ class LocationController extends Controller
             'keyword' => 'required|string|min:2'
         ]);
 
-        $keyword = '%' . $request->keyword . '%';
-
-        $results = DB::table('tbl_locations')
-            ->where(function($query) use ($keyword) {
-                $query->where('region', 'LIKE', $keyword)
-                      ->orWhere('district', 'LIKE', $keyword)
-                      ->orWhere('ward', 'LIKE', $keyword)
-                      ->orWhere('street', 'LIKE', $keyword);
-            })
-            ->select('region', 'district', 'ward', 'street')
-            ->distinct()
-            ->limit(50)
-            ->get();
+        $results = $this->locationService->searchLocations(
+            $request->keyword,
+            $request->input('limit', 50)
+        );
             
         return response()->json([
             'success' => true,
-            'data' => $results
+            'data' => LocationResource::collection($results),
+            'count' => $results->count()
+        ]);
+    }
+
+    /**
+     * Get location statistics
+     */
+    public function getStatistics()
+    {
+        $stats = $this->locationService->getStatistics();
+            
+        return response()->json([
+            'success' => true,
+            'data' => $stats
+        ]);
+    }
+
+    /**
+     * Validate a location exists
+     */
+    public function validateLocation(Request $request)
+    {
+        $request->validate([
+            'region' => 'required|string',
+            'district' => 'required|string',
+            'ward' => 'required|string',
+            'street' => 'nullable|string'
+        ]);
+
+        $exists = $this->locationService->validateLocation(
+            $request->region,
+            $request->district,
+            $request->ward,
+            $request->street
+        );
+            
+        return response()->json([
+            'success' => true,
+            'exists' => $exists
         ]);
     }
 }
