@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\InvoiceApiController;
 use App\Http\Controllers\Api\ScheduleApiController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\Api\LocationInvoiceController;
+use App\Http\Controllers\Api\AnalyticsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -108,6 +109,9 @@ Route::get('/locations/streets', [LocationController::class, 'getStreets']);
 // Search locations by keyword
 Route::get('/locations/search', [LocationController::class, 'searchLocations']);
 
+// Autocomplete location search (fast, optimized for dropdowns)
+Route::get('/locations/autocomplete', [LocationController::class, 'autocomplete']);
+
 // Get location statistics
 Route::get('/locations/statistics', [LocationController::class, 'getStatistics']);
 
@@ -126,3 +130,16 @@ Route::post('/invoices/bulk-create', [LocationInvoiceController::class, 'createB
 
 // Get location statistics for contractor's clients
 Route::get('/invoices/location-statistics', [LocationInvoiceController::class, 'getLocationStatistics']);
+
+// ===================================
+// Analytics & Reporting
+// ===================================
+
+// Get comprehensive contractor dashboard analytics
+Route::get('/analytics/contractor/dashboard', [AnalyticsController::class, 'contractorDashboard']);
+
+// Get location-based revenue analytics
+Route::get('/analytics/location-revenue', [AnalyticsController::class, 'locationRevenue']);
+
+// Clear analytics cache
+Route::post('/analytics/clear-cache', [AnalyticsController::class, 'clearCache']);

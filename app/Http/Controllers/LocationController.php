@@ -203,23 +203,120 @@ class LocationController extends Controller
     }
 
     /**
-     * Search locations by keyword
+     * Search locations by keyword with pagination
      */
     public function searchLocations(Request $request)
     {
-        $request->validate([
-            'keyword' => 'required|string|min:2'
-        ]);
-
-        $results = $this->locationService->searchLocations(
-            $request->keyword,
-            $request->input('limit', 50)
-        );
-            
+        $keyword = $request->query('q', '');
+        $limit = min((int)$request->query('limit', 20), 100); // Max 100 results
+        
+        if (empty($keyword)) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Search keyword is required'
+            ], 400);
+        }
+        
+        if (strlen($keyword) < 2) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Search keyword must be at least 2 characters'
+            ], 400);
+        }
+        
+        $results = $this->locationService->searchLocations($keyword, $limit);
+        
         return response()->json([
             'success' => true,
-            'data' => LocationResource::collection($results),
-            'count' => $results->count()
+            'data' => $results,
+            'count' => count($results),
+            'keyword' => $keyword
+        ]);
+    }
+    
+    /**
+     * Autocomplete location search (fast, cached)
+     */
+    public function autocomplete(Request $request)
+    {
+        $query = $request->query('q', '');
+        $type = $request->query('type', 'all'); // all, region, district, ward, street
+        $limit = min((int)$request->query('limit', 10), 50);
+        
+        if (strlen($query) < 2) {
+            return response()->json([
+                'success' => true,
+                'data' => [],
+                'count' => 0
+            ]);
+        }
+        
+        $cacheKey = "location:autocomplete:{$type}:{$query}:{$limit}";
+        
+        $results = Cache::remember($cacheKey, 3600, function () use ($query, $type, $limit) {
+            $queryBuilder = Location::query();
+            
+            switch ($type) {
+                case 'region':
+                    return $queryBuilder->select('region as value')
+                        ->where('region', 'LIKE', "{$query}%")
+                        ->distinct()
+                        ->limit($limit)
+                        ->pluck('value');
+                        
+                case 'district':
+                    return $queryBuilder->select('district as value')
+                        ->where('district', 'LIKE', "{$query}%")
+                        ->distinct()
+                        ->limit($limit)
+                        ->pluck('value');
+                        
+                case 'ward':
+                    return $queryBuilder->select('ward as value')
+                        ->where('ward', 'LIKE', "{$query}%")
+                        ->distinct()
+                        ->limit($limit)
+                        ->pluck('value');
+                        
+                case 'street':
+                    return $queryBuilder->select('street as value')
+                        ->whereNotNull('street')
+                        ->where('street', '!=', '')
+                        ->where('street', 'LIKE', "{$query}%")
+                        ->distinct()
+                        ->limit($limit)
+                        ->pluck('value');
+                        
+                default: // all
+                    return $queryBuilder->where(function($q) use ($query) {
+                        $q->where('region', 'LIKE', "{$query}%")
+                          ->orWhere('district', 'LIKE', "{$query}%")
+                          ->orWhere('ward', 'LIKE', "{$query}%")
+                          ->orWhere('street', 'LIKE', "{$query}%");
+                    })
+                    ->limit($limit)
+                    ->get()
+                    ->map(function($location) {
+                        return [
+                            'value' => implode(' > ', array_filter([
+                                $location->region,
+                                $location->district,
+                                $location->ward,
+                                $location->street
+                            ])),
+                            'region' => $location->region,
+                            'district' => $location->district,
+                            'ward' => $location->ward,
+                            'street' => $location->street,
+                        ];
+                    });
+            }
+        });
+        
+        return response()->json([
+            'success' => true,
+            'data' => $results,
+            'count' => count($results)
         ]);
     }
 

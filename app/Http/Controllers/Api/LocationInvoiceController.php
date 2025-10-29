@@ -8,34 +8,21 @@ use App\Models\Invoice;
 use App\Models\Contractor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\BulkInvoiceRequest;
+use App\Http\Requests\ClientsByLocationRequest;
+use App\Http\Resources\ClientResource;
+use App\Http\Resources\InvoiceResource;
 
 class LocationInvoiceController extends Controller
 {
     /**
      * Get all clients at a specific site location for a contractor
      * 
-     * @param Request $request
+     * @param ClientsByLocationRequest $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function getClientsByLocation(Request $request)
+    public function getClientsByLocation(ClientsByLocationRequest $request)
     {
-        $validator = Validator::make($request->all(), [
-            'contractor_registration_number' => 'required|string|exists:contractors,registration_number',
-            'region' => 'required|string',
-            'district' => 'required|string',
-            'ward' => 'required|string',
-            'street' => 'nullable|string'
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Validation failed',
-                'errors' => $validator->errors()
-            ], 422);
-        }
-
         try {
             // Get contractor
             $contractor = Contractor::where('registration_number', $request->contractor_registration_number)
@@ -50,19 +37,6 @@ class LocationInvoiceController extends Controller
                     $request->street
                 )
                 ->active()
-                ->select([
-                    'id',
-                    'registration_number',
-                    'name',
-                    'email',
-                    'phone',
-                    'address',
-                    'region',
-                    'district',
-                    'ward',
-                    'street',
-                    'status'
-                ])
                 ->orderBy('name')
                 ->get();
 
@@ -78,11 +52,13 @@ class LocationInvoiceController extends Controller
                 'message' => 'Clients retrieved successfully',
                 'data' => [
                     'site_location' => $siteLocation,
-                    'region' => $request->region,
-                    'district' => $request->district,
-                    'ward' => $request->ward,
-                    'street' => $request->street,
-                    'clients' => $clients,
+                    'location' => [
+                        'region' => $request->region,
+                        'district' => $request->district,
+                        'ward' => $request->ward,
+                        'street' => $request->street,
+                    ],
+                    'clients' => ClientResource::collection($clients),
                     'total_clients' => $clients->count()
                 ]
             ], 200);
@@ -99,37 +75,11 @@ class LocationInvoiceController extends Controller
     /**
      * Create invoices for multiple clients at a site location (BULK INVOICE CREATION)
      * 
-     * @param Request $request
+     * @param BulkInvoiceRequest $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function createBulkInvoices(Request $request)
+    public function createBulkInvoices(BulkInvoiceRequest $request)
     {
-        $validator = Validator::make($request->all(), [
-            'contractor_registration_number' => 'required|string|exists:contractors,registration_number',
-            'client_ids' => 'required|array|min:1',
-            'client_ids.*' => 'required|exists:clients,id',
-            'site_location' => 'required|array',
-            'site_location.region' => 'required|string',
-            'site_location.district' => 'required|string',
-            'site_location.ward' => 'required|string',
-            'site_location.street' => 'nullable|string',
-            'invoice_date' => 'required|date',
-            'due_date' => 'required|date|after_or_equal:invoice_date',
-            'service_type' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'subtotal' => 'required|numeric|min:0',
-            'tax_rate' => 'required|numeric|min:0|max:100',
-            'notes' => 'nullable|string'
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Validation failed',
-                'errors' => $validator->errors()
-            ], 422);
-        }
-
         DB::beginTransaction();
 
         try {

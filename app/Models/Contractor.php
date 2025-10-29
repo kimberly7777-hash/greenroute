@@ -16,6 +16,10 @@ class Contractor extends Model
         'phone',
         'address',
         'site_locations',
+        'region',
+        'district',
+        'ward',
+        'street',
         'license_number',
         'certificate_path',
         'vehicle_type',
@@ -69,6 +73,50 @@ class Contractor extends Model
     public function schedules(): HasMany
     {
         return $this->hasMany(Schedule::class, 'contractor_registration_number', 'registration_number');
+    }
+
+    /**
+     * Query Scopes for Location Filtering
+     */
+    public function scopeByLocation($query, $region = null, $district = null, $ward = null, $street = null)
+    {
+        if ($region) {
+            $query->where('region', $region);
+        }
+        if ($district) {
+            $query->where('district', $district);
+        }
+        if ($ward) {
+            $query->where('ward', $ward);
+        }
+        if ($street) {
+            $query->where('street', $street);
+        }
+        return $query;
+    }
+
+    public function scopeByRegion($query, $region)
+    {
+        return $query->where('region', $region);
+    }
+
+    public function scopeByDistrict($query, $district)
+    {
+        return $query->where('district', $district);
+    }
+
+    public function scopeByWard($query, $ward)
+    {
+        return $query->where('ward', $ward);
+    }
+
+    /**
+     * Get full site location address
+     */
+    public function getSiteLocationAttribute()
+    {
+        $parts = array_filter([$this->street, $this->ward, $this->district, $this->region]);
+        return !empty($parts) ? implode(', ', $parts) : $this->site_locations;
     }
 
     /**
