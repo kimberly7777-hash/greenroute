@@ -9,6 +9,7 @@ use App\Http\Controllers\LocationController;
 use App\Http\Controllers\Api\LocationInvoiceController;
 use App\Http\Controllers\Api\AnalyticsController;
 use App\Http\Controllers\Api\SystemDiagnosticsController;
+use App\Http\Controllers\Api\LocationImportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,10 @@ Route::get('/user', function (Request $request) {
 
 // System diagnostics - check database and tables
 Route::get('/diagnostics/system', [SystemDiagnosticsController::class, 'checkSystem']);
+
+// Location import endpoints
+Route::post('/locations/import', [LocationImportController::class, 'importFromJson']);
+Route::post('/locations/clear', [LocationImportController::class, 'clearAll']);
 
 // ===================================
 // Contractor-Client Linking API
