@@ -42,8 +42,18 @@ services:
       - key: LOG_LEVEL
         value: info
       - key: MAIL_MAILER
-        value: log
+        value: smtp
+      - key: MAIL_HOST
+        value: smtp.gmail.com
+      - key: MAIL_PORT
+        value: 587
+      - key: MAIL_USERNAME
+        value: juniormeela5@gmail.com
+      - key: MAIL_PASSWORD
+        value: trvnkosqufygzgcr
+      - key: MAIL_ENCRYPTION
+        value: tls
       - key: MAIL_FROM_ADDRESS
-        value: hello@afia-orbit.com
+        value: juniormeela5@gmail.com
       - key: MAIL_FROM_NAME
-        value: AFIA-ORBIT
+        value: AFIA ORBIT
