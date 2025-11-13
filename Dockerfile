@@ -41,6 +41,9 @@ COPY --chown=www-data:www-data . /var/www/html
 # Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader --no-interaction
 
+# Rebuild autoloader to ensure all models are found
+RUN composer dump-autoload --optimize
+
 # Install Node.js dependencies and build assets
 RUN rm -f package-lock.json && \
     npm install --no-audit --no-fund && \

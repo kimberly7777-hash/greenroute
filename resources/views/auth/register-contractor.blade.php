@@ -384,7 +384,7 @@
                 suggestionsContainer.classList.add('show');
                 
                 try {
-                    const response = await fetch(`/api/locations/autocomplete?q=${encodeURIComponent(query)}&type=all&limit=15`);
+                    const response = await fetch(`/api/locations/autocomplete-simple?q=${encodeURIComponent(query)}&limit=15`);
                     const data = await response.json();
                     
                     if (data.success && data.data.length > 0) {
