@@ -11,18 +11,20 @@ RUN apt-get update && apt-get install -y \
     libpng-dev \
     libonig-dev \
     libxml2-dev \
+    libpq-dev \
     zip \
     unzip \
     nodejs \
     npm \
     sqlite3 \
-    libsqlite3-dev
+    libsqlite3-dev \
+    postgresql-client
 
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install PHP extensions
-RUN docker-php-ext-install pdo_mysql pdo_sqlite mbstring exif pcntl bcmath gd
+RUN docker-php-ext-install pdo_mysql pdo_sqlite pdo_pgsql pgsql mbstring exif pcntl bcmath gd
 
 # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -46,9 +48,6 @@ RUN rm -f package-lock.json && \
     rm -rf node_modules && \
     npm ci --only=production --no-audit --no-fund
 
-# Create SQLite database file
-RUN touch /var/www/html/database/database.sqlite
-
 # Create .env file for Laravel commands if it doesn't exist
 RUN cp .env.production .env || cp .env.example .env || echo "APP_KEY=" > .env
 
@@ -59,8 +58,7 @@ RUN php artisan key:generate --force
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html \
     && chmod -R 775 /var/www/html/storage \
-    && chmod -R 775 /var/www/html/bootstrap/cache \
-    && chmod 664 /var/www/html/database/database.sqlite
+    && chmod -R 775 /var/www/html/bootstrap/cache
 
 # Configure Apache
 COPY docker/apache/000-default.conf /etc/apache2/sites-available/000-default.conf

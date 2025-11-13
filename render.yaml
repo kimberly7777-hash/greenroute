@@ -18,9 +18,9 @@ services:
       - key: APP_KEY
         generateValue: true
       - key: DB_CONNECTION
-        value: sqlite
-      - key: DB_DATABASE
-        value: /var/www/html/database/database.sqlite
+        value: pgsql
+      - key: DATABASE_URL
+        value: postgresql://afia_orbit_user:9pawdYvZdJiVcmR7iMZyUElcc1PFcfEr@dpg-d4b0qh24d50c73cv0m5g-a/afia_orbit
       - key: SESSION_DRIVER
         value: database
       - key: SESSION_LIFETIME
