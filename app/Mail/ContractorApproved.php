@@ -14,13 +14,15 @@ class ContractorApproved extends Mailable
     use Queueable, SerializesModels;
 
     public $contractor;
+    public $password;
 
     /**
      * Create a new message instance.
      */
-    public function __construct(User $contractor)
+    public function __construct(User $contractor, $password = null)
     {
         $this->contractor = $contractor;
+        $this->password = $password;
     }
 
     /**

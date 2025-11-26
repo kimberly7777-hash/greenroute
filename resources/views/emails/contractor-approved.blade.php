@@ -151,6 +151,12 @@
                 <p><strong>Account Details:</strong></p>
                 <p><strong>Name:</strong> {{ $contractor->name }}</p>
                 <p><strong>Email:</strong> {{ $contractor->email }}</p>
+                @if(isset($password))
+                <p><strong>Temporary Password:</strong> {{ $password }}</p>
+                <p style="font-size: 13px; color: #dc2626; margin-top: 5px;">
+                    <em>Please change this password immediately after logging in.</em>
+                </p>
+                @endif
                 <p><strong>Status:</strong> <span style="color: #10b981;">✓ Approved</span></p>
                 <p><strong>Account Type:</strong> Waste Contractor</p>
             </div>

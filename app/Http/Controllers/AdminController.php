@@ -348,19 +348,25 @@ class AdminController extends Controller
 
     public function approveContractor(User $user)
     {
-        // Update user status to approved
-        $user->update(['status' => 'approved']);
+        // Generate temporary password
+        $tempPassword = \Illuminate\Support\Str::random(10);
 
-        // Send approval email notification
+        // Update user status to approved and set new password
+        $user->update([
+            'status' => 'approved',
+            'password' => \Illuminate\Support\Facades\Hash::make($tempPassword)
+        ]);
+
+        // Send approval email notification with credentials
         try {
-            \Mail::to($user->email)->send(new \App\Mail\ContractorApproved($user));
+            \Mail::to($user->email)->send(new \App\Mail\ContractorApproved($user, $tempPassword));
         } catch (\Exception $e) {
             // Log the error but don't fail the approval
             \Log::error('Failed to send approval email: ' . $e->getMessage());
         }
 
         return redirect()->route('admin.verification')
-            ->with('success', "Contractor {$user->name} has been approved successfully. A confirmation email has been sent.");
+            ->with('success', "Contractor {$user->name} has been approved successfully. Login credentials have been sent to their email.");
     }
 
     public function rejectContractor(User $user)
@@ -698,11 +704,14 @@ class AdminController extends Controller
     /**
      * Show contractor details for verification
      */
-    public function showContractor($id)
+    public function showContractor(User $user)
     {
-        $user = User::where('user_type', 'contractor')
-            ->with('contractor')
-            ->findOrFail($id);
+        // Ensure it's a contractor
+        if ($user->user_type !== 'contractor') {
+            abort(404);
+        }
+        
+        $user->load('contractor');
             
         return view('admin.contractor-details', compact('user'));
     }
@@ -710,9 +719,12 @@ class AdminController extends Controller
     /**
      * Suspend/Unsuspend a contractor
      */
-    public function toggleContractorStatus($id)
+    public function toggleContractorStatus(User $user)
     {
-        $user = User::where('user_type', 'contractor')->findOrFail($id);
+        // Ensure it's a contractor
+        if ($user->user_type !== 'contractor') {
+            abort(404);
+        }
         
         if ($user->status === 'approved') {
             $user->update(['status' => 'suspended']);
