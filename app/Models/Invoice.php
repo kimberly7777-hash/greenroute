@@ -65,7 +65,7 @@ class Invoice extends Model
 
     public function getIsOverdueAttribute()
     {
-        return $this->status !== 'paid' && $this->due_date->isPast();
+        return $this->status !== 'paid' && $this->due_date && $this->due_date->isPast();
     }
 
     public function getIsPaidAttribute()
@@ -88,7 +88,7 @@ class Invoice extends Model
     public function scopeUnpaid($query)
     {
         return $query->where('status', '!=', 'paid')
-                    ->where('total_amount', '>', 'amount_paid');
+                    ->whereColumn('total_amount', '>', 'amount_paid');
     }
 
     public function scopeForClient($query, $clientRegistrationNumber)
