@@ -85,6 +85,10 @@ Route::middleware(['auth'])->group(function () {
         Route::get('support', [ClientPortalController::class, 'support'])->name('client.support');
         Route::get('feedback', [ClientPortalController::class, 'feedback'])->name('client.feedback');
         Route::post('feedback', [ClientPortalController::class, 'storeFeedback'])->name('client.feedback.store');
+        
+        // Payment Routes
+        Route::get('payments/{invoice}/checkout', [App\Http\Controllers\PaymentController::class, 'checkout'])->name('client.payments.checkout');
+        Route::post('payments/{invoice}/mobile', [App\Http\Controllers\PaymentController::class, 'payMobile'])->name('client.payments.mobile');
     });
 });
 

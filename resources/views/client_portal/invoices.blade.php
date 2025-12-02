@@ -40,6 +40,11 @@
                                     </td>
                                     <td class="text-end">
                                         <div class="btn-group btn-group-sm" role="group">
+                                            @if($invoice->status !== 'paid')
+                                                <a href="{{ route('client.payments.checkout', $invoice) }}" class="btn btn-primary" title="Pay Now">
+                                                    Pay Now
+                                                </a>
+                                            @endif
                                             <a href="{{ route('invoices.pdf', $invoice) }}" target="_blank" class="btn btn-outline-success" title="Download PDF">
                                                 <i class="bi bi-filetype-pdf"></i>
                                             </a>

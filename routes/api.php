@@ -231,3 +231,6 @@ Route::get('/analytics/location-revenue', [AnalyticsController::class, 'location
 
 // Clear analytics cache
 Route::post('/analytics/clear-cache', [AnalyticsController::class, 'clearCache']);
+
+// AzamPay Callback
+Route::post('/payments/azampay/callback', [App\Http\Controllers\PaymentController::class, 'callback']);
