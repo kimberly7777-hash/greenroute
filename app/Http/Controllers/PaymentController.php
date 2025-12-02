@@ -42,6 +42,12 @@ class PaymentController extends Controller
             'phone_number' => 'required|string', // Format 255...
         ]);
 
+        // Sanitize phone number: Remove '+' and ensure it starts with 255
+        $accountNumber = preg_replace('/[^0-9]/', '', $request->phone_number);
+        if (str_starts_with($accountNumber, '0')) {
+            $accountNumber = '255' . substr($accountNumber, 1);
+        }
+
         try {
             $reference = 'TXN-' . Str::random(12);
             
@@ -52,13 +58,13 @@ class PaymentController extends Controller
                 'amount' => $invoice->balance_due, // or request amount
                 'currency' => 'TZS',
                 'provider' => $request->provider,
-                'account_number' => $request->phone_number,
+                'account_number' => $accountNumber,
                 'status' => 'pending',
             ]);
 
             // Initiate Payment
             $response = $this->azamPay->mobileCheckout(
-                $request->phone_number,
+                $accountNumber,
                 $transaction->amount,
                 $reference,
                 $request->provider
@@ -84,6 +90,57 @@ class PaymentController extends Controller
 
         } catch (\Exception $e) {
             Log::error('Payment Error: ' . $e->getMessage());
+            return response()->json(['success' => false, 'message' => 'System error processing payment'], 500);
+        }
+    }
+
+    /**
+     * Process Bank Payment
+     */
+    public function payBank(Request $request, Invoice $invoice)
+    {
+        try {
+            $reference = 'TXN-' . Str::random(12);
+            
+            // Create Transaction Record
+            $transaction = PaymentTransaction::create([
+                'invoice_id' => $invoice->id,
+                'transaction_reference' => $reference,
+                'amount' => $invoice->balance_due,
+                'currency' => 'TZS',
+                'provider' => 'Bank',
+                'status' => 'pending',
+            ]);
+
+            // This is the URL user comes back to after bank payment
+            $redirectUrl = route('client.invoices'); 
+
+            // Initiate Payment
+            $response = $this->azamPay->bankCheckout(
+                $transaction->amount,
+                $reference,
+                $redirectUrl
+            );
+
+            if ($response['success'] ?? false) {
+                $transaction->update(['external_reference' => $response['transactionId'] ?? null]);
+                return response()->json([
+                    'success' => true,
+                    'redirect_url' => $response['redirectUrl']
+                ]);
+            } else {
+                $transaction->update([
+                    'status' => 'failed', 
+                    'payment_details' => $response
+                ]);
+                return response()->json([
+                    'success' => false, 
+                    'message' => $response['message'] ?? 'Bank payment initialization failed'
+                ], 400);
+            }
+
+        } catch (\Exception $e) {
+            Log::error('Bank Payment Error: ' . $e->getMessage());
             return response()->json(['success' => false, 'message' => 'System error processing payment'], 500);
         }
     }

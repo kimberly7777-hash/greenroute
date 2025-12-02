@@ -89,6 +89,7 @@ Route::middleware(['auth'])->group(function () {
         // Payment Routes
         Route::get('payments/{invoice}/checkout', [App\Http\Controllers\PaymentController::class, 'checkout'])->name('client.payments.checkout');
         Route::post('payments/{invoice}/mobile', [App\Http\Controllers\PaymentController::class, 'payMobile'])->name('client.payments.mobile');
+        Route::post('payments/{invoice}/bank', [App\Http\Controllers\PaymentController::class, 'payBank'])->name('client.payments.bank');
     });
 });
 

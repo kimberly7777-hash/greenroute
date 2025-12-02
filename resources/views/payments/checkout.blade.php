@@ -175,8 +175,8 @@
 
                             <div class="mb-3">
                                 <label for="phone_number" class="form-label fw-bold">Phone Number</label>
-                                <input type="text" class="form-control p-3" id="phone_number" name="phone_number" placeholder="e.g. 2557XXXXXXXX" required>
-                                <div class="form-text">Enter number in format 255...</div>
+                                <input type="text" class="form-control p-3" id="phone_number" name="phone_number" placeholder="e.g. 0712345678" required>
+                                <div class="form-text">Format: 07... or 06... (System automatically formats to 255)</div>
                             </div>
 
                             <button type="submit" class="btn-pay" id="payBtn">
@@ -185,11 +185,19 @@
                         </form>
                     </div>
 
-                    <!-- Bank Card (Placeholder) -->
+                    <!-- Bank Card -->
                     <div class="tab-pane fade" id="bank" role="tabpanel">
-                        <div class="text-center py-5">
-                            <i class="bi bi-credit-card fs-1 text-muted"></i>
-                            <p class="mt-3 text-muted">Bank card payments are coming soon.</p>
+                        <div class="text-center py-4">
+                            <i class="bi bi-bank fs-1 text-primary mb-3"></i>
+                            <h5 class="mb-3">Pay with Local Bank Card</h5>
+                            <p class="text-muted mb-4">You will be redirected to AzamPay's secure gateway to complete your payment using Visa, Mastercard, or UnionPay.</p>
+                            
+                            <form id="bankPaymentForm">
+                                @csrf
+                                <button type="submit" class="btn btn-primary w-100 py-3 fw-bold">
+                                    Proceed to Secure Checkout <i class="bi bi-arrow-right ms-2"></i>
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -198,7 +206,7 @@
                     <div class="spinner-border text-primary" role="status">
                         <span class="visually-hidden">Loading...</span>
                     </div>
-                    <p class="mt-2">Processing payment request...<br>Please check your phone.</p>
+                    <p class="mt-2">Processing payment request...<br>Please do not close this page.</p>
                 </div>
 
                 <div id="responseMessage" class="mt-3"></div>
@@ -268,6 +276,42 @@
             console.error(error);
         });
     });
+
+    // Bank Payment Handler
+    if(document.getElementById('bankPaymentForm')) {
+        document.getElementById('bankPaymentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const loader = document.getElementById('loader');
+            const msgDiv = document.getElementById('responseMessage');
+            
+            this.style.display = 'none';
+            loader.style.display = 'block';
+            msgDiv.innerHTML = '';
+
+            fetch("{{ route('client.payments.bank', $invoice->id) }}", {
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    window.location.href = data.redirect_url;
+                } else {
+                    loader.style.display = 'none';
+                    this.style.display = 'block';
+                    msgDiv.innerHTML = `<div class="alert alert-danger">${data.message}</div>`;
+                }
+            })
+            .catch(error => {
+                loader.style.display = 'none';
+                this.style.display = 'block';
+                msgDiv.innerHTML = `<div class="alert alert-danger">An error occurred.</div>`;
+            });
+        });
+    }
 </script>
 
 </body>
