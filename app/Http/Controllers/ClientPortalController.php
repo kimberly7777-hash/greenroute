@@ -269,11 +269,15 @@ class ClientPortalController extends Controller
         }
         abort_unless($client, 404);
 
-        $invoices = Invoice::with(['contractor'])
-            ->where('client_id', $client->id)
-            ->where('contractor_id', $client->contractor_id)
-            ->orderByDesc('invoice_date')
-            ->paginate(15);
+        $query = Invoice::with(['contractor'])
+            ->where('client_id', $client->id);
+        
+        // Only filter by contractor_id if it's set
+        if ($client->contractor_id) {
+            $query->where('contractor_id', $client->contractor_id);
+        }
+        
+        $invoices = $query->orderByDesc('invoice_date')->paginate(15);
 
         return view('client_portal.invoices', compact('client', 'invoices'));
     }
@@ -283,11 +287,15 @@ class ClientPortalController extends Controller
         $client = $this->resolveClient();
         abort_unless($client, 404);
 
-        $payments = Invoice::where('client_id', $client->id)
-            ->where('contractor_id', $client->contractor_id)
-            ->where('status', 'paid')
-            ->orderByDesc('paid_at')
-            ->paginate(15);
+        $query = Invoice::where('client_id', $client->id)
+            ->where('status', 'paid');
+        
+        // Only filter by contractor_id if it's set
+        if ($client->contractor_id) {
+            $query->where('contractor_id', $client->contractor_id);
+        }
+        
+        $payments = $query->orderByDesc('paid_at')->paginate(15);
 
         return view('client_portal.payments', compact('client', 'payments'));
     }

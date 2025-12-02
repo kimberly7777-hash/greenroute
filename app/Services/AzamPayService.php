@@ -127,15 +127,26 @@ class AzamPayService
     {
         $token = $this->getToken();
         
+        // For bank card checkout, use the checkout endpoint with cart items
         $payload = [
-            'amount' => (string) $amount,
+            'appName' => $this->appName,
+            'clientId' => $this->clientId,
+            'vendorId' => $this->clientId, // Use client ID as vendor ID
+            'language' => 'en',
             'currency' => 'TZS',
             'externalId' => $transactionId,
-            'sequenceNumber' => $transactionId,
-            'successRedirectUrl' => $redirectUrl,
-            'failRedirectUrl' => $redirectUrl,
-            'cancelRedirectUrl' => $redirectUrl,
-            'merchantName' => $this->appName,
+            'requestOrigin' => $redirectUrl,
+            'redirectFailURL' => $redirectUrl,
+            'redirectSuccessURL' => $redirectUrl,
+            'vendorName' => $this->appName,
+            'amount' => (string) $amount,
+            'cart' => [
+                'items' => [
+                    [
+                        'name' => 'Invoice Payment'
+                    ]
+                ]
+            ]
         ];
 
         Log::info('AzamPay Bank Checkout Request', $payload);
@@ -145,7 +156,7 @@ class AzamPayService
                 'X-API-KEY' => $this->apiKey,
                 'Content-Type' => 'application/json'
             ])
-            ->post("{$this->baseUrl}/azampay/bank/checkout", $payload);
+            ->post("{$this->baseUrl}/AppRegistration/RegisterCheckout", $payload);
 
         $result = $response->json();
         
