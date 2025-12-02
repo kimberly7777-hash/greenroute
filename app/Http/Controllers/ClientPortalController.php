@@ -92,15 +92,30 @@ class ClientPortalController extends Controller
             $recentInvoices = $allInvoices->sortByDesc('invoice_date')->take(5);
 
             // Monthly payments from contractor (last 12 months)
+            // Use PHP grouping to avoid SQL dialect issues (SQLite vs Postgres)
             $monthlyPayments = Invoice::where('client_id', $client->id)
                 ->where('contractor_id', $contractorId)
                 ->where('status', 'paid')
                 ->where('paid_at', '>=', now()->subMonths(12))
-                ->selectRaw('strftime("%Y", paid_at) as year, strftime("%m", paid_at) as month, SUM(total_amount) as total')
-                ->groupBy('year', 'month')
-                ->orderBy('year', 'desc')
-                ->orderBy('month', 'desc')
-                ->get();
+                ->get()
+                ->groupBy(function($invoice) {
+                    return $invoice->paid_at ? $invoice->paid_at->format('Y-m') : 'unknown';
+                })
+                ->map(function($invoices, $key) {
+                    if ($key === 'unknown') return null;
+                    
+                    $parts = explode('-', $key);
+                    return (object)[
+                        'year' => $parts[0],
+                        'month' => $parts[1],
+                        'total' => $invoices->sum('total_amount')
+                    ];
+                })
+                ->filter()
+                ->sortByDesc(function($item) {
+                    return $item->year . sprintf('%02d', $item->month);
+                })
+                ->values();
 
             // Feedback between client and contractor
             $recentFeedback = Feedback::where('client_id', $client->id)
