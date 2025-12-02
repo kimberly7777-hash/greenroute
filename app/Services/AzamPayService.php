@@ -18,7 +18,10 @@ class AzamPayService
 
     public function __construct()
     {
-        $this->isSandbox = config('services.azampay.sandbox', true);
+        // Handle sandbox as string or boolean
+        $sandbox = config('services.azampay.sandbox', true);
+        $this->isSandbox = filter_var($sandbox, FILTER_VALIDATE_BOOLEAN);
+        
         $this->baseUrl = $this->isSandbox 
             ? 'https://sandbox.azampay.co.tz' 
             : 'https://checkout.azampay.co.tz';
@@ -38,19 +41,39 @@ class AzamPayService
      */
     public function getToken()
     {
+        // Clear any cached failed attempts first
+        if (!Cache::has('azampay_token_valid')) {
+            Cache::forget('azampay_token');
+        }
+
         return Cache::remember('azampay_token', 3000, function () {
-            $response = Http::post("{$this->authUrl}/App/Login", [
+            // Log what we're sending for debugging
+            Log::info('AzamPay Auth Attempt', [
+                'authUrl' => $this->authUrl,
+                'appName' => $this->appName,
+                'clientId' => $this->clientId ? 'SET' : 'MISSING',
+                'clientSecret' => $this->clientSecret ? 'SET (length: ' . strlen($this->clientSecret) . ')' : 'MISSING',
+            ]);
+
+            $response = Http::post("{$this->authUrl}/AppRegistration/GenerateToken", [
                 'appName' => $this->appName,
                 'clientId' => $this->clientId,
                 'clientSecret' => $this->clientSecret,
             ]);
 
             if ($response->successful()) {
-                return $response->json()['data']['accessToken'];
+                $data = $response->json();
+                if (isset($data['data']['accessToken'])) {
+                    Cache::put('azampay_token_valid', true, 3000);
+                    return $data['data']['accessToken'];
+                }
             }
 
-            Log::error('AzamPay Token Error: ' . $response->body());
-            throw new \Exception('Failed to authenticate with AzamPay');
+            Log::error('AzamPay Token Error', [
+                'status' => $response->status(),
+                'body' => $response->body()
+            ]);
+            throw new \Exception('Failed to authenticate with AzamPay: ' . $response->body());
         });
     }
 
