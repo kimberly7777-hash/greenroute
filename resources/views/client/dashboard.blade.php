@@ -597,6 +597,7 @@
                                                     <th>Amount</th>
                                                     <th>Status</th>
                                                     <th>Paid Date</th>
+                                                    <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -612,6 +613,13 @@
                                                             </span>
                                                         </td>
                                                         <td>{{ $invoice->paid_at ? $invoice->paid_at->format('M j, Y') : 'N/A' }}</td>
+                                                        <td>
+                                                            @if(($invoice->status ?? '') !== 'paid')
+                                                                <a href="{{ route('client.payments.checkout', $invoice->id) }}" class="btn btn-sm btn-primary">
+                                                                    Pay Now
+                                                                </a>
+                                                            @endif
+                                                        </td>
                                                     </tr>
                                                 @empty
                                                     <tr>
