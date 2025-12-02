@@ -408,10 +408,10 @@
                             @error('phone_2')<div class="invalid-feedback">{{ $message }}</div>@enderror
                         </div>
                         <div>
-                            <label for="phone_3" class="form-label required">Phone Number 3</label>
+                            <label for="phone_3" class="form-label">Phone Number 3</label>
                             <input type="text" class="form-control @error('phone_3') is-invalid @enderror" 
-                                   id="phone_3" name="phone_3" value="{{ old('phone_3') }}" required 
-                                   placeholder="Additional phone number">
+                                   id="phone_3" name="phone_3" value="{{ old('phone_3') }}" 
+                                   placeholder="Additional phone number (Optional)">
                             @error('phone_3')<div class="invalid-feedback">{{ $message }}</div>@enderror
                         </div>
                     </div>
