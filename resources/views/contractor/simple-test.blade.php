@@ -443,7 +443,7 @@
                         </div>
                         <div class="col-md-3 mb-3">
                             <div class="stat-card payments">
-                                <h3 id="pendingPayments">$0</h3>
+                                <h3 id="pendingPayments">TZS 0</h3>
                                 <p>Pending Payments</p>
                             </div>
                         </div>
@@ -510,7 +510,7 @@
                                                 <small class="text-muted">ABC Manufacturing</small>
                                             </div>
                                             <div class="text-end">
-                                                <span class="fw-bold text-warning">$450.00</span><br>
+                                                <span class="fw-bold text-warning">TZS 450.00</span><br>
                                                 <small class="badge bg-warning">Pending</small>
                                             </div>
                                         </div>
@@ -520,7 +520,7 @@
                                                 <small class="text-muted">XYZ Retail</small>
                                             </div>
                                             <div class="text-end">
-                                                <span class="fw-bold text-success">$320.50</span><br>
+                                                <span class="fw-bold text-success">TZS 320.50</span><br>
                                                 <small class="badge bg-success">Paid</small>
                                             </div>
                                         </div>
@@ -530,7 +530,7 @@
                                                 <small class="text-muted">Global Foods Inc</small>
                                             </div>
                                             <div class="text-end">
-                                                <span class="fw-bold text-warning">$680.75</span><br>
+                                                <span class="fw-bold text-warning">TZS 680.75</span><br>
                                                 <small class="badge bg-warning">Pending</small>
                                             </div>
                                         </div>
