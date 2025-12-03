@@ -133,6 +133,42 @@
                     <textarea name="description" class="form-control" rows="3" placeholder="Add notes about this route...">{{ old('description') }}</textarea>
                 </div>
                 
+                <!-- Site Location Assignment -->
+                <div class="mb-4">
+                    <label class="form-label fw-bold">Route Site Location <span class="text-danger">*</span></label>
+                    <select name="site_location" id="routeSiteLocation" class="form-select @error('site_location') is-invalid @enderror" required>
+                        <option value="">Select site location for this route</option>
+                        @foreach($siteLocations as $region => $locations)
+                            <optgroup label="{{ $region }}">
+                                @foreach($locations as $location)
+                                    @php
+                                        $locationValue = implode('|', array_filter([
+                                            $region,
+                                            $location['district'],
+                                            $location['ward'],
+                                            $location['street']
+                                        ]));
+                                        $locationDisplay = implode(' - ', array_filter([
+                                            $region,
+                                            $location['district'],
+                                            $location['ward'],
+                                            $location['street']
+                                        ]));
+                                    @endphp
+                                    <option value="{{ $locationValue }}" 
+                                            {{ old('site_location') == $locationValue ? 'selected' : '' }}>
+                                        {{ $locationDisplay }}
+                                    </option>
+                                @endforeach
+                            </optgroup>
+                        @endforeach
+                    </select>
+                    <small class="form-text text-muted">Assign this route to a specific site location (Region - District - Ward - Street). This will be used in Collection Schedules.</small>
+                    @error('site_location')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+                
                 <div class="mb-4">
                     <label class="form-label fw-bold">Assign Clients</label>
                     

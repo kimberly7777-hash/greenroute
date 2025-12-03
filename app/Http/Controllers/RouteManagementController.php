@@ -40,15 +40,27 @@ class RouteManagementController extends Controller
         $existingRoutes = ContractorRoute::where('contractor_id', $contractorId)
             ->pluck('route_name');
         
-        // Get site locations from tbl_locations grouped by Region -> District
-        $siteLocations = Location::select('region', 'district')
+        // Get site locations from tbl_locations (full details)
+        $siteLocationsRaw = Location::select('region', 'district', 'ward', 'street')
             ->distinct()
             ->orderBy('region')
             ->orderBy('district')
-            ->get()
-            ->groupBy('region')
-            ->map(function ($districts) {
-                return $districts->pluck('district')->unique()->values();
+            ->orderBy('ward')
+            ->orderBy('street')
+            ->get();
+        
+        // Group by region and get unique combinations
+        $siteLocations = $siteLocationsRaw->groupBy('region')
+            ->map(function ($items) {
+                return $items->map(function ($item) {
+                    return [
+                        'district' => $item->district,
+                        'ward' => $item->ward,
+                        'street' => $item->street,
+                    ];
+                })->unique(function ($item) {
+                    return $item['district'] . '|' . $item['ward'] . '|' . $item['street'];
+                })->values();
             });
         
         return view('route-management.create', compact('clients', 'existingRoutes', 'siteLocations'));
@@ -61,6 +73,7 @@ class RouteManagementController extends Controller
     {
         $validated = $request->validate([
             'route_name' => 'required|string|max:255',
+            'site_location' => 'required|string',
             'description' => 'nullable|string',
             'color' => 'nullable|string|max:7',
             'client_ids' => 'nullable|array',
@@ -78,10 +91,21 @@ class RouteManagementController extends Controller
             return back()->withErrors(['route_name' => 'A route with this name already exists.'])->withInput();
         }
 
+        // Parse site location (format: "REGION|DISTRICT|WARD|STREET" or "REGION|DISTRICT")
+        $locationParts = explode('|', $validated['site_location']);
+        $region = $locationParts[0] ?? null;
+        $district = $locationParts[1] ?? null;
+        $ward = $locationParts[2] ?? null;
+        $street = $locationParts[3] ?? null;
+
         // Create the route
         $route = ContractorRoute::create([
             'contractor_id' => $contractorId,
             'route_name' => $validated['route_name'],
+            'region' => $region,
+            'district' => $district,
+            'ward' => $ward,
+            'street' => $street,
             'description' => $validated['description'] ?? null,
             'color' => $validated['color'] ?? '#055c5c',
             'is_active' => true,
@@ -139,7 +163,30 @@ class RouteManagementController extends Controller
             ->pluck('id')
             ->toArray();
         
-        return view('route-management.edit', compact('contractorRoute', 'allClients', 'assignedClientIds'));
+        // Get site locations from tbl_locations (full details)
+        $siteLocationsRaw = Location::select('region', 'district', 'ward', 'street')
+            ->distinct()
+            ->orderBy('region')
+            ->orderBy('district')
+            ->orderBy('ward')
+            ->orderBy('street')
+            ->get();
+        
+        // Group by region
+        $siteLocations = $siteLocationsRaw->groupBy('region')
+            ->map(function ($items) {
+                return $items->map(function ($item) {
+                    return [
+                        'district' => $item->district,
+                        'ward' => $item->ward,
+                        'street' => $item->street,
+                    ];
+                })->unique(function ($item) {
+                    return $item['district'] . '|' . $item['ward'] . '|' . $item['street'];
+                })->values();
+            });
+        
+        return view('route-management.edit', compact('contractorRoute', 'allClients', 'assignedClientIds', 'siteLocations'));
     }
 
     /**
@@ -154,6 +201,7 @@ class RouteManagementController extends Controller
         
         $validated = $request->validate([
             'route_name' => 'required|string|max:255',
+            'site_location' => 'required|string',
             'description' => 'nullable|string',
             'color' => 'nullable|string|max:7',
             'is_active' => 'boolean',
@@ -176,9 +224,20 @@ class RouteManagementController extends Controller
             }
         }
 
+        // Parse site location (format: "REGION|DISTRICT|WARD|STREET" or "REGION|DISTRICT")
+        $locationParts = explode('|', $validated['site_location']);
+        $region = $locationParts[0] ?? null;
+        $district = $locationParts[1] ?? null;
+        $ward = $locationParts[2] ?? null;
+        $street = $locationParts[3] ?? null;
+
         // Update the route
         $contractorRoute->update([
             'route_name' => $validated['route_name'],
+            'region' => $region,
+            'district' => $district,
+            'ward' => $ward,
+            'street' => $street,
             'description' => $validated['description'] ?? null,
             'color' => $validated['color'] ?? '#055c5c',
             'is_active' => $validated['is_active'] ?? true,

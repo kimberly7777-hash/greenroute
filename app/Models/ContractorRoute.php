@@ -12,6 +12,10 @@ class ContractorRoute extends Model
     protected $fillable = [
         'contractor_id',
         'route_name',
+        'region',
+        'district',
+        'ward',
+        'street',
         'description',
         'color',
         'is_active',

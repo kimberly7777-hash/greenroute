@@ -133,31 +133,35 @@
                         </div>
                     </div>
 
-                    <!-- Route Selection -->
+                    <!-- Site Location Selection -->
                     <div class="mb-4">
-                        <label for="route_type" class="form-label">
-                            Schedule Type <span class="required-star">*</span>
+                        <label for="site_location" class="form-label">
+                            Site Location <span class="required-star">*</span>
                         </label>
-                        <select name="route_type" id="route_type" required class="form-select" onchange="loadRouteClients()">
-                            <option value="">Select schedule type</option>
-                            @php
-                                $routes = $clients->whereNotNull('route')->pluck('route')->unique()->sort();
-                            @endphp
-                            @foreach($routes as $route)
-                            <option value="existing" data-route="{{ $route }}">{{ $route }} (Multi-Client)</option>
+                        <select name="site_location" id="site_location" required class="form-select" onchange="loadRoutesBySiteLocation()">
+                            <option value="">Select site location</option>
+                            @foreach($siteLocations as $location)
+                            <option value="{{ $location['full'] }}" 
+                                    data-region="{{ $location['region'] }}"
+                                    data-district="{{ $location['district'] }}"
+                                    data-ward="{{ $location['ward'] }}"
+                                    data-street="{{ $location['street'] }}">
+                                {{ $location['full'] }}
+                            </option>
                             @endforeach
-                            <option value="custom">Custom Route (Single Client)</option>
                         </select>
+                        <small class="text-muted">Format: Region - District - Ward - Street</small>
                     </div>
 
-                    <!-- Custom Route Name (for custom schedules) -->
-                    <div class="mb-4" id="customRouteNameSection" style="display: none;">
-                        <label for="custom_route_name" class="form-label">
+                    <!-- Route Name Selection (filtered by site location) -->
+                    <div class="mb-4" id="routeNameSection" style="display: none;">
+                        <label for="route_name" class="form-label">
                             Route Name <span class="required-star">*</span>
                         </label>
-                        <input type="text" name="custom_route_name" id="custom_route_name" 
-                               class="form-control" placeholder="e.g., Route A, Downtown Route, Emergency Pickup">
-                        <small class="text-muted">Enter a descriptive name for this route</small>
+                        <select name="route_name" id="route_name" required class="form-select" onchange="loadRouteClients()">
+                            <option value="">Select route</option>
+                        </select>
+                        <small class="text-muted">Routes assigned to the selected location</small>
                     </div>
 
                     <!-- Hidden field for actual route value -->
@@ -180,24 +184,6 @@
                         </div>
                     </div>
 
-                    <!-- Custom Client Selection (for custom route) -->
-                    <div class="mb-4" id="customClientSection" style="display: none;">
-                        <label for="custom_client_id" class="form-label">
-                            Select Client <span class="required-star">*</span>
-                        </label>
-                        <select name="custom_client_id" id="custom_client_id" class="form-select" onchange="loadSingleClientAddress()">
-                            <option value="">Select a client</option>
-                            @foreach($clients as $client)
-                            <option value="{{ $client->id }}" 
-                                    data-address="{{ $client->address }}"
-                                    data-city="{{ $client->city }}"
-                                    data-state="{{ $client->state }}"
-                                    data-zip="{{ $client->zip_code }}">
-                                {{ $client->name }} - {{ $client->address }}
-                            </option>
-                            @endforeach
-                        </select>
-                    </div>
 
                     <!-- Schedule Details -->
                     <div class="row mb-4">
@@ -325,75 +311,117 @@
 
 @section('scripts')
 <script>
-// Store all clients data
+// Store all clients data and routes data
 const allClientsData = @json($clients);
+const allRoutesData = @json($routes);
 
+// Function to load routes based on selected site location
+function loadRoutesBySiteLocation() {
+    const siteLocationSelect = document.getElementById('site_location');
+    const selectedOption = siteLocationSelect.options[siteLocationSelect.selectedIndex];
+    const selectedLocation = siteLocationSelect.value;
+    
+    const routeNameSection = document.getElementById('routeNameSection');
+    const routeNameSelect = document.getElementById('route_name');
+    const clientsSection = document.getElementById('clientsSection');
+    
+    // Hide sections and clear
+    routeNameSection.style.display = 'none';
+    clientsSection.style.display = 'none';
+    routeNameSelect.innerHTML = '<option value="">Select route</option>';
+    document.getElementById('clientsList').innerHTML = '';
+    document.getElementById('route').value = '';
+    
+    if (!selectedLocation) return;
+    
+    // Get selected location parts
+    const region = selectedOption.dataset.region;
+    const district = selectedOption.dataset.district;
+    const ward = selectedOption.dataset.ward;
+    const street = selectedOption.dataset.street;
+    
+    // Filter routes that match this location
+    const matchingRoutes = allRoutesData.filter(route => {
+        return route.region === region && 
+               route.district === district && 
+               route.ward === ward && 
+               route.street === street;
+    });
+    
+    if (matchingRoutes.length > 0) {
+        routeNameSection.style.display = 'block';
+        
+        // Populate route dropdown
+        matchingRoutes.forEach(route => {
+            const option = document.createElement('option');
+            option.value = route.route_name;
+            option.textContent = route.route_name;
+            option.dataset.routeId = route.id;
+            routeNameSelect.appendChild(option);
+        });
+    } else {
+        alert('No routes found for this site location. Please create a route in Route Management first.');
+    }
+}
+
+// Function to load clients for selected route
 function loadRouteClients() {
-    const routeTypeSelect = document.getElementById('route_type');
-    const selectedOption = routeTypeSelect.options[routeTypeSelect.selectedIndex];
-    const routeType = routeTypeSelect.value;
+    const routeNameSelect = document.getElementById('route_name');
+    const selectedRouteName = routeNameSelect.value;
     
     const clientsSection = document.getElementById('clientsSection');
-    const customClientSection = document.getElementById('customClientSection');
-    const customRouteNameSection = document.getElementById('customRouteNameSection');
     const clientsList = document.getElementById('clientsList');
     const routeInput = document.getElementById('route');
-    const customRouteNameInput = document.getElementById('custom_route_name');
     
-    // Hide all sections first
+    // Hide and clear
     clientsSection.style.display = 'none';
-    customClientSection.style.display = 'none';
-    customRouteNameSection.style.display = 'none';
     clientsList.innerHTML = '';
     routeInput.value = '';
+    document.getElementById('selectAll').checked = false;
     
-    if (!routeType) return;
+    if (!selectedRouteName) return;
     
-    if (routeType === 'custom') {
-        // Show custom client selection and route name input
-        customClientSection.style.display = 'block';
-        customRouteNameSection.style.display = 'block';
-        customRouteNameInput.required = true;
-    } else if (routeType === 'existing') {
-        // Get route name from data attribute
-        const routeName = selectedOption.dataset.route;
-        routeInput.value = routeName;
-        customRouteNameInput.required = false;
-        
-        // Show route clients selection
-        clientsSection.style.display = 'block';
-        
-        // Filter clients by selected route
-        const routeClients = allClientsData.filter(client => client.route === routeName);
-        
-        // Sort by route_sequence if available
-        routeClients.sort((a, b) => {
-            const seqA = a.route_sequence || 999;
-            const seqB = b.route_sequence || 999;
-            return seqA - seqB;
-        });
-        
-        // Build checkboxes list
-        routeClients.forEach(client => {
-            const div = document.createElement('div');
-            div.className = 'form-check mb-2';
-            div.innerHTML = `
-                <input class="form-check-input client-checkbox" type="checkbox" 
-                       name="client_ids[]" value="${client.id}" 
-                       id="client_${client.id}"
-                       data-address="${client.address || ''}"
-                       data-city="${client.city || ''}"
-                       data-state="${client.state || ''}"
-                       data-zip="${client.zip_code || ''}">
-                <label class="form-check-label" for="client_${client.id}">
-                    <strong>${client.name}</strong><br>
-                    <small class="text-muted">${client.address}, ${client.city}</small>
-                    ${client.route_sequence ? `<span class="badge bg-secondary ms-2">Seq: ${client.route_sequence}</span>` : ''}
-                </label>
-            `;
-            clientsList.appendChild(div);
-        });
+    // Set hidden route input
+    routeInput.value = selectedRouteName;
+    
+    // Filter clients by selected route
+    const routeClients = allClientsData.filter(client => client.route === selectedRouteName);
+    
+    if (routeClients.length === 0) {
+        alert('No clients assigned to this route yet. Please assign clients in Route Management first.');
+        return;
     }
+    
+    // Show clients section
+    clientsSection.style.display = 'block';
+    
+    // Sort by route_sequence if available
+    routeClients.sort((a, b) => {
+        const seqA = a.route_sequence || 999;
+        const seqB = b.route_sequence || 999;
+        return seqA - seqB;
+    });
+    
+    // Build checkboxes list
+    routeClients.forEach(client => {
+        const div = document.createElement('div');
+        div.className = 'form-check mb-2';
+        div.innerHTML = `
+            <input class="form-check-input client-checkbox" type="checkbox" 
+                   name="client_ids[]" value="${client.id}" 
+                   id="client_${client.id}"
+                   data-address="${client.address || ''}"
+                   data-city="${client.city || ''}"
+                   data-state="${client.state || ''}"
+                   data-zip="${client.zip_code || ''}">
+            <label class="form-check-label" for="client_${client.id}">
+                <strong>${client.name}</strong><br>
+                <small class="text-muted">${client.address}, ${client.city}</small>
+                ${client.route_sequence ? `<span class="badge bg-secondary ms-2">Seq: ${client.route_sequence}</span>` : ''}
+            </label>
+        `;
+        clientsList.appendChild(div);
+    });
 }
 
 function toggleAllClients() {
@@ -402,46 +430,33 @@ function toggleAllClients() {
     checkboxes.forEach(cb => cb.checked = selectAll.checked);
 }
 
-function loadSingleClientAddress() {
-    const select = document.getElementById('custom_client_id');
-    const option = select.options[select.selectedIndex];
-    
-    if (option.value) {
-        document.getElementById('pickup_address').value = option.dataset.address || '';
-        document.getElementById('city').value = option.dataset.city || '';
-        document.getElementById('state').value = option.dataset.state || '';
-        document.getElementById('zip_code').value = option.dataset.zip || '';
-    }
-}
-
 // Form validation before submit
 document.getElementById('scheduleForm').addEventListener('submit', function(e) {
-    const routeType = document.getElementById('route_type').value;
-    const customRouteName = document.getElementById('custom_route_name').value;
+    const siteLocation = document.getElementById('site_location').value;
+    const routeName = document.getElementById('route_name').value;
     const routeInput = document.getElementById('route');
     
-    if (routeType === 'custom') {
-        const customClient = document.getElementById('custom_client_id').value;
-        if (!customClient) {
-            e.preventDefault();
-            alert('Please select a client');
-            return false;
-        }
-        if (!customRouteName) {
-            e.preventDefault();
-            alert('Please enter a route name');
-            return false;
-        }
-        // Set the route value from custom route name
-        routeInput.value = customRouteName;
-    } else if (routeType === 'existing') {
-        const checkedClients = document.querySelectorAll('.client-checkbox:checked');
-        if (checkedClients.length === 0) {
-            e.preventDefault();
-            alert('Please select at least one client for this route');
-            return false;
-        }
+    if (!siteLocation) {
+        e.preventDefault();
+        alert('Please select a site location');
+        return false;
     }
+    
+    if (!routeName) {
+        e.preventDefault();
+        alert('Please select a route name');
+        return false;
+    }
+    
+    const checkedClients = document.querySelectorAll('.client-checkbox:checked');
+    if (checkedClients.length === 0) {
+        e.preventDefault();
+        alert('Please select at least one client for this route');
+        return false;
+    }
+    
+    // Ensure route value is set
+    routeInput.value = routeName;
 });
 </script>
 @endsection

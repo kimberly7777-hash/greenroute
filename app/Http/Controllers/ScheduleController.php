@@ -31,7 +31,47 @@ class ScheduleController extends Controller
             $clients = Client::where('contractor_id', Auth::id())->get();
             $assignedClient = Client::where('contractor_id', Auth::id())->first();
             
-            return view('contractor.create-schedule', compact('contractor', 'clients', 'assignedClient'));
+            // Get full site locations (Region-District-Ward-Street) from tbl_locations
+            $siteLocations = Location::select('region', 'district', 'ward', 'street')
+                ->distinct()
+                ->orderBy('region')
+                ->orderBy('district')
+                ->orderBy('ward')
+                ->orderBy('street')
+                ->get()
+                ->map(function ($location) {
+                    return [
+                        'full' => implode(' - ', array_filter([
+                            $location->region,
+                            $location->district,
+                            $location->ward,
+                            $location->street
+                        ])),
+                        'region' => $location->region,
+                        'district' => $location->district,
+                        'ward' => $location->ward,
+                        'street' => $location->street,
+                    ];
+                })
+                ->unique('full')
+                ->values();
+            
+            // Get routes with their assigned locations
+            $routes = ContractorRoute::where('contractor_id', Auth::id())
+                ->where('is_active', true)
+                ->orderBy('route_name')
+                ->get()
+                ->map(function ($route) {
+                    $route->location_full = implode(' - ', array_filter([
+                        $route->region,
+                        $route->district,
+                        $route->ward,
+                        $route->street
+                    ]));
+                    return $route;
+                });
+            
+            return view('contractor.create-schedule', compact('contractor', 'clients', 'assignedClient', 'siteLocations', 'routes'));
         }
         
         // Get site locations from tbl_locations grouped by Region → District
