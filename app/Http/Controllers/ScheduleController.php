@@ -30,7 +30,9 @@ class ScheduleController extends Controller
         // Check if user is a contractor and redirect to contractor-specific view
         if (Auth::user()->user_type === 'contractor') {
             $contractor = Auth::user();
-            $clients = Client::where('contractor_id', Auth::id())->get();
+            $clients = Client::where('contractor_id', Auth::id())
+                ->select('id', 'name', 'registration_number', 'email', 'phone', 'address', 'city', 'region', 'district', 'ward', 'street', 'route')
+                ->get();
             
             // Get regions only - for initial dropdown (dependent dropdowns)
             $regions = collect([]);

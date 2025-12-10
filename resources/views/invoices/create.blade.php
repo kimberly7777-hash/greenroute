@@ -233,36 +233,37 @@
     const locationMap = new Map();
     
     allClients.forEach(client => {
-        if (client.region) {
-            const parts = [
-                client.region,
-                client.district,
-                client.ward,
-                client.street
-            ].filter(p => p);
-            
+        // Build location from available fields
+        const parts = [];
+        if (client.region) parts.push(client.region);
+        if (client.district) parts.push(client.district);
+        if (client.ward) parts.push(client.ward);
+        if (client.street) parts.push(client.street);
+        
+        if (parts.length > 0) {
             const locationString = parts.join(' → ');
             const locationKey = parts.join('|');
             
             if (!locationMap.has(locationKey)) {
-                locationMap.set(locationKey, {
+                const locData = {
                     display: locationString,
-                    region: client.region,
-                    district: client.district,
-                    ward: client.ward,
-                    street: client.street
-                });
-                locationList.push({
-                    display: locationString,
-                    region: client.region,
-                    district: client.district,
-                    ward: client.ward,
-                    street: client.street,
+                    region: client.region || '',
+                    district: client.district || '',
+                    ward: client.ward || '',
+                    street: client.street || '',
                     key: locationKey
-                });
+                };
+                locationMap.set(locationKey, locData);
+                locationList.push(locData);
             }
         }
     });
+    
+    console.log('Invoice form - Unique locations found:', locationList.length);
+    console.log('Sample locations:', locationList.slice(0, 5).map(l => l.display));
+    
+    // Sort locations alphabetically
+    locationList.sort((a, b) => a.display.localeCompare(b.display));
     
     // Autocomplete functionality
     const autocompleteInput = document.getElementById('locationAutocomplete');
@@ -270,27 +271,39 @@
     let currentFocus = -1;
     let selectedLocation = null;
     
-    autocompleteInput.addEventListener('input', function() {
-        const searchTerm = this.value.toLowerCase();
+    function showLocationDropdown(searchTerm = '') {
         dropdown.innerHTML = '';
         currentFocus = -1;
         
-        if (searchTerm.length < 2) {
-            dropdown.classList.remove('show');
-            return;
-        }
-        
-        const filtered = locationList.filter(loc => 
-            loc.display.toLowerCase().includes(searchTerm)
-        );
-        
-        if (filtered.length === 0) {
-            dropdown.innerHTML = '<div class="autocomplete-item" style="color: #999;">No locations found</div>';
+        if (locationList.length === 0) {
+            dropdown.innerHTML = '<div class="autocomplete-item" style="color: #999;">No client locations available. Please ensure clients have location data.</div>';
             dropdown.classList.add('show');
             return;
         }
         
-        filtered.slice(0, 50).forEach((loc, index) => {
+        const search = searchTerm.toLowerCase().trim();
+        let filtered = locationList;
+        
+        if (search.length > 0) {
+            filtered = locationList.filter(loc => 
+                loc.display.toLowerCase().includes(search) ||
+                loc.region.toLowerCase().includes(search) ||
+                loc.district.toLowerCase().includes(search) ||
+                loc.ward.toLowerCase().includes(search) ||
+                loc.street.toLowerCase().includes(search)
+            );
+        }
+        
+        if (filtered.length === 0) {
+            dropdown.innerHTML = `<div class="autocomplete-item" style="color: #999;">No locations matching "${searchTerm}"</div>`;
+            dropdown.classList.add('show');
+            return;
+        }
+        
+        const maxResults = 50;
+        const resultsToShow = filtered.slice(0, maxResults);
+        
+        resultsToShow.forEach((loc, index) => {
             const item = document.createElement('div');
             item.className = 'autocomplete-item';
             item.textContent = loc.display;
@@ -303,7 +316,27 @@
             dropdown.appendChild(item);
         });
         
+        if (filtered.length > maxResults) {
+            const moreItem = document.createElement('div');
+            moreItem.className = 'autocomplete-item';
+            moreItem.style.color = '#999';
+            moreItem.style.fontStyle = 'italic';
+            moreItem.textContent = `+ ${filtered.length - maxResults} more locations (refine your search)`;
+            dropdown.appendChild(moreItem);
+        }
+        
         dropdown.classList.add('show');
+    }
+    
+    autocompleteInput.addEventListener('input', function() {
+        showLocationDropdown(this.value);
+    });
+    
+    // Show all locations when clicking the input field
+    autocompleteInput.addEventListener('focus', function() {
+        if (this.value.trim() === '') {
+            showLocationDropdown('');
+        }
     });
     
     // Keyboard navigation

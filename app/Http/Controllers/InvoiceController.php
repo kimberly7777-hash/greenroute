@@ -39,7 +39,10 @@ class InvoiceController extends Controller
     public function create()
     {
         $contractorId = Auth::id();
-        $clients = Client::where('contractor_id', $contractorId)->orderBy('name')->get();
+        $clients = Client::where('contractor_id', $contractorId)
+            ->select('id', 'name', 'registration_number', 'email', 'phone', 'address', 'city', 'region', 'district', 'ward', 'street', 'route')
+            ->orderBy('name')
+            ->get();
         $schedules = Schedule::where('contractor_id', $contractorId)
             ->where('status', 'completed')
             ->whereDoesntHave('invoices')
