@@ -135,70 +135,66 @@
 
                     <!-- Site Location Selection -->
                     <div class="mb-4">
-                        <label for="site_location" class="form-label">
-                            Site Location <span class="required-star">*</span>
-                        </label>
-                        
-                        @if(count($siteLocations) > 0)
-                            <select name="site_location" id="site_location" required class="form-select" onchange="loadRoutesBySiteLocation()">
-                                <option value="">Select site location</option>
-                                @foreach($siteLocations as $location)
-                                <option value="{{ $location['full'] }}" 
-                                        data-region="{{ $location['region'] }}"
-                                        data-district="{{ $location['district'] }}"
-                                        data-ward="{{ $location['ward'] }}"
-                                        data-street="{{ $location['street'] }}">
-                                    {{ $location['full'] }}
-                                </option>
-                                @endforeach
-                            </select>
-                            <small class="text-muted">Format: Region - District - Ward - Street</small>
-                        @else
-                            <div class="alert alert-warning" role="alert">
-                                <i class="bi bi-exclamation-triangle-fill me-2"></i>
-                                <strong>No site locations available yet.</strong><br>
-                                Please go to <a href="{{ route('route-management.index') }}" class="alert-link">Route Management</a> first and:
-                                <ol class="mb-0 mt-2">
-                                    <li>Create a new route OR edit an existing route</li>
-                                    <li>Assign a site location (Region - District - Ward - Street) to the route</li>
-                                    <li>Then return here to create schedules</li>
-                                </ol>
+                        <label class="form-label fw-bold">Site Location <span class="required-star">*</span></label>
+                        <div class="card bg-light border-0">
+                            <div class="card-body">
+                                <div class="row g-2">
+                                    <div class="col-md-3">
+                                        <select id="regionSelect" class="form-select" onchange="loadDistricts()">
+                                            <option value="">Select Region</option>
+                                            @foreach($regions as $region)
+                                                <option value="{{ $region }}">{{ $region }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <select id="districtSelect" class="form-select" onchange="loadWards()" disabled>
+                                            <option value="">Select District</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <select id="wardSelect" class="form-select" onchange="loadStreets()" disabled>
+                                            <option value="">Select Ward</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <select id="streetSelect" class="form-select" onchange="loadLocationData()" disabled>
+                                            <option value="">Select Street (Optional)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <input type="hidden" name="site_location" id="site_location_input">
                             </div>
-                            <select name="site_location" id="site_location" required class="form-select" disabled>
-                                <option value="">No locations available - Please create routes first</option>
-                            </select>
-                        @endif
+                        </div>
                     </div>
 
-                    <!-- Route Name Selection (filtered by site location) -->
-                    <div class="mb-4" id="routeNameSection" style="display: none;">
+                    <!-- Route Name Selection -->
+                    <div class="mb-4" id="routeNameSection">
                         <label for="route_name" class="form-label">
                             Route Name <span class="required-star">*</span>
                         </label>
-                        <select name="route_name" id="route_name" required class="form-select" onchange="loadRouteClients()">
+                        <select name="route_name" id="route_name" required class="form-select">
                             <option value="">Select route</option>
                         </select>
-                        <small class="text-muted">Routes assigned to the selected location</small>
+                        <small class="text-muted">Select a route for this schedule (filtered by location)</small>
                     </div>
 
-                    <!-- Hidden field for actual route value -->
-                    <input type="hidden" name="route" id="route" value="">
-
-                    <!-- Clients on Selected Route -->
+                    <!-- Clients Selection -->
                     <div class="mb-4" id="clientsSection" style="display: none;">
                         <label class="form-label">
-                            Select Clients on This Route <span class="required-star">*</span>
+                            Select Clients <span class="required-star">*</span>
                         </label>
-                        <div class="border rounded p-3" style="max-height: 300px; overflow-y: auto; background: #f8f9fa;">
-                            <div class="form-check mb-2">
-                                <input class="form-check-input" type="checkbox" id="selectAll" onchange="toggleAllClients()">
-                                <label class="form-check-label fw-bold" for="selectAll">
-                                    Select All Clients
-                                </label>
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="text-muted small">Clients in selected location</span>
+                            <div>
+                                <button type="button" class="btn btn-sm btn-outline-primary" onclick="selectAll()">Select All</button>
+                                <button type="button" class="btn btn-sm btn-outline-secondary" onclick="deselectAll()">Deselect All</button>
                             </div>
-                            <hr>
+                        </div>
+                        <div class="border rounded p-3" style="max-height: 300px; overflow-y: auto; background: #f8f9fa;">
                             <div id="clientsList"></div>
                         </div>
+                        <div class="form-text text-muted mt-1"><span id="selected_count">0</span> clients selected</div>
                     </div>
 
 
@@ -335,154 +331,220 @@ const allRoutesData = @json($routes);
 console.log('Clients loaded:', allClientsData.length);
 console.log('Routes loaded:', allRoutesData.length);
 
-// Function to load routes based on selected site location
-function loadRoutesBySiteLocation() {
-    const siteLocationSelect = document.getElementById('site_location');
-    const selectedOption = siteLocationSelect.options[siteLocationSelect.selectedIndex];
-    const selectedLocation = siteLocationSelect.value;
+// Dependent Dropdowns Logic
+function loadDistricts() {
+    const region = document.getElementById('regionSelect').value;
+    const districtSelect = document.getElementById('districtSelect');
     
-    const routeNameSection = document.getElementById('routeNameSection');
-    const routeNameSelect = document.getElementById('route_name');
-    const clientsSection = document.getElementById('clientsSection');
+    // Reset lower dropdowns
+    districtSelect.innerHTML = '<option value="">Select District</option>';
+    districtSelect.disabled = true;
+    document.getElementById('wardSelect').innerHTML = '<option value="">Select Ward</option>';
+    document.getElementById('wardSelect').disabled = true;
+    document.getElementById('streetSelect').innerHTML = '<option value="">Select Street (Optional)</option>';
+    document.getElementById('streetSelect').disabled = true;
     
-    // Hide sections and clear
-    routeNameSection.style.display = 'none';
-    clientsSection.style.display = 'none';
-    routeNameSelect.innerHTML = '<option value="">Select route</option>';
-    document.getElementById('clientsList').innerHTML = '';
-    document.getElementById('route').value = '';
-    
-    if (!selectedLocation) return;
-    
-    // Get selected location parts
-    const region = selectedOption.dataset.region || '';
-    const district = selectedOption.dataset.district || '';
-    const ward = selectedOption.dataset.ward || '';
-    const street = selectedOption.dataset.street || '';
-    
-    console.log('Selected location:', { region, district, ward, street });
-    
-    // Filter routes that match this location (handle null/undefined values)
-    const matchingRoutes = allRoutesData.filter(route => {
-        const regionMatch = route.region === region;
-        const districtMatch = route.district === district;
-        const wardMatch = (route.ward || '') === ward;
-        const streetMatch = (route.street || '') === street;
-        
-        return regionMatch && districtMatch && wardMatch && streetMatch;
-    });
-    
-    console.log('Matching routes found:', matchingRoutes.length);
-    
-    if (matchingRoutes.length > 0) {
-        routeNameSection.style.display = 'block';
-        
-        // Populate route dropdown
-        matchingRoutes.forEach(route => {
-            const option = document.createElement('option');
-            option.value = route.route_name;
-            option.textContent = route.route_name;
-            option.dataset.routeId = route.id;
-            routeNameSelect.appendChild(option);
-        });
-    } else {
-        alert('No routes found for this site location. Please create a route in Route Management first and assign it to this location.');
+    // Clear selection
+    updateLocationInput();
+    loadLocationData(); // Refresh lists based on just Region
+
+    if (region) {
+        fetch(`/location/districts?region=${encodeURIComponent(region)}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    data.data.forEach(d => {
+                        const opt = document.createElement('option');
+                        opt.value = d;
+                        opt.textContent = d;
+                        districtSelect.appendChild(opt);
+                    });
+                    districtSelect.disabled = false;
+                }
+            });
     }
 }
 
-// Function to load clients for selected route
-function loadRouteClients() {
-    const routeNameSelect = document.getElementById('route_name');
-    const selectedRouteName = routeNameSelect.value;
+function loadWards() {
+    const region = document.getElementById('regionSelect').value;
+    const district = document.getElementById('districtSelect').value;
+    const wardSelect = document.getElementById('wardSelect');
     
-    const clientsSection = document.getElementById('clientsSection');
-    const clientsList = document.getElementById('clientsList');
-    const routeInput = document.getElementById('route');
+    wardSelect.innerHTML = '<option value="">Select Ward</option>';
+    wardSelect.disabled = true;
+    document.getElementById('streetSelect').innerHTML = '<option value="">Select Street (Optional)</option>';
+    document.getElementById('streetSelect').disabled = true;
     
-    // Hide and clear
-    clientsSection.style.display = 'none';
-    clientsList.innerHTML = '';
-    routeInput.value = '';
-    document.getElementById('selectAll').checked = false;
+    updateLocationInput();
+    loadLocationData();
+
+    if (region && district) {
+        fetch(`/location/wards?region=${encodeURIComponent(region)}&district=${encodeURIComponent(district)}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    data.data.forEach(w => {
+                        const opt = document.createElement('option');
+                        opt.value = w;
+                        opt.textContent = w;
+                        wardSelect.appendChild(opt);
+                    });
+                    wardSelect.disabled = false;
+                }
+            });
+    }
+}
+
+function loadStreets() {
+    const region = document.getElementById('regionSelect').value;
+    const district = document.getElementById('districtSelect').value;
+    const ward = document.getElementById('wardSelect').value;
+    const streetSelect = document.getElementById('streetSelect');
     
-    if (!selectedRouteName) return;
+    streetSelect.innerHTML = '<option value="">Select Street (Optional)</option>';
+    streetSelect.disabled = true;
     
-    // Set hidden route input
-    routeInput.value = selectedRouteName;
+    updateLocationInput();
+    loadLocationData();
+
+    if (region && district && ward) {
+        fetch(`/location/streets?region=${encodeURIComponent(region)}&district=${encodeURIComponent(district)}&ward=${encodeURIComponent(ward)}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    data.data.forEach(s => {
+                        const opt = document.createElement('option');
+                        opt.value = s;
+                        opt.textContent = s;
+                        streetSelect.appendChild(opt);
+                    });
+                    streetSelect.disabled = false;
+                }
+            });
+    }
+}
+
+function updateLocationInput() {
+    const region = document.getElementById('regionSelect').value;
+    const district = document.getElementById('districtSelect').value;
+    const ward = document.getElementById('wardSelect').value;
+    const street = document.getElementById('streetSelect').value;
     
-    // Filter clients by selected route
-    const routeClients = allClientsData.filter(client => client.route === selectedRouteName);
+    const parts = [region, district, ward, street].filter(p => p);
+    document.getElementById('site_location_input').value = parts.join('|');
+}
+
+function loadLocationData() {
+    updateLocationInput();
     
-    if (routeClients.length === 0) {
-        alert('No clients assigned to this route yet. Please assign clients in Route Management first.');
+    const region = document.getElementById('regionSelect').value;
+    const district = document.getElementById('districtSelect').value;
+    const ward = document.getElementById('wardSelect').value;
+    const street = document.getElementById('streetSelect').value;
+    
+    if (!region) {
+        document.getElementById('routeNameSection').style.display = 'none';
+        document.getElementById('clientsSection').style.display = 'none';
         return;
     }
     
-    // Show clients section
-    clientsSection.style.display = 'block';
-    
-    // Sort by route_sequence if available
-    routeClients.sort((a, b) => {
-        const seqA = a.route_sequence || 999;
-        const seqB = b.route_sequence || 999;
-        return seqA - seqB;
+    // Filter Routes
+    const matchingRoutes = allRoutesData.filter(route => {
+        if (route.region !== region) return false;
+        if (district && route.district !== district) return false;
+        if (ward && route.ward && route.ward !== ward) return false;
+        if (street && route.street && route.street !== street) return false;
+        return true;
     });
     
-    // Build checkboxes list
-    routeClients.forEach(client => {
-        const div = document.createElement('div');
-        div.className = 'form-check mb-2';
-        div.innerHTML = `
-            <input class="form-check-input client-checkbox" type="checkbox" 
-                   name="client_ids[]" value="${client.id}" 
-                   id="client_${client.id}"
-                   data-address="${client.address || ''}"
-                   data-city="${client.city || ''}"
-                   data-state="${client.state || ''}"
-                   data-zip="${client.zip_code || ''}">
-            <label class="form-check-label" for="client_${client.id}">
-                <strong>${client.name}</strong><br>
-                <small class="text-muted">${client.address}, ${client.city}</small>
-                ${client.route_sequence ? `<span class="badge bg-secondary ms-2">Seq: ${client.route_sequence}</span>` : ''}
-            </label>
-        `;
-        clientsList.appendChild(div);
+    const routeSelect = document.getElementById('route_name');
+    routeSelect.innerHTML = '<option value="">Select route</option>';
+    matchingRoutes.forEach(route => {
+        const option = document.createElement('option');
+        option.value = route.route_name;
+        option.textContent = route.route_name;
+        routeSelect.appendChild(option);
     });
+    document.getElementById('routeNameSection').style.display = 'block';
+    
+    // Filter Clients
+    const matchingClients = allClientsData.filter(client => {
+        if (client.region !== region) return false;
+        if (district && client.district !== district) return false;
+        if (ward && client.ward !== ward) return false;
+        if (street && client.street !== street) return false;
+        return true;
+    });
+    
+    renderClients(matchingClients);
+    document.getElementById('clientsSection').style.display = 'block';
 }
 
-function toggleAllClients() {
-    const selectAll = document.getElementById('selectAll');
-    const checkboxes = document.querySelectorAll('.client-checkbox');
-    checkboxes.forEach(cb => cb.checked = selectAll.checked);
+function renderClients(clients) {
+    const list = document.getElementById('clientsList');
+    list.innerHTML = '';
+    
+    if (clients.length === 0) {
+        list.innerHTML = '<p class="text-muted text-center py-2">No clients found in this location.</p>';
+    } else {
+        clients.forEach(client => {
+            const div = document.createElement('div');
+            div.className = 'form-check mb-2';
+            div.innerHTML = `
+                <input class="form-check-input client-checkbox" type="checkbox" 
+                       name="client_ids[]" value="${client.id}" 
+                       id="client_${client.id}"
+                       onchange="updateCount()">
+                <label class="form-check-label" for="client_${client.id}">
+                    <strong>${client.name}</strong> <span class="text-muted">(${client.registration_number})</span><br>
+                    <small class="text-muted">${client.address || ''}, ${client.city || ''}</small>
+                    ${client.route ? `<span class="badge bg-secondary ms-2">${client.route}</span>` : ''}
+                </label>
+            `;
+            list.appendChild(div);
+        });
+    }
+    updateCount();
 }
 
-// Form validation before submit
+function updateCount() {
+    const count = document.querySelectorAll('.client-checkbox:checked').length;
+    document.getElementById('selected_count').textContent = count;
+}
+
+function selectAll() {
+    document.querySelectorAll('.client-checkbox').forEach(cb => cb.checked = true);
+    updateCount();
+}
+
+function deselectAll() {
+    document.querySelectorAll('.client-checkbox').forEach(cb => cb.checked = false);
+    updateCount();
+}
+
+// Form validation
 document.getElementById('scheduleForm').addEventListener('submit', function(e) {
-    const siteLocation = document.getElementById('site_location').value;
+    const region = document.getElementById('regionSelect').value;
     const routeName = document.getElementById('route_name').value;
-    const routeInput = document.getElementById('route');
     
-    if (!siteLocation) {
+    if (!region) {
         e.preventDefault();
-        alert('Please select a site location');
+        alert('Please select a Site Location (at least Region).');
         return false;
     }
     
     if (!routeName) {
         e.preventDefault();
-        alert('Please select a route name');
+        alert('Please select a Route Name.');
         return false;
     }
     
     const checkedClients = document.querySelectorAll('.client-checkbox:checked');
     if (checkedClients.length === 0) {
         e.preventDefault();
-        alert('Please select at least one client for this route');
+        alert('Please select at least one client.');
         return false;
     }
-    
-    // Ensure route value is set
-    routeInput.value = routeName;
 });
 </script>
 @endsection
