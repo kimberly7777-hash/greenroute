@@ -283,7 +283,7 @@
                             <td>
                                 <span class="badge bg-primary">{{ $schedule->route ?? 'N/A' }}</span>
                             </td>
-                            <td>{{ $schedule->client->name ?? 'Unknown Client' }}</td>
+                            <td>{{ optional($schedule->client)->name ?? 'Unknown Client' }}</td>
                             <td>{{ $schedule->pickup_location }}</td>
                             <td>{{ $schedule->pickup_address }}</td>
                             <td>{{ $schedule->pickup_date ? $schedule->pickup_date->format('M d, Y') : 'N/A' }}</td>
