@@ -312,7 +312,7 @@
                         <a href="{{ route('schedules.index') }}" class="btn-secondary-custom">
                             <i class="bi bi-x-circle me-1"></i> Cancel
                         </a>
-                        <button type="submit" class="btn-primary-custom" {{ count($siteLocations) == 0 ? 'disabled' : '' }}>
+                        <button type="submit" class="btn-primary-custom">
                             <i class="bi bi-check-circle me-1"></i> Create Schedule
                         </button>
                     </div>

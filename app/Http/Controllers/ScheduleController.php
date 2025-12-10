@@ -31,10 +31,9 @@ class ScheduleController extends Controller
         if (Auth::user()->user_type === 'contractor') {
             $contractor = Auth::user();
             $clients = Client::where('contractor_id', Auth::id())->get();
-            $assignedClient = Client::where('contractor_id', Auth::id())->first();
             
             // Get regions only - for initial dropdown (dependent dropdowns)
-            $regions = [];
+            $regions = collect([]);
             if (Schema::hasTable('tbl_locations')) {
                 try {
                     $regions = Location::select('region')
@@ -42,12 +41,11 @@ class ScheduleController extends Controller
                         ->orderBy('region')
                         ->pluck('region');
                 } catch (\Exception $e) {
-                    $regions = [];
+                    $regions = collect([]);
                 }
             }
             
             // Get routes with their assigned locations (only active routes with locations)
-            // We pass this to JS to filter on client side or we can use AJAX
             $routes = ContractorRoute::where('contractor_id', Auth::id())
                 ->where('is_active', true)
                 ->whereNotNull('region')
@@ -55,15 +53,21 @@ class ScheduleController extends Controller
                 ->orderBy('route_name')
                 ->get();
             
-            return view('contractor.create-schedule', compact('contractor', 'clients', 'assignedClient', 'regions', 'routes'));
+            // Pass empty collections as defaults to avoid null errors
+            $siteLocations = collect([]);
+            $assignedClient = $clients->first();
+            
+            return view('contractor.create-schedule', compact('contractor', 'clients', 'assignedClient', 'regions', 'routes', 'siteLocations'));
         }
         
         // Admin view (simplified for now)
-        $regions = [];
+        $regions = collect([]);
         if (Schema::hasTable('tbl_locations')) {
             try {
                 $regions = Location::select('region')->distinct()->orderBy('region')->pluck('region');
-            } catch (\Exception $e) {}
+            } catch (\Exception $e) {
+                $regions = collect([]);
+            }
         }
         return view('schedules.create', compact('regions'));
     }
