@@ -341,7 +341,7 @@
                 </h2>
             </div>
             
-            <form method="POST" action="{{ route('contractor.clients.store') }}">
+            <form method="POST" action="{{ route('contractor.clients.store') }}" id="clientRegistrationForm">
                 @csrf
                 
                 <!-- Business and Contact Information -->
@@ -874,6 +874,14 @@
                 if (!isValid) {
                     e.preventDefault();
                     showNotification('Please fill in all required fields marked with *.', 'error');
+                } else {
+                    // Disable button and show loading state
+                    const btn = form.querySelector('button[type="submit"]');
+                    const originalContent = btn.innerHTML;
+                    btn.disabled = true;
+                    btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Processing...';
+                    
+                    // Allow form submission to proceed
                 }
             });
             
