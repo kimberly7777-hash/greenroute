@@ -188,16 +188,7 @@
                         <small class="text-muted"><i class="bi bi-info-circle"></i> Select a location to load clients. Format: Region → District → Ward → Street</small>
                     </div>
 
-                    <!-- Route Name Selection -->
-                    <div class="mb-4" id="routeNameSection">
-                        <label for="route_name" class="form-label">
-                            Route Name <span class="required-star">*</span>
-                        </label>
-                        <select name="route_name" id="route_name" required class="form-select">
-                            <option value="">Select route</option>
-                        </select>
-                        <small class="text-muted">Select a route for this schedule (filtered by location)</small>
-                    </div>
+                    <!-- Route Name Selection Removed -->
 
                     <!-- Clients Selection -->
                     <div class="mb-4" id="clientsSection" style="display: none;">
@@ -245,36 +236,6 @@
                                placeholder="e.g., Main Office, Warehouse A" class="form-control">
                     </div>
 
-                    <div class="mb-4">
-                        <label for="pickup_address" class="form-label">
-                            Pickup Address <span class="required-star">*</span>
-                        </label>
-                        <input type="text" name="pickup_address" id="pickup_address" required
-                               placeholder="Street address" class="form-control">
-                    </div>
-
-                    <div class="row mb-4">
-                        <div class="col-md-4 mb-3">
-                            <label for="city" class="form-label">
-                                City <span class="required-star">*</span>
-                            </label>
-                            <input type="text" name="city" id="city" required class="form-control">
-                        </div>
-
-                        <div class="col-md-4 mb-3">
-                            <label for="state" class="form-label">
-                                State <span class="required-star">*</span>
-                            </label>
-                            <input type="text" name="state" id="state" required class="form-control">
-                        </div>
-
-                        <div class="col-md-4 mb-3">
-                            <label for="zip_code" class="form-label">
-                                ZIP Code <span class="required-star">*</span>
-                            </label>
-                            <input type="text" name="zip_code" id="zip_code" required class="form-control">
-                        </div>
-                    </div>
 
                     <!-- Service Details -->
                     <div class="row mb-4">
@@ -519,29 +480,9 @@ document.addEventListener('click', function(e) {
 
 function loadLocationData(location) {
     if (!location || !location.region) {
-        document.getElementById('routeNameSection').style.display = 'none';
         document.getElementById('clientsSection').style.display = 'none';
         return;
     }
-    
-    // Filter Routes
-    const matchingRoutes = allRoutesData.filter(route => {
-        if (route.region !== location.region) return false;
-        if (location.district && route.district !== location.district) return false;
-        if (location.ward && route.ward && route.ward !== location.ward) return false;
-        if (location.street && route.street && route.street !== location.street) return false;
-        return true;
-    });
-    
-    const routeSelect = document.getElementById('route_name');
-    routeSelect.innerHTML = '<option value="">Select route</option>';
-    matchingRoutes.forEach(route => {
-        const option = document.createElement('option');
-        option.value = route.route_name;
-        option.textContent = route.route_name;
-        routeSelect.appendChild(option);
-    });
-    document.getElementById('routeNameSection').style.display = 'block';
     
     // Filter Clients
     const matchingClients = allClientsData.filter(client => {
@@ -610,21 +551,6 @@ function deselectAll() {
 // Form validation
 document.getElementById('scheduleForm').addEventListener('submit', function(e) {
     const locationInput = document.getElementById('site_location_input').value;
-    const routeName = document.getElementById('route_name').value;
-    
-    if (!locationInput || !selectedLocation) {
-        e.preventDefault();
-        alert('Please select a Site Location from the autocomplete dropdown.');
-        autocompleteInput.focus();
-        return false;
-    }
-    
-    if (!routeName) {
-        e.preventDefault();
-        alert('Please select a Route Name.');
-        return false;
-    }
-    
     const checkedClients = document.querySelectorAll('.client-checkbox:checked');
     if (checkedClients.length === 0) {
         e.preventDefault();
