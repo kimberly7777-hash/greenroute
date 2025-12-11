@@ -57,12 +57,6 @@ Route::get('/debug-api', function () {
     return view('debug-api');
 });
 
-// Subscription routes
-Route::middleware(['auth'])->group(function () {
-    Route::get('/subscription/profile', [SubscriptionController::class, 'profile'])->name('subscription.profile');
-    Route::post('/subscription/store', [SubscriptionController::class, 'store'])->name('subscription.store');
-});
-
 // Main dashboard route that redirects to the appropriate dashboard based on user type
 Route::get('/dashboard', [DashboardController::class, 'index'])
     ->middleware(['auth', 'verified'])

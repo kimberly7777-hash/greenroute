@@ -25,11 +25,6 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        // Check if user needs to complete subscription
-        if (Auth::user()->needsSubscription()) {
-            return redirect()->route('subscription.profile');
-        }
-
         if (Auth::user()->user_type === 'client') {
             return redirect()->route('dashboard.client');
         } elseif (Auth::user()->user_type === 'contractor') {

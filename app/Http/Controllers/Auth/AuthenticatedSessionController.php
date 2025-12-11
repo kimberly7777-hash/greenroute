@@ -40,11 +40,6 @@ class AuthenticatedSessionController extends Controller
             return redirect()->intended(route('dashboard.admin'));
         }
 
-        // Check if user needs to complete subscription (contractors only)
-        if ($user->needsSubscription()) {
-            return redirect()->route('subscription.profile');
-        }
-
         // Redirect based on user type
         return match($user->user_type) {
             'contractor' => redirect()->intended(route('dashboard.contractor')),
