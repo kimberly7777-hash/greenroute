@@ -39,28 +39,14 @@ class ClientPortalController extends Controller
     {
         $client = $this->resolveClient();
         
-        // For public route, use real client data for demonstration
         if (!$client) {
-            $client = Client::where('registration_number', 'CL041204')->first();
-            if (!$client) {
-                $client = (object) [
-                    'name' => 'Demo Client',
-                    'contact_name' => 'John Doe',
-                    'registration_number' => 'CL000000',
-                    'phone' => '+1234567890',
-                    'address' => '123 Demo Street',
-                    'city' => 'Demo City',
-                    'state' => 'Demo State',
-                    'zip_code' => '12345',
-                    'email' => 'demo@example.com',
-                    'phone_2' => null,
-                    'phone_3' => null,
-                    'email_2' => null,
-                    'category' => 'residential',
-                    'status' => 'active',
-                    'contractor_id' => null
-                ];
+            // If logged in as Contractor, redirect to Contractor Dashboard
+            if (Auth::user()->hasRole('contractor')) {
+                return redirect()->route('dashboard.contractor');
             }
+            
+            // If just a regular user with no client record
+            return redirect()->route('dashboard')->with('error', 'No client account associated with this user.');
         }
 
         if (is_object($client) && isset($client->id) && isset($client->contractor_id)) {

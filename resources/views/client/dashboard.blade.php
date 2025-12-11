@@ -299,7 +299,7 @@
                 <!-- Dashboard Section -->
                 <div id="dashboard" class="content-section active">
                     <div class="welcome-section">
-                        <h2 class="welcome-title" id="welcomeMessage">WELCOME, [Client Name]</h2>
+                        <h2 class="welcome-title" id="welcomeMessage">WELCOME, {{ strtoupper($client->contact_name ?? $client->name ?? 'CLIENT') }}</h2>
                     </div>
 
                     <!-- Account Profile Section -->
