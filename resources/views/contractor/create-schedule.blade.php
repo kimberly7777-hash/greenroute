@@ -175,7 +175,7 @@
                     <!-- Contractor Info Removed -->
 
                     <!-- Site Location Selection -->
-                    <div class="mb-4">
+                    <div class="mb-4 position-relative">
                         <label class="form-label fw-bold">Site Location <span class="required-star">*</span></label>
                         <input type="text" 
                                id="locationAutocomplete" 
