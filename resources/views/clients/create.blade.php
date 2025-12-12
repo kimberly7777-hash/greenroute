@@ -328,9 +328,12 @@
 </head>
 <body>
     <div class="container-fluid">
-        <!-- Page Header -->
-        <div class="page-header">
+        <!-- Header Section -->
+        <div class="page-header d-flex justify-content-between align-items-center">
             <h1 class="page-title">Register New Client</h1>
+            <a href="{{ route('dashboard.contractor') }}" class="btn btn-outline-dark d-flex align-items-center gap-2" style="border-color: #cbd5e1;">
+                <i class="bi bi-house-door-fill" style="color: var(--primary-color);"></i> Home
+            </a>
         </div>
 
         <!-- Client Registration Form -->

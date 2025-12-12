@@ -392,12 +392,17 @@
 </head>
 <body>
     <div class="container">
-        <!-- Page Header -->
+        <!-- Header Section -->
         <div class="page-header">
             <h1 class="page-title">Billing & Payments</h1>
-            <a href="{{ route('billing.create') }}" class="btn btn-success">
-                <i class="bi bi-plus-circle"></i> Create Invoice
-            </a>
+            <div class="d-flex gap-2">
+                <a href="{{ route('dashboard.contractor') }}" class="btn btn-outline-dark d-flex align-items-center gap-2" style="border-color: #cbd5e1;" target="_parent">
+                    <i class="bi bi-house-door-fill" style="color: var(--primary-color);"></i> Home
+                </a>
+                <a href="{{ route('billing.create') }}" class="btn btn-success">
+                    <i class="bi bi-plus-circle"></i> Create Invoice
+                </a>
+            </div>
         </div>
 
         <!-- Stats Section - No Cards -->

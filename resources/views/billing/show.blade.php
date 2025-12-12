@@ -71,6 +71,9 @@
                         <button class="btn btn-accent btn-sm" onclick="sendReminder({{ $invoice->id }})">Send Reminder</button>
                     @endif
                 @endif
+                <a href="{{ route('dashboard.contractor') }}" class="btn btn-outline-custom btn-sm d-inline-flex align-items-center gap-1" target="_parent">
+                    <i class="bi bi-house-door-fill"></i> Home
+                </a>
                 <a href="{{ route('billing.index') }}" class="btn btn-outline-custom btn-sm">Back</a>
             </div>
         </div>

@@ -5,6 +5,9 @@
     <div class="max-w-2xl mx-auto">
         <div class="flex items-center justify-between mb-6">
             <div class="flex items-center">
+                <a href="{{ route('dashboard.contractor') }}" class="text-gray-600 hover:text-gray-800 mr-4 flex items-center" title="Home" target="_parent">
+                    <i class="fas fa-home mr-1"></i>
+                </a>
                 <a href="{{ route('schedules.show', $schedule) }}" class="text-blue-600 hover:text-blue-800 mr-4">
                     <i class="fas fa-arrow-left"></i>
                 </a>

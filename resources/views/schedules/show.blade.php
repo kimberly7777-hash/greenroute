@@ -234,7 +234,7 @@
 <body>
     <div class="container">
         <!-- Page Header -->
-        <div class="page-header">
+        <div class="page-header d-flex justify-content-between align-items-center">
             <div class="d-flex justify-content-between align-items-start flex-wrap gap-3">
                 <div>
                     <h1 class="page-title">

@@ -239,9 +239,14 @@
                         </p>
                     </div>
                 </div>
-                <a href="{{ route('sms.inbox') }}" class="btn-back" target="_parent">
-                    <i class="bi bi-arrow-left"></i> Back to Inbox
-                </a>
+                <div class="d-flex gap-2">
+                    <a href="{{ route('dashboard.contractor') }}" class="btn-back" target="_parent">
+                        <i class="bi bi-house-door-fill"></i> Home
+                    </a>
+                    <a href="{{ route('sms.inbox') }}" class="btn-back" target="_parent">
+                        <i class="bi bi-arrow-left"></i> Back to Inbox
+                    </a>
+                </div>
             </div>
         </div>
 

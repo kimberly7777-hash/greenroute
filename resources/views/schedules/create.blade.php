@@ -101,12 +101,15 @@
         <div class="row justify-content-center">
             <div class="col-lg-10">
                 <!-- Page Header -->
-                <div class="page-header">
-                    <h1 class="mb-2" style="font-size: 1.75rem; font-weight: 700;">
+                <div class="page-header d-flex justify-content-between align-items-center">
+                    <h1 class="mb-0" style="font-size: 1.75rem; font-weight: 700;">
                         <i class="bi bi-calendar-plus me-2"></i>Create Collection Schedule
                     </h1>
-                    <p class="mb-0" style="opacity: 0.95;">Create a bulk schedule for clients at a specific location</p>
+                    <a href="{{ route('dashboard.contractor') }}" class="btn btn-outline-light btn-sm d-flex align-items-center gap-2" target="_parent">
+                        <i class="bi bi-house-door-fill"></i> Home
+                    </a>
                 </div>
+                <p class="mb-0" style="opacity: 0.95;">Create a bulk schedule for clients at a specific location</p>
 
                 <!-- Form Container -->
                 <div class="form-container">

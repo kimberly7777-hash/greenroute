@@ -177,9 +177,14 @@
                     </h1>
                     <p class="mb-0 opacity-75">All your conversations with clients</p>
                 </div>
-                <a href="{{ route('sms.index') }}" class="btn-new-message" target="_parent">
-                    <i class="bi bi-plus-circle"></i> New Message
-                </a>
+                <div class="d-flex gap-2">
+                    <a href="{{ route('dashboard.contractor') }}" class="btn btn-light text-teal d-flex align-items-center gap-2" style="color: var(--primary-teal); font-weight: 600;" target="_parent">
+                        <i class="bi bi-house-door-fill"></i> Home
+                    </a>
+                    <a href="{{ route('sms.index') }}" class="btn-new-message" target="_parent">
+                        <i class="bi bi-plus-circle"></i> New Message
+                    </a>
+                </div>
             </div>
         </div>
 

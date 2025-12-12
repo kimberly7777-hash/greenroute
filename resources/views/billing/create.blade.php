@@ -88,6 +88,9 @@
         <!-- Header Section -->
         <div class="d-flex justify-content-between align-items-center mb-4 p-3 primary-light rounded">
             <h4 class="primary-dark mb-0">Create Invoice</h4>
+            <a href="{{ route('dashboard.contractor') }}" class="btn btn-outline-custom btn-sm d-flex align-items-center gap-2" target="_parent">
+                <i class="bi bi-house-door-fill"></i> Home
+            </a>
         </div>
 
         <!-- Invoice Form -->
