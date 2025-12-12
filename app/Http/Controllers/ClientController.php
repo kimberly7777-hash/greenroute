@@ -70,6 +70,11 @@ class ClientController extends Controller
 
         $validated['contractor_id'] = Auth::id();
         
+        // Fix for SQL Not Null violation: Ensure zip_code has a value
+        if (empty($validated['zip_code'])) {
+            $validated['zip_code'] = 'N/A';
+        }
+        
         // Get contractor record for email service
         $contractor = Contractor::where('user_id', Auth::id())->first();
         
