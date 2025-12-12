@@ -368,9 +368,14 @@
                     </h1>
                     <p class="page-subtitle mb-0">Send notifications and reminders to your clients</p>
                 </div>
-                <a href="{{ route('sms.inbox') }}" class="btn btn-light" style="border-radius: 8px;" target="_parent">
-                    <i class="bi bi-arrow-left me-2"></i>Back to Inbox
-                </a>
+                <div class="d-flex gap-2">
+                    <a href="{{ route('dashboard.contractor') }}" class="btn btn-outline-light d-flex align-items-center gap-2" style="border: 1px solid rgba(255,255,255,0.5);" target="_parent">
+                        <i class="bi bi-house-door-fill"></i> Home
+                    </a>
+                    <a href="{{ route('sms.inbox') }}" class="btn btn-light" style="border-radius: 8px;" target="_parent">
+                        <i class="bi bi-arrow-left me-2"></i>Back to Inbox
+                    </a>
+                </div>
             </div>
         </div>
 
