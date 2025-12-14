@@ -347,6 +347,7 @@
                                 <li class="breadcrumb-item active">{{ auth()->user()->name }}</li>
                             </ol>
                         </nav>
+                    </div>
                         <div class="d-flex align-items-center gap-3">
                             <span class="user-badge">
                                 <i class="bi bi-bell me-1"></i>Notifications: 2
