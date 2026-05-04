@@ -46,7 +46,7 @@
         }
 
         .logo-section img {
-            max-height: 60px;
+            max-height: 90px;
             width: 90%;
             object-fit: contain;
         }

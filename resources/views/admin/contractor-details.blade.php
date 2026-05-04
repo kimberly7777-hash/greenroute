@@ -194,7 +194,7 @@
         <!-- Sidebar -->
         <div class="sidebar">
             <div class="logo-section">
-                <img src="{{ asset('result.png') }}" alt="GreenRoute Logo" style="max-height: 60px; width: auto; margin-bottom: 10px;">
+                <img src="{{ asset('result.png') }}" alt="GreenRoute Logo" style="max-height: 90px; width: auto; margin-bottom: 10px;">
                 <small>Admin Panel</small>
             </div>
             <a href="{{ route('dashboard.admin') }}" class="menu-item">

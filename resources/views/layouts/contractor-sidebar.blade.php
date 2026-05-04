@@ -131,7 +131,7 @@
         <div class="col-lg-2">
             <div class="sidebar">
                 <div class="brand">
-                    <img src="{{ asset('result.png') }}" alt="GreenRoute Logo" style="max-height: 40px; width: auto;">
+                    <img src="{{ asset('result.png') }}" alt="GreenRoute Logo" style="max-height: 80px; width: auto;">
                 </div>
                 <nav class="nav flex-column">
                     <a class="nav-link {{ request()->routeIs('dashboard.contractor') ? 'active' : '' }}" href="{{ route('dashboard.contractor') }}">

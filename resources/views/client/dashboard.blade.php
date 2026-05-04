@@ -12,19 +12,19 @@
             --secondary-color: #640404;
             --white-color: #ffffff;
         }
-        
+
         body {
             background: var(--white-color);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
         }
-        
+
         .dashboard-layout {
             display: flex;
             min-height: 100vh;
         }
-        
+
         /* Sidebar */
         .sidebar {
             width: 250px;
@@ -32,7 +32,7 @@
             border-right: 1px solid #e0e0e0;
             padding: 0;
         }
-        
+
         .logo-section {
             padding: 1rem;
             border-bottom: 1px solid #e0e0e0;
@@ -42,11 +42,11 @@
             font-size: 1.2rem;
             text-align: center;
         }
-        
+
         .menu-section {
             padding: 1rem 0;
         }
-        
+
         .menu-item {
             display: block;
             padding: 0.75rem 1rem;
@@ -55,24 +55,24 @@
             border-bottom: 1px solid #f0f0f0;
             transition: all 0.3s ease;
         }
-        
+
         .menu-item:hover {
             background: #f8f9fa;
             color: var(--primary-color);
         }
-        
+
         .menu-item.active {
             background: var(--primary-color);
             color: white;
             border-left: 4px solid var(--secondary-color);
         }
-        
+
         /* Main Content */
         .main-content {
             flex: 1;
             background: #f8f9fa;
         }
-        
+
         /* Header */
         .header {
             background: var(--white-color);
@@ -82,19 +82,19 @@
             justify-content: space-between;
             align-items: center;
         }
-        
+
         .breadcrumb {
             margin: 0;
             background: none;
             padding: 0;
         }
-        
+
         .user-info {
             display: flex;
             align-items: center;
             gap: 1rem;
         }
-        
+
         .notification {
             background: var(--secondary-color);
             color: white;
@@ -102,13 +102,13 @@
             border-radius: 15px;
             font-size: 0.875rem;
         }
-        
+
         .user-profile {
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
-        
+
         .user-avatar {
             width: 40px;
             height: 40px;
@@ -118,23 +118,23 @@
             align-items: center;
             justify-content: center;
         }
-        
+
         /* Content Area */
         .content-area {
             padding: 2rem;
         }
-        
+
         .welcome-section {
             margin-bottom: 2rem;
         }
-        
+
         .welcome-title {
             font-size: 1.5rem;
             font-weight: bold;
             color: #333;
             margin-bottom: 1rem;
         }
-        
+
         /* Cards */
         .card {
             border: 1px solid #e0e0e0;
@@ -142,7 +142,7 @@
             margin-bottom: 1.5rem;
             background: var(--white-color);
         }
-        
+
         .card-header {
             background: var(--primary-color);
             color: white;
@@ -150,35 +150,35 @@
             border-bottom: none;
             font-weight: 600;
         }
-        
+
         .card-body {
             padding: 1rem;
         }
-        
+
         /* Schedule Section */
         .schedule-info {
             font-size: 0.9rem;
             color: #666;
             margin-bottom: 0.5rem;
         }
-        
+
         /* Invoice Section */
         .invoice-filters {
             display: flex;
             gap: 1rem;
             margin-bottom: 1rem;
         }
-        
+
         .filter-option {
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
-        
+
         .filter-option input[type="radio"] {
             margin: 0;
         }
-        
+
         /* Feedback Section */
         .feedback-section {
             display: flex;
@@ -186,11 +186,11 @@
             align-items: flex-start;
             gap: 2rem;
         }
-        
+
         .feedback-form {
             flex: 1;
         }
-        
+
         .help-center {
             background: var(--white-color);
             border: 1px solid #e0e0e0;
@@ -198,31 +198,31 @@
             padding: 1rem;
             width: 200px;
         }
-        
+
         .btn-primary {
             background: var(--primary-color);
             border-color: var(--primary-color);
         }
-        
+
         .btn-primary:hover {
             background: #044a4a;
             border-color: #044a4a;
         }
-        
+
         .form-control {
             border: 1px solid #ddd;
             border-radius: 4px;
         }
-        
+
         .form-control:focus {
             border-color: var(--primary-color);
             box-shadow: 0 0 0 0.2rem rgba(5, 92, 92, 0.25);
         }
-        
+
         .content-section {
             display: none;
         }
-        
+
         .content-section.active {
             display: block;
         }
@@ -233,7 +233,7 @@
         <!-- Sidebar -->
         <div class="sidebar">
             <div class="logo-section">
-                <img src="/your-logo2.png" alt="Logo" style="max-height: 60px; width: 90%; object-fit: contain;">
+                <img src="/your-logo2.png" alt="Logo" style="max-height: 90px; width: 90%; object-fit: contain;">
             </div>
             <div class="menu-section">
                 <a href="#" class="menu-item active" onclick="showSection('dashboard')">
@@ -420,7 +420,7 @@
                                         <div class="mb-2 p-2 border-bottom">
                                             <strong>{{ $invoice->invoice_number }}</strong><br>
                                             <small class="text-muted">
-                                                TZS {{ number_format($invoice->total_amount ?? 0, 2) }} - 
+                                                TZS {{ number_format($invoice->total_amount ?? 0, 2) }} -
                                                 {{ $invoice->invoice_date ? $invoice->invoice_date->format('M j, Y') : 'N/A' }}
                                             </small>
                                         </div>
@@ -459,7 +459,7 @@
                                         <div class="mb-2 p-2 border-bottom">
                                             <strong>{{ $feedback->subject }}</strong><br>
                                             <small class="text-muted">
-                                                {{ $feedback->created_at->format('M j, Y') }} - 
+                                                {{ $feedback->created_at->format('M j, Y') }} -
                                                 <span class="badge bg-{{ $feedback->status === 'resolved' ? 'success' : 'warning' }}">
                                                     {{ ucfirst($feedback->status) }}
                                                 </span>
@@ -722,15 +722,15 @@
             document.querySelectorAll('.content-section').forEach(section => {
                 section.classList.remove('active');
             });
-            
+
             // Remove active class from all menu items
             document.querySelectorAll('.menu-item').forEach(item => {
                 item.classList.remove('active');
             });
-            
+
             // Show selected section
             document.getElementById(sectionId).classList.add('active');
-            
+
             // Add active class to clicked menu item
             event.target.classList.add('active');
         }
@@ -741,7 +741,7 @@
             // No need for sessionStorage check - Laravel middleware handles auth
             const clientName = '{{ $client->contact_name ?? $client->name }}';
             const clientReg = '{{ $client->registration_number }}';
-            
+
             if (clientName && document.getElementById('welcomeMessage')) {
                 document.getElementById('welcomeMessage').textContent = `WELCOME, ${clientName.toUpperCase()}`;
             }

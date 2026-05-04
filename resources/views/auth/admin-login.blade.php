@@ -42,8 +42,8 @@
 
         .logo-container {
             background: var(--white);
-            width: 100px;
-            height: 100px;
+            width: 130px;
+            height: 130px;
             border-radius: 50%;
             margin: 0 auto 1.5rem;
             display: flex;
@@ -53,8 +53,8 @@
         }
 
         .logo-container img {
-            max-width: 80%;
-            max-height: 80%;
+            max-width: 90%;
+            max-height: 90%;
             object-fit: contain;
         }
 

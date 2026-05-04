@@ -240,7 +240,7 @@
         <aside class="app-sidebar">
             <div class="sidebar-header">
                 <a href="{{ route('dashboard.contractor') }}" class="sidebar-logo">
-                    <img src="{{ asset('result.png') }}" alt="GreenRoute Logo" style="max-height: 50px; width: auto;">
+                    <img src="{{ asset('result.png') }}" alt="GreenRoute Logo" style="max-height: 90px; width: auto;">
                 </a>
             </div>
 

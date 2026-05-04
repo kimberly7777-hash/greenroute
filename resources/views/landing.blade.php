@@ -65,8 +65,8 @@
         }
 
         .logo-text img {
-            height: 120px;
-            max-width: 400px;
+            height: 200px;
+            max-width: 520px;
             object-fit: contain;
             filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
         }
