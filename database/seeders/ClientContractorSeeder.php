@@ -74,6 +74,79 @@ class ClientContractorSeeder extends Seeder
             ]
         );
 
+        // Create sample contractor user from credentials docs
+        $sampleContractorUser = User::updateOrCreate(
+            ['email' => 'contractor@greenroute.com'],
+            [
+                'name' => 'GreenRoute Contractor',
+                'user_type' => 'contractor',
+                'status' => 'approved',
+                'subscription_completed' => true,
+                'subscription_status' => 'active',
+                'password' => bcrypt('Contractor@2025!'),
+            ]
+        );
+
+        Contractor::updateOrCreate(
+            ['user_id' => $sampleContractorUser->id],
+            [
+                'company_name' => 'GreenRoute Contractor Services',
+                'name' => 'GreenRoute Contractor',
+                'email' => 'contractor@greenroute.com',
+                'phone' => '+255712345678',
+                'address' => 'Sample Contractor Address, Dar es Salaam',
+                'license_number' => 'GR2025001',
+                'vehicle_type' => 'Waste Collection Truck',
+                'license_plate' => 'T456GRT'
+            ]
+        );
+
+        // Create sample client user from credentials docs
+        $sampleClientUser = User::updateOrCreate(
+            ['email' => 'client@greenroute.com'],
+            [
+                'name' => 'GreenRoute Client',
+                'user_type' => 'client',
+                'password' => bcrypt('Client@2025!'),
+            ]
+        );
+
+        $sampleClient = Client::updateOrCreate(
+            ['email' => 'client@greenroute.com'],
+            [
+                'contractor_id' => $sampleContractorUser->id,
+                'user_id' => $sampleClientUser->id,
+                'name' => 'GreenRoute Client',
+                'contact_name' => 'GreenRoute Client',
+                'email' => 'client@greenroute.com',
+                'phone' => '+255701234567',
+                'address' => 'Sample Client Address, Dar es Salaam',
+                'city' => 'Dar es Salaam',
+                'state' => 'Dar es Salaam',
+                'zip_code' => '11111',
+                'registration_number' => 'CL999999',
+                'category' => 'residential',
+                'status' => 'active',
+                'latitude' => -6.8000,
+                'longitude' => 39.2833,
+            ]
+        );
+
+        Schedule::updateOrCreate(
+            ['client_id' => $sampleClient->id, 'pickup_date' => Carbon::now()->addDays(2)],
+            [
+                'contractor_id' => $sampleContractorUser->id,
+                'pickup_time' => '08:30:00',
+                'pickup_location' => 'Sample Client Location',
+                'pickup_address' => $sampleClient->address,
+                'city' => $sampleClient->city,
+                'state' => $sampleClient->state,
+                'zip_code' => $sampleClient->zip_code,
+                'service_type' => 'collection',
+                'status' => 'scheduled'
+            ]
+        );
+
         // Create schedules
         $schedules = [
             [

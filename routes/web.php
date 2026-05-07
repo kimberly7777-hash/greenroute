@@ -35,10 +35,10 @@ Route::get('/test-dashboard', function () {
     $user->name = 'Test User';
     $user->email = 'test@example.com';
     $user->user_type = 'contractor';
-    
+
     // Mock authentication
     auth()->login($user);
-    
+
     return view('test-dashboard');
 });
 
@@ -84,7 +84,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('support', [ClientPortalController::class, 'support'])->name('client.support');
         Route::get('feedback', [ClientPortalController::class, 'feedback'])->name('client.feedback');
         Route::post('feedback', [ClientPortalController::class, 'storeFeedback'])->name('client.feedback.store');
-        
+
         // Payment Routes
         Route::get('payments/{invoice}/checkout', [App\Http\Controllers\PaymentController::class, 'checkout'])->name('client.payments.checkout');
         Route::post('payments/{invoice}/mobile', [App\Http\Controllers\PaymentController::class, 'payMobile'])->name('client.payments.mobile');
@@ -95,7 +95,7 @@ Route::middleware(['auth'])->group(function () {
 // Contractor routes (require admin verification)
 Route::middleware(['auth', 'verified.contractor'])->group(function () {
     Route::get('/dashboard/contractor', [DashboardController::class, 'contractorDashboard'])->name('dashboard.contractor');
-    
+
     // Contractor routes
     Route::prefix('dashboard/contractor')->group(function () {
         Route::resource('clients', ClientController::class)->names([
@@ -107,16 +107,16 @@ Route::middleware(['auth', 'verified.contractor'])->group(function () {
             'update' => 'contractor.clients.update',
             'destroy' => 'contractor.clients.destroy'
         ]);
-        
+
         // Client invitation management
         Route::post('clients/{client}/resend-invitation', [ClientController::class, 'resendInvitation'])
             ->name('contractor.clients.resend-invitation');
         Route::post('clients/{client}/reset-password', [ClientController::class, 'resetPassword'])
             ->name('contractor.clients.reset-password');
-        
+
         Route::get('feedback', [ContractorFeedbackController::class, 'index'])->name('contractor.feedback.index');
     });
-    
+
     // Invoice management for contractors
     Route::resource('invoices', InvoiceController::class);
     Route::get('invoices/{invoice}/pdf', [InvoiceController::class, 'pdf'])->name('invoices.pdf');
@@ -132,10 +132,10 @@ Route::middleware(['auth', 'verified.contractor'])->group(function () {
     Route::delete('/product/{product}', [ProductController::class, 'destroy'])->name('product.destroy');
     /* Route::get('/product/{product}/choice', [ProductController::class, 'choice'])->name('product.choice');*/
 
-    
-    
-    
-    
+
+
+
+
     // Registration routes
 Route::get('/register', function () {
     return view('auth.register');
@@ -149,13 +149,13 @@ Route::post('/register/client', [UserTypeController::class, 'storeClient'])->nam
 Route::prefix('client')->group(function () {
     Route::get('/login', [App\Http\Controllers\Auth\ClientAuthController::class, 'showLogin'])->name('client.login');
     Route::post('/login', [App\Http\Controllers\Auth\ClientAuthController::class, 'login'])->name('client.login.submit');
-    
+
     Route::get('/register', [App\Http\Controllers\Auth\ClientAuthController::class, 'showRegister'])->name('client.register');
     Route::post('/register', [App\Http\Controllers\Auth\ClientAuthController::class, 'register'])->name('client.register.submit');
-    
+
     Route::get('/verify-phone', [App\Http\Controllers\Auth\ClientAuthController::class, 'showVerifyPhone'])->name('client.verify-phone');
     Route::post('/verify-phone', [App\Http\Controllers\Auth\ClientAuthController::class, 'verifyPhone'])->name('client.verify-phone.submit');
-    
+
     Route::get('/set-password', [App\Http\Controllers\Auth\ClientAuthController::class, 'showSetPassword'])->name('client.set-password');
     Route::post('/set-password', [App\Http\Controllers\Auth\ClientAuthController::class, 'setPassword'])->name('client.set-password.submit');
 });
@@ -170,9 +170,6 @@ Route::get('/contractor/pending', function () {
 })->name('contractor.pending');
 
 // Login routes for different user types
-Route::get('/login/admin', [UserTypeController::class, 'loginAdmin'])->name('login.admin');
-Route::post('/login/admin', [UserTypeController::class, 'authenticateAdmin'])->name('login.admin.authenticate');
-
 Route::get('/login/client', [UserTypeController::class, 'loginClient'])->name('login.client');
 Route::post('/login/client', [UserTypeController::class, 'authenticateClient'])->name('login.client.authenticate');
 
@@ -189,16 +186,24 @@ Route::prefix('admin')->group(function () {
         // If logged in as non-admin, logout first
         if (Auth::check() && Auth::user()->user_type !== 'admin') {
             Auth::logout();
-            request()->session()->invalidate();
-            request()->session()->regenerateToken();
         }
-        
-        return view('auth.admin-login');
-    })->name('admin.login');
-    
+
+        // Clear any stale session before rendering the login page
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
+
+        return response(view('auth.admin-login'))
+            ->header('Cache-Control', 'no-store, no-cache, max-age=0, must-revalidate')
+            ->header('Pragma', 'no-cache')
+            ->header('Expires', 'Thu, 01 Jan 1970 00:00:00 GMT');
+    })->name('admin.login')->middleware('guest');
+
+
     Route::post('/login', [App\Http\Controllers\Auth\AuthenticatedSessionController::class, 'store'])
-        ->name('admin.login.submit')->middleware('guest');
-    
+        ->name('admin.login.submit')
+        ->middleware('guest');
+
+
     Route::post('/logout', function () {
         Auth::logout();
         request()->session()->invalidate();
@@ -218,7 +223,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/location/clients', [App\Http\Controllers\LocationController::class, 'getClientLocations'])->name('location.clients');
     Route::post('/location/geocode', [App\Http\Controllers\LocationController::class, 'geocodeAddress'])->name('location.geocode');
     Route::post('/location/validate', [App\Http\Controllers\LocationController::class, 'validateLocationAccuracy'])->name('location.validate');
-    
+
     // Location Hierarchy API (for dependent dropdowns)
     Route::get('/location/regions', [App\Http\Controllers\LocationController::class, 'getRegions'])->name('location.regions');
     Route::get('/location/districts', [App\Http\Controllers\LocationController::class, 'getDistricts'])->name('location.districts');
@@ -250,11 +255,11 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
         Route::put('/users/{user}', [App\Http\Controllers\AdminController::class, 'updateUser'])->name('admin.users.update');
         Route::delete('/users/{user}', [App\Http\Controllers\AdminController::class, 'deleteUser'])->name('admin.users.delete');
         Route::get('/contractors/locations', [App\Http\Controllers\AdminController::class, 'getContractorLocations'])->name('admin.contractors.locations');
-        
+
         // SMS Campaign routes
         Route::get('/sms-campaign', [App\Http\Controllers\AdminController::class, 'smsCampaign'])->name('admin.sms.campaign');
         Route::post('/sms-campaign/send', [App\Http\Controllers\AdminController::class, 'sendSmsCampaign'])->name('admin.sms.send');
-        
+
         // Billing Rates Management routes
         Route::get('/billing-rates', [App\Http\Controllers\AdminController::class, 'billingRates'])->name('admin.billing.rates');
         Route::get('/billing-rates/create', [App\Http\Controllers\AdminController::class, 'createBillingRate'])->name('admin.billing.rates.create');
@@ -263,7 +268,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
         Route::put('/billing-rates/{rate}', [App\Http\Controllers\AdminController::class, 'updateBillingRate'])->name('admin.billing.rates.update');
         Route::delete('/billing-rates/{rate}', [App\Http\Controllers\AdminController::class, 'deleteBillingRate'])->name('admin.billing.rates.delete');
     });
-    
+
     // Contractor routes
     Route::middleware(['auth'])->prefix('contractor')->group(function () {
         Route::get('/clients/locations', [App\Http\Controllers\ContractorController::class, 'getAssignedClients'])->name('contractor.clients.locations');
@@ -273,7 +278,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
         Route::get('/clients/{client}', [ClientController::class, 'show']);
         Route::get('/clients/{client}/edit', [ClientController::class, 'edit']);
     });
-    
+
     // Billing routes
     Route::middleware(['auth'])->prefix('billing')->group(function () {
         Route::get('/', [App\Http\Controllers\BillingController::class, 'index'])->name('billing.index');
@@ -284,7 +289,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
         Route::post('/{invoice}/send', [App\Http\Controllers\BillingController::class, 'sendInvoice'])->name('billing.send');
         Route::post('/{invoice}/remind', [App\Http\Controllers\BillingController::class, 'sendReminder'])->name('billing.remind');
     });
-    
+
     // Schedule routes
     Route::middleware(['auth'])->prefix('schedules')->group(function () {
         Route::get('/', [ScheduleController::class, 'index'])->name('schedules.index');
@@ -294,7 +299,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
         Route::get('/{schedule}/print', [ScheduleController::class, 'print'])->name('schedules.print');
         Route::post('/{schedule}/status', [ScheduleController::class, 'updateStatus'])->name('schedules.status');
     });
-    
+
     // Disposal routes
     Route::middleware(['auth'])->prefix('disposal')->group(function () {
         Route::get('/', [App\Http\Controllers\DisposalController::class, 'index'])->name('disposal.index');
@@ -302,7 +307,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
         Route::get('/{schedule}/edit', [App\Http\Controllers\DisposalController::class, 'edit'])->name('disposal.edit');
         Route::put('/{schedule}', [App\Http\Controllers\DisposalController::class, 'update'])->name('disposal.update');
     });
-    
+
     // SMS routes
     Route::middleware(['auth'])->prefix('sms')->group(function () {
         Route::get('/', [App\Http\Controllers\SmsController::class, 'index'])->name('sms.index');
@@ -312,22 +317,22 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
         Route::post('/conversation/{client}', [App\Http\Controllers\SmsController::class, 'sendMessage'])->name('sms.sendMessage');
         Route::get('/template', [App\Http\Controllers\SmsController::class, 'getTemplate'])->name('sms.template');
     });
-    
+
     // Client SMS API (for clients to send messages to contractors)
     Route::post('/api/sms/client-send', [App\Http\Controllers\SmsController::class, 'clientSend'])->name('api.sms.clientSend');
-    
+
     // Route Optimization routes
     Route::middleware(['auth'])->prefix('routes')->group(function () {
         Route::get('/', [App\Http\Controllers\RouteOptimizationController::class, 'index'])->name('routes.index');
         Route::post('/optimize', [App\Http\Controllers\RouteOptimizationController::class, 'optimize'])->name('routes.optimize');
     });
-    
+
     // Reports routes
     Route::middleware(['auth'])->prefix('reports')->group(function () {
         Route::get('/', [App\Http\Controllers\ReportsController::class, 'index'])->name('reports.index');
         Route::get('/export', [App\Http\Controllers\ReportsController::class, 'export'])->name('reports.export');
     });
-    
+
     // GPS Tracker routes
     Route::middleware(['auth'])->prefix('trucks')->group(function () {
         Route::get('/', [App\Http\Controllers\TruckController::class, 'index'])->name('trucks.index');
@@ -335,7 +340,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
         Route::post('/{truck}/location', [App\Http\Controllers\TruckController::class, 'updateLocation'])->name('trucks.location');
         Route::get('/locations', [App\Http\Controllers\TruckController::class, 'getLocations'])->name('trucks.locations');
     });
-    
+
     // Route Management routes (for creating and managing collection routes)
     Route::middleware(['auth'])->prefix('route-management')->group(function () {
         Route::get('/', [App\Http\Controllers\RouteManagementController::class, 'index'])->name('route-management.index');

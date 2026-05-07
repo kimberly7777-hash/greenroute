@@ -49,14 +49,6 @@ class UserTypeController extends Controller
     }
 
     /**
-     * Display the admin login view.
-     */
-    public function loginAdmin()
-    {
-        return view('auth.login-admin');
-    }
-
-    /**
      * Display the contractor login view.
      */
     public function loginContractor()
@@ -284,12 +276,19 @@ class UserTypeController extends Controller
      */
     public function authenticateClient(Request $request)
     {
+        $identity = $request->input('email');
+
         $credentials = $request->validate([
-            'email' => ['required', 'email'],
+            'email' => ['required', 'string'],
             'password' => ['required'],
         ]);
 
         $remember = $request->boolean('remember');
+
+        $user = User::clientIdentity($identity)->first();
+        if ($user) {
+            $credentials['email'] = $user->email;
+        }
 
         if (Auth::attempt($credentials, $remember)) {
             $request->session()->regenerate();

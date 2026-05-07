@@ -96,6 +96,23 @@ class User extends Authenticatable
         return $this->hasMany(Client::class, 'contractor_id');
     }
 
+    public function client()
+    {
+        return $this->hasOne(Client::class, 'user_id');
+    }
+
+    public function scopeClientIdentity($query, string $identity)
+    {
+        return $query->where('user_type', 'client')
+            ->where(function ($query) use ($identity) {
+                $query->where('email', $identity)
+                    ->orWhereHas('client', function ($query) use ($identity) {
+                        $query->where('phone', $identity)
+                            ->orWhere('email', $identity);
+                    });
+            });
+    }
+
     public function schedules(): HasMany
     {
         return $this->hasMany(Schedule::class, 'contractor_id');

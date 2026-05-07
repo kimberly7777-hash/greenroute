@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Terms of Service - {{ config('app.name', 'Afia Orbit') }}</title>
+    <title>Terms of Service - {{ config('app.name', 'GreenRoute') }}</title>
     
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -82,13 +82,13 @@
         <div class="legal-content">
             <h2>1. Agreement to Terms</h2>
             <p>
-                By accessing and using the Afia Orbit platform, you agree to be bound by these Terms of Service. 
+                By accessing and using the GreenRoute platform, you agree to be bound by these Terms of Service. 
                 If you do not agree to these terms, please do not use our services.
             </p>
             
             <h2>2. Description of Service</h2>
             <p>
-                Afia Orbit provides waste management and collection services through our platform, connecting 
+                GreenRoute provides waste management and collection services through our platform, connecting 
                 contractors with clients for efficient waste collection, scheduling, and billing management.
             </p>
             
@@ -125,13 +125,13 @@
             
             <h2>7. Intellectual Property</h2>
             <p>
-                All content, features, and functionality of the Afia Orbit platform are owned by us and are 
+                All content, features, and functionality of the GreenRoute platform are owned by us and are 
                 protected by copyright, trademark, and other intellectual property laws.
             </p>
             
             <h2>8. Limitation of Liability</h2>
             <p>
-                To the maximum extent permitted by law, Afia Orbit shall not be liable for any indirect, 
+                To the maximum extent permitted by law, GreenRoute shall not be liable for any indirect, 
                 incidental, special, consequential, or punitive damages resulting from your use of the platform.
             </p>
             

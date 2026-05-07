@@ -26,7 +26,7 @@ class ClientAuthController extends Controller
             'contact_name' => ['required', 'string', 'max:255'],
             'phone' => ['required', 'string', 'max:20'],
             'email' => ['required', 'email', 'max:255'],
-            'verification_method' => ['required', 'in:phone,email'],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
         // Find client record created by contractor
@@ -35,7 +35,7 @@ class ClientAuthController extends Controller
             ->where('phone', $request->phone)
             ->where('email', $request->email)
             ->first();
-            
+
         // If not found, try case-insensitive search
         if (!$client) {
             $client = Client::whereRaw('LOWER(registration_number) = ?', [strtolower($request->registration_number)])
@@ -58,31 +58,33 @@ class ClientAuthController extends Controller
             ]);
         }
 
-        // Determine contact info based on verification method
-        $contactInfo = $request->verification_method === 'email' ? $request->email : $request->phone;
-        
-        // Generate verification code
-        $code = PhoneVerification::generateCode($contactInfo);
-        
-        session([
-            'client_activation' => [
-                'client_id' => $client->id,
-                'contact_info' => $contactInfo,
-            ]
+        // Create client user without OTP for now.
+        // OTP flow is commented out until the API integration is ready.
+        $user = User::create([
+            'name' => $request->contact_name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'user_type' => 'client',
         ]);
 
-        // Send verification code based on user choice
-        if ($request->verification_method === 'email') {
-            \Log::info("Email sent to {$contactInfo}: Your verification code is: {$code}");
-            $message = 'Verification code sent to your email.';
-        } else {
-            $this->sendSMS($contactInfo, "Your verification code is: {$code}");
-            $message = 'Verification code sent to your phone.';
+        $client->update([
+            'user_id' => $user->id,
+            'name' => $request->contact_name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'status' => 'active',
+        ]);
+
+        try {
+            event(new Registered($user));
+        } catch (\Exception $e) {
+            // Ignore registration event failure for now.
         }
 
-        return redirect()->route('client.verify-phone')
-            ->with('contact_info', $contactInfo)
-            ->with('success', $message);
+        Auth::login($user);
+
+        return redirect()->route('client.dashboard')
+            ->with('success', 'Registration completed successfully!');
     }
 
     public function showVerifyPhone()
@@ -157,18 +159,18 @@ class ClientAuthController extends Controller
     public function login(Request $request)
     {
         $request->validate([
-            'email' => ['required', 'email'],
+            'email' => ['required', 'string'],
             'password' => ['required', 'string'],
         ]);
 
-        // Find user by email with client user_type
-        $user = User::where('email', $request->email)
-            ->where('user_type', 'client')
-            ->first();
+        $identity = $request->input('email');
 
-        if (!$user) {
+        // Find user by email or by linked client email/phone.
+        $user = User::clientIdentity($identity)->first();
+
+        if (! $user) {
             return back()->withErrors([
-                'email' => 'No client account found with this email address.',
+                'email' => 'No client account found with this email address or phone number.',
             ])->withInput($request->only('email'));
         }
 
@@ -182,7 +184,7 @@ class ClientAuthController extends Controller
         }
 
         // Attempt authentication
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'user_type' => 'client'], $request->boolean('remember'))) {
+        if (Auth::attempt(['email' => $user->email, 'password' => $request->password, 'user_type' => 'client'], $request->boolean('remember'))) {
             $request->session()->regenerate();
             
             \Log::info('Client logged in', [

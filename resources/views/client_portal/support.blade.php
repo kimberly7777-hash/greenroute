@@ -9,7 +9,7 @@
 
     <x-slot name="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('dashboard.client') }}">Client</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('client.dashboard') }}">Client</a></li>
         <li class="breadcrumb-item active">Support</li>
     </x-slot>
 

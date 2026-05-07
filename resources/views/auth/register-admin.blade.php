@@ -110,7 +110,7 @@
 
     <div class="mt-8 text-center">
         <p class="text-gray-600">Already have an account? 
-            <a href="{{ route('login.admin') }}" class="text-green-600 hover:text-green-700 font-medium">Sign in here</a>
+            <a href="{{ route('admin.login') }}" class="text-green-600 hover:text-green-700 font-medium">Sign in here</a>
         </p>
     </div>
 </x-guest-layout>

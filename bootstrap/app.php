@@ -14,12 +14,12 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware): void {
         // Trust proxies for proper HTTPS handling on Render
         $middleware->trustProxies(at: '*');
-        
+
         $middleware->validateCsrfTokens(except: [
             'client/*',
             'login/contractor',
         ]);
-        
+
         // Register custom middleware aliases
         $middleware->alias([
             'admin' => \App\Http\Middleware\AdminMiddleware::class,
@@ -28,16 +28,16 @@ return Application::configure(basePath: dirname(__DIR__))
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->render(function (\Illuminate\Session\TokenMismatchException $e, \Illuminate\Http\Request $request) {
-            if ($request->is('client/*') || $request->is('dashboard/client*')) {
+            if ($request->is('client/*') || $request->is('dashboard/client*') || $request->is('login/client')) {
                 return redirect()->route('login.client')->with('error', 'Your session has expired. Please log in again.');
             }
-            if ($request->is('contractor/*') || $request->is('dashboard/contractor*')) {
+            if ($request->is('contractor/*') || $request->is('dashboard/contractor*') || $request->is('login/contractor')) {
                 return redirect()->route('login.contractor')->with('error', 'Your session has expired. Please log in again.');
             }
-            if ($request->is('admin/*')) {
-                return redirect()->route('login.admin')->with('error', 'Your session has expired. Please log in again.');
+            if ($request->is('admin/*') || $request->is('login/admin')) {
+                return redirect()->route('admin.login')->with('error', 'Your session has expired. Please log in again.');
             }
-            
+
             return redirect()->route('login.contractor')->with('error', 'Your session has expired. Please log in again.');
         });
     })->create();

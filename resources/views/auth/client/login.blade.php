@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Client Portal Access - Afia Orbit</title>
+    <title>Client Portal Access - GreenRoute</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
     <style>
@@ -279,13 +279,13 @@
 
                                     <div class="mb-4">
                                         <label for="email" class="form-label">
-                                            <i class="bi bi-envelope me-2"></i>Email Address
+                                            <i class="bi bi-envelope me-2"></i>Email or Phone Number
                                         </label>
-                                        <input id="email" type="email" name="email"
+                                        <input id="email" type="text" name="email"
                                                value="{{ old('email') }}"
                                                required autofocus
                                                class="form-control @error('email') is-invalid @enderror"
-                                               placeholder="Enter your email address">
+                                               placeholder="Enter your email or phone number">
                                         @error('email')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror

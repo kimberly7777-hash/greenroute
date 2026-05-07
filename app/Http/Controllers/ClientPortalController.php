@@ -26,7 +26,7 @@ class ClientPortalController extends Controller
         if (!$user) {
             return null;
         }
-        
+
         $client = Client::where('user_id', $user->id)->first();
         if ($client) {
             return $client;
@@ -38,13 +38,13 @@ class ClientPortalController extends Controller
     public function dashboard()
     {
         $client = $this->resolveClient();
-        
+
         if (!$client) {
             // If logged in as Contractor, redirect to Contractor Dashboard
             if (Auth::user()->hasRole('contractor')) {
                 return redirect()->route('dashboard.contractor');
             }
-            
+
             // If just a regular user with no client record
             return redirect()->route('dashboard')->with('error', 'No client account associated with this user.');
         }
@@ -52,7 +52,7 @@ class ClientPortalController extends Controller
         if (is_object($client) && isset($client->id) && isset($client->contractor_id)) {
             // Only show data from assigned contractor
             $contractorId = $client->contractor_id;
-            
+
             // Upcoming schedules from contractor
             $upcomingSchedules = Schedule::with('contractor')
                 ->where('client_id', $client->id)
@@ -89,7 +89,7 @@ class ClientPortalController extends Controller
                 })
                 ->map(function($invoices, $key) {
                     if ($key === 'unknown') return null;
-                    
+
                     $parts = explode('-', $key);
                     return (object)[
                         'year' => $parts[0],
@@ -129,12 +129,11 @@ class ClientPortalController extends Controller
             $totalPending = 0;
         }
 
-        return view('client.dashboard', compact(
-            'client', 
-            'upcomingSchedules', 
+        return view('dashboards.client', compact(
+            'client',
+            'upcomingSchedules',
             'recentInvoices',
             'allSchedules',
-            'missedPickups',
             'completedPickups',
             'pendingInvoices',
             'paidInvoices',
@@ -196,7 +195,7 @@ class ClientPortalController extends Controller
     {
         $client = $this->resolveClient();
         abort_unless($client, 404);
-        
+
         $products = Product::all();
         return view('client_portal.request_service', compact('client', 'products'));
     }
@@ -233,7 +232,7 @@ class ClientPortalController extends Controller
     {
         $client = $this->resolveClient();
         abort_unless($client, 404);
-        
+
         $products = Product::all();
         return view('client_portal.equipment', compact('client', 'products'));
     }
@@ -242,7 +241,7 @@ class ClientPortalController extends Controller
     {
         $client = $this->resolveClient();
         abort_unless($client, 404);
-        
+
         $contractor = User::with('contractor')->find($client->contractor_id);
         return view('client_portal.contractor_info', compact('client', 'contractor'));
     }
@@ -257,12 +256,12 @@ class ClientPortalController extends Controller
 
         $query = Invoice::with(['contractor'])
             ->where('client_id', $client->id);
-        
+
         // Only filter by contractor_id if it's set
         if ($client->contractor_id) {
             $query->where('contractor_id', $client->contractor_id);
         }
-        
+
         $invoices = $query->orderByDesc('invoice_date')->paginate(15);
 
         return view('client_portal.invoices', compact('client', 'invoices'));
@@ -275,12 +274,12 @@ class ClientPortalController extends Controller
 
         $query = Invoice::where('client_id', $client->id)
             ->where('status', 'paid');
-        
+
         // Only filter by contractor_id if it's set
         if ($client->contractor_id) {
             $query->where('contractor_id', $client->contractor_id);
         }
-        
+
         $payments = $query->orderByDesc('paid_at')->paginate(15);
 
         return view('client_portal.payments', compact('client', 'payments'));
@@ -290,12 +289,12 @@ class ClientPortalController extends Controller
     {
         $client = $this->resolveClient();
         abort_unless($client, 404);
-        
+
         $feedbacks = Feedback::where('client_id', $client->id)
             ->where('contractor_id', $client->contractor_id)
             ->orderByDesc('created_at')
             ->paginate(10);
-            
+
         return view('client_portal.feedback', compact('client', 'feedbacks'));
     }
 
@@ -354,7 +353,7 @@ class ClientPortalController extends Controller
     {
         $client = $this->resolveClient();
         abort_unless($client, 404);
-        
+
         return view('client_portal.support', compact('client'));
     }
 }

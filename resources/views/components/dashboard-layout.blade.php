@@ -2,10 +2,11 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Afia Orbit') }} - {{ $title ?? 'Dashboard' }}</title>
+    <title>{{ config('app.name', 'GreenRoute') }} - {{ $title ?? 'Dashboard' }}</title>
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -29,32 +30,6 @@
             background-color: var(--afia-light);
         }
 
-        .sidebar {
-            background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
-            border-right: 1px solid #e2e8f0;
-            min-height: 100vh;
-        }
-
-        .sidebar .nav-link {
-            color: var(--afia-gray);
-            padding: 0.75rem 1rem;
-            border-radius: 0.5rem;
-            margin: 0.25rem 0;
-            transition: all 0.3s ease;
-        }
-
-        .sidebar .nav-link:hover {
-            background-color: #e0f2fe;
-            color: var(--afia-teal);
-            transform: translateX(4px);
-        }
-
-        .sidebar .nav-link.active {
-            background: linear-gradient(135deg, var(--afia-teal) 0%, var(--afia-cyan) 100%);
-            color: white;
-            box-shadow: 0 4px 12px rgba(13, 148, 136, 0.3);
-        }
-
         .main-content {
             background-color: var(--afia-light);
         }
@@ -63,6 +38,9 @@
             background: white;
             border-bottom: 1px solid #e2e8f0;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1020;
         }
 
         .card {
@@ -143,104 +121,105 @@
             color: var(--afia-teal);
             font-weight: 500;
         }
+
+        .top-nav-links {
+            display: flex;
+            flex-direction: row;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 1rem;
+        }
+
+        .top-nav-links .nav-link {
+            color: var(--afia-gray);
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .top-nav-links .nav-link:hover {
+            background-color: #e0f2fe;
+            color: var(--afia-teal);
+        }
+
+        .top-nav-links .nav-link.active {
+            background: linear-gradient(135deg, var(--afia-teal) 0%, var(--afia-cyan) 100%);
+            color: white;
+            box-shadow: 0 4px 12px rgba(13, 148, 136, 0.3);
+        }
     </style>
 </head>
 <body>
-    <div class="container-fluid">
-        <div class="row">
-            <!-- Sidebar -->
-            <div class="col-md-3 col-lg-2 px-0">
-                <div class="sidebar">
+<div>
+        <!-- Top Navigation Bar -->
+        <div class="top-navbar px-lg-5 p-3">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center gap-3">
                     <!-- Logo Section -->
-                    <div class="p-4 border-bottom">
-                        <a href="{{ route('dashboard') }}" class="text-decoration-none">
-                            <x-afia-orbit-logo class="h-10" />
-                        </a>
-                    </div>
+                    <a href="{{ route('dashboard') }}" class="text-decoration-none">
+                        <x-afia-orbit-logo class="h-10" />
+                    </a>
 
-                    <!-- User Info -->
-                    <div class="p-4 border-bottom">
-                        <div class="d-flex align-items-center">
-                            <div class="user-avatar me-3">
-                                {{ substr(Auth::user()->name, 0, 1) }}
-                            </div>
-                            <div>
-                                <div class="fw-semibold text-dark">{{ Auth::user()->name }}</div>
-                                <small class="text-muted">{{ ucfirst(Auth::user()->user_type) }}</small>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- Horizontal Navigation Menu -->
+                    <nav class="d-flex">
+                        <ul class="top-nav-links">
+                            {{ $nav ?? '' }}
 
-                    <!-- Navigation Menu -->
-                    <nav class="p-3">
-                        {{ $sidebar }}
+                        </ul>
+                    </nav>
+
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb mb-0">
+                            {{ $breadcrumb }}
+                        </ol>
                     </nav>
                 </div>
-            </div>
 
-            <!-- Main Content -->
-            <div class="col-md-9 col-lg-10 px-0">
-                <div class="main-content">
-                    <!-- Top Navigation Bar -->
-                    <div class="top-navbar p-3">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="d-flex align-items-center gap-3">
-                                <!-- Logo -->
-                                <img src="{{ asset('result.png') }}" alt="GreenRoute Logo" style="max-height: 40px; width: auto;">
-
-                                <nav aria-label="breadcrumb">
-                                    <ol class="breadcrumb mb-0">
-                                        {{ $breadcrumb }}
-                                    </ol>
-                                </nav>
-                            </div>
-
-                            <div class="d-flex align-items-center gap-3">
-                                <!-- Notifications -->
-                                <div class="position-relative">
-                                    <button class="btn btn-link text-muted p-2" type="button">
-                                        <i class="bi bi-bell fs-5"></i>
-                                        @if(isset($notificationCount))
-                                            <span class="notification-badge">{{ $notificationCount }}</span>
-                                        @endif
-                                    </button>
-                                </div>
-
-                                <!-- User Menu -->
-                                <div class="dropdown">
-                                    <button class="btn btn-link text-muted p-2 dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                                        <div class="user-avatar">
-                                            {{ substr(Auth::user()->name, 0, 1) }}
-                                        </div>
-                                    </button>
-                                    <ul class="dropdown-menu dropdown-menu-end">
-                                        <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i>Profile</a></li>
-                                        <li><a class="dropdown-item" href="#"><i class="bi bi-gear me-2"></i>Settings</a></li>
-                                        <li><hr class="dropdown-divider"></li>
-                                        <li>
-                                            <form method="POST" action="{{ route('logout') }}">
-                                                @csrf
-                                                <button type="submit" class="dropdown-item text-danger">
-                                                    <i class="bi bi-box-arrow-right me-2"></i>Logout
-                                                </button>
-                                            </form>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                <div class="d-flex align-items-center gap-3">
+                    <!-- Notifications -->
+                    <div class="position-relative">
+                        <button class="btn btn-link text-muted p-2" type="button">
+                            <i class="bi bi-bell fs-5"></i>
+                            @if(isset($notificationCount))
+                                <span class="notification-badge">{{ $notificationCount }}</span>
+                            @endif
+                        </button>
                     </div>
 
-                    <!-- Page Content -->
-                    <div class="p-4">
-                        {{ $slot }}
+                    <!-- User Menu -->
+                    <div class="dropdown">
+                        <button class="btn btn-link text-muted p-2 dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                            <div class="user-avatar">
+                                {{ substr(Auth::user()->name, 0, 1) }}
+                            </div>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i>Profile</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-gear me-2"></i>Settings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <button type="submit" class="dropdown-item text-danger">
+                                        <i class="bi bi-box-arrow-right me-2"></i>Logout
+                                    </button>
+                                </form>
+                            </li>
+                        </ul>
                     </div>
-
-                    <!-- Footer -->
-                    <x-footer />
                 </div>
             </div>
         </div>
+
+        <!-- Page Content -->
+        <div class="container py-4">
+            {{ $slot }}
+        </div>
+
+        <!-- Footer -->
+        <x-footer />
     </div>
 
     <!-- Bootstrap JS -->

@@ -28,9 +28,9 @@
         <input type="hidden" name="user_type" value="client">
         
         <div class="mb-3">
-            <label for="email" class="form-label fw-medium">Email Address</label>
-            <input id="email" type="email" name="email" value="{{ old('email') }}" required autofocus
-                   class="form-control form-control-lg">
+            <label for="email" class="form-label fw-medium">Email or Phone Number</label>
+            <input id="email" type="text" name="email" value="{{ old('email') }}" required autofocus
+                   class="form-control form-control-lg" placeholder="Enter your email or phone number">
         </div>
         
         <div class="mb-3">

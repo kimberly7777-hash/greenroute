@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Privacy Policy - {{ config('app.name', 'Afia Orbit') }}</title>
+    <title>Privacy Policy - {{ config('app.name', 'GreenRoute') }}</title>
     
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -87,7 +87,7 @@
         <div class="legal-content">
             <h2>1. Introduction</h2>
             <p>
-                Afia Orbit ("we," "our," or "us") respects your privacy and is committed to protecting your personal data. 
+                GreenRoute ("we," "our," or "us") respects your privacy and is committed to protecting your personal data. 
                 This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our platform.
             </p>
             

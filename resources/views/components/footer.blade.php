@@ -1,7 +1,7 @@
 <footer class="app-footer">
     <div class="footer-content">
         <div class="footer-copyright">
-            <p>&copy; 2025 Afia Orbit. All rights reserved.</p>
+            <p>&copy; 2025 GreenRoute. All rights reserved.</p>
         </div>
         <div class="footer-links">
             <a href="{{ route('terms-of-service') }}" class="footer-link">Terms of Service</a>

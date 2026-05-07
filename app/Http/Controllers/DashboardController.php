@@ -26,7 +26,7 @@ class DashboardController extends Controller
     public function index()
     {
         if (Auth::user()->user_type === 'client') {
-            return redirect()->route('dashboard.client');
+            return redirect()->route('client.dashboard');
         } elseif (Auth::user()->user_type === 'contractor') {
             return redirect()->route('dashboard.contractor');
         } elseif (Auth::user()->user_type === 'admin') {

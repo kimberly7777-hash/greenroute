@@ -84,9 +84,10 @@ class ClientController extends Controller
                 ->with('error', 'Contractor profile not found. Please contact support.');
         }
 
-        // Check if should send invitation email
-        $sendEmail = true; // You can make this configurable via checkbox in the form
-        $createUserAccount = true; // Create user account for client portal access
+        // Only create the portal user and send invitation email when the client is active.
+        // Inactive clients should remain unlinked so they can register later using their registration number.
+        $createUserAccount = $validated['status'] === 'active';
+        $sendEmail = $validated['status'] === 'active';
         
         try {
             if ($sendEmail && filter_var($validated['email'], FILTER_VALIDATE_EMAIL)) {
@@ -111,9 +112,9 @@ class ClientController extends Controller
                     ->with('client_email', $client->email)
                     ->with('client_registration', $client->registration_number);
             } else {
-                // Create client without email (no invitation)
+                // Create client without email invitation
                 $maybeUser = User::whereRaw('LOWER(email) = ?', [strtolower($validated['email'])])->first();
-                if ($maybeUser && $maybeUser->isClient()) {
+                if ($maybeUser && $maybeUser->isClient() && $validated['status'] === 'active') {
                     $validated['user_id'] = $maybeUser->id;
                 }
                 

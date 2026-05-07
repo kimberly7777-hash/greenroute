@@ -24,6 +24,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
+        // Ensure we're not passing arguments to authenticate().
         $request->authenticate();
 
         $request->session()->regenerate();
@@ -40,13 +41,13 @@ class AuthenticatedSessionController extends Controller
             return redirect()->intended(route('dashboard.admin'));
         }
 
-        // Redirect based on user type
-        return match($user->user_type) {
+        return match ($user->user_type) {
             'contractor' => redirect()->intended(route('dashboard.contractor')),
             'client' => redirect()->intended(route('client.dashboard')),
             default => redirect()->intended(route('dashboard')),
         };
     }
+
 
     /**
      * Destroy an authenticated session.
