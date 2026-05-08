@@ -267,6 +267,11 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
         Route::get('/billing-rates/{rate}/edit', [App\Http\Controllers\AdminController::class, 'editBillingRate'])->name('admin.billing.rates.edit');
         Route::put('/billing-rates/{rate}', [App\Http\Controllers\AdminController::class, 'updateBillingRate'])->name('admin.billing.rates.update');
         Route::delete('/billing-rates/{rate}', [App\Http\Controllers\AdminController::class, 'deleteBillingRate'])->name('admin.billing.rates.delete');
+
+        // CSV Management routes
+        Route::get('/csv-management', function() {
+            return view('admin.csv-management');
+        })->name('admin.csv.management');
     });
 
     // Contractor routes

@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\LocationInvoiceController;
 use App\Http\Controllers\Api\AnalyticsController;
 use App\Http\Controllers\Api\SystemDiagnosticsController;
 use App\Http\Controllers\Api\LocationImportController;
+use App\Http\Controllers\Api\CsvImportExportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -205,6 +206,28 @@ Route::get('/locations/statistics', [LocationController::class, 'getStatistics']
 
 // Validate location exists
 Route::post('/locations/validate', [LocationController::class, 'validateLocation']);
+
+// ===================================
+// CSV Import/Export Routes
+// ===================================
+
+// CSV Preview (without importing)
+Route::post('/csv/preview', [CsvImportExportController::class, 'preview']);
+
+// CSV Import Routes
+Route::post('/csv/import/locations', [CsvImportExportController::class, 'importLocations']);
+Route::post('/csv/import/users', [CsvImportExportController::class, 'importUsers']);
+Route::post('/csv/import/clients', [CsvImportExportController::class, 'importClients']);
+Route::post('/csv/import/billing-rates', [CsvImportExportController::class, 'importBillingRates']);
+
+// CSV Export Routes
+Route::get('/csv/export/locations', [CsvImportExportController::class, 'exportLocations']);
+Route::get('/csv/export/users', [CsvImportExportController::class, 'exportUsers']);
+Route::get('/csv/export/clients', [CsvImportExportController::class, 'exportClients']);
+Route::get('/csv/export/billing-rates', [CsvImportExportController::class, 'exportBillingRates']);
+
+// CSV Statistics
+Route::get('/csv/stats', [CsvImportExportController::class, 'getStats']);
 
 // ===================================
 // Location-Based Invoice Creation (CRITICAL FEATURE)

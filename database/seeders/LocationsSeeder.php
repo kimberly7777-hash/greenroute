@@ -15,11 +15,16 @@ class LocationsSeeder extends Seeder
      */
     public function run(): void
     {
-        $csvFile = storage_path('app/locations.csv');
-        
+        $csvFile = storage_path('app/tbl_locations.csv');
+        $alternateCsvFile = storage_path('app/locations.csv');
+
+        if (!file_exists($csvFile) && file_exists($alternateCsvFile)) {
+            $csvFile = $alternateCsvFile;
+        }
+
         if (!file_exists($csvFile)) {
-            $this->command->error('locations.csv not found in storage/app/');
-            $this->command->info('Please upload locations.csv to storage/app/ directory');
+            $this->command->error('CSV file not found in storage/app/');
+            $this->command->info('Please upload tbl_locations.csv or locations.csv to storage/app/ directory');
             return;
         }
         

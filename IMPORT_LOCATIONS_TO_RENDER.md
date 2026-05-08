@@ -8,12 +8,14 @@
 
 ### Step 1: Copy CSV File to Storage
 
-Copy your `locations.csv` file to the `storage/app/` directory:
+Copy your `tbl_locations.csv` file to the `storage/app/` directory:
 
 ```bash
 # Make sure you're in the project root
-cp path/to/your/locations.csv storage/app/locations.csv
+cp path/to/your/tbl_locations.csv storage/app/tbl_locations.csv
 ```
+
+> If you already have a file named `locations.csv`, rename it to `tbl_locations.csv` or place it alongside the renamed copy in `storage/app/`.
 
 ### Step 2: Commit and Push Seeder
 
