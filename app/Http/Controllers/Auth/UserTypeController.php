@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ContractorRegistrationRequest;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -158,12 +159,44 @@ class UserTypeController extends Controller
     /**
      * Handle an incoming registration request for contractors.
      */
-    public function storeContractor(Request $request)
+    public function storeContractor(ContractorRegistrationRequest $request)
     {
+        // Check if email already exists and provide specific error
+        $existingUser = User::where('email', $request->email)->first();
+        if ($existingUser) {
+            Log::warning('Contractor registration attempt with existing email', [
+                'email' => $request->email,
+                'existing_user_type' => $existingUser->user_type,
+                'existing_status' => $existingUser->status,
+                'attempted_company' => $request->company_name,
+                'timestamp' => now()
+            ]);
+
+            return back()->withErrors([
+                'email' => "This email is already registered as a {$existingUser->user_type} account. If this is your account, please try logging in instead. If you need to register as a contractor, please use a different email address."
+            ])->withInput();
+        }
+
+        // Check if license number already exists
+        $existingLicense = \App\Models\Contractor::where('license_number', $request->license_number)->first();
+        if ($existingLicense) {
+            Log::warning('Contractor registration attempt with existing license number', [
+                'license_number' => $request->license_number,
+                'existing_contractor_id' => $existingLicense->id,
+                'existing_user_email' => $existingLicense->email,
+                'attempted_company' => $request->company_name,
+                'timestamp' => now()
+            ]);
+
+            return back()->withErrors([
+                'license_number' => 'This license number is already registered with another contractor. Please verify your license number or contact support.'
+            ])->withInput();
+        }
+
         $request->validate([
             'company_name' => ['required', 'string', 'max:255'],
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255'], // Removed unique here since we check manually
             'phone' => ['required', 'string', 'max:20'],
             'address' => ['required', 'string', 'max:255'],
             'site_locations' => ['required', 'string', 'max:2000'], // Required - at least one location must be selected
@@ -171,7 +204,7 @@ class UserTypeController extends Controller
             'district' => ['nullable', 'string', 'max:255'],
             'ward' => ['nullable', 'string', 'max:255'],
             'street' => ['nullable', 'string', 'max:255'],
-            'license_number' => ['required', 'string', 'max:50'],
+            'license_number' => ['required', 'string', 'max:50'], // Removed unique here since we check manually
             'certificate' => ['required', 'file', 'mimes:pdf,jpg,jpeg,png', 'max:2048'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
@@ -321,12 +354,45 @@ class UserTypeController extends Controller
 
         $remember = $request->boolean('remember');
 
+        $user = User::where('email', $credentials['email'])->first();
+
+        Log::info('Contractor login attempt', [
+            'email' => $credentials['email'],
+            'user_exists' => $user ? 'yes' : 'no',
+            'user_type' => $user ? $user->user_type : 'null',
+            'user_status' => $user ? $user->status : 'null',
+            'timestamp' => now()
+        ]);
+
+        if ($user && $user->user_type === 'contractor') {
+            if ($user->status === 'rejected') {
+                Log::info('Contractor login: rejected account', ['email' => $credentials['email']]);
+                return back()->withErrors([
+                    'email' => 'Your contractor account has been rejected. Please contact support at support@greenrouteorbit.com for more information.',
+                ])->withInput();
+            }
+
+            if ($user->status === 'pending' || ! $user->status) {
+                Log::info('Contractor login: pending account, redirecting', ['email' => $credentials['email']]);
+                return redirect()->route('contractor.pending')
+                    ->with('email', $user->email)
+                    ->with('name', $user->name);
+            }
+        }
+
+        Log::info('Contractor login: attempting Auth::attempt', ['email' => $credentials['email']]);
+
         if (Auth::attempt($credentials, $remember)) {
             $request->session()->regenerate();
 
             $user = Auth::user();
 
-            // Check if user is a contractor
+            Log::info('Contractor login: Auth::attempt successful', [
+                'email' => $user->email,
+                'user_type' => $user->user_type,
+                'status' => $user->status
+            ]);
+
             if ($user->user_type !== 'contractor') {
                 Auth::logout();
                 return back()->withErrors([
@@ -334,31 +400,17 @@ class UserTypeController extends Controller
                 ]);
             }
 
-            // CRITICAL: Check contractor approval status
-            if ($user->status === 'rejected') {
-                Auth::logout();
-                return back()->withErrors([
-                    'email' => 'Your contractor account has been rejected. Please contact support at support@greenrouteorbit.com for more information.',
-                ])->withInput();
-            }
-
-            if ($user->status === 'pending' || !$user->status) {
-                Auth::logout();
-                return redirect()->route('contractor.pending')
-                    ->with('email', $user->email)
-                    ->with('name', $user->name);
-            }
-
-            // Only allow approved contractors
             if ($user->status !== 'approved') {
                 Auth::logout();
                 return back()->withErrors([
-                    'email' => 'Your account status is under review. Please contact support for more information.',
+                    'email' => 'Your contractor account is under review. Please wait for approval before logging in.',
                 ]);
             }
 
             return redirect()->route('dashboard.contractor');
         }
+
+        Log::info('Contractor login: Auth::attempt failed', ['email' => $credentials['email']]);
 
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
