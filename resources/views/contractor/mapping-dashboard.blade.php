@@ -209,16 +209,29 @@
             background-color: white;
             transition: all 0.3s;
             border: 1px solid #eee;
+            color: var(--text-dark);
+            text-decoration: none;
         }
 
         .quick-action:hover {
             background-color: var(--light-teal);
             transform: translateY(-5px);
+            color: var(--primary-teal);
         }
 
         .quick-action i {
             font-size: 1.8rem;
             margin-bottom: 10px;
+            color: var(--primary-teal);
+        }
+
+        .quick-action h6 {
+            margin-bottom: 0;
+            color: var(--text-dark);
+        }
+
+        .quick-action:hover h6,
+        .quick-action:hover i {
             color: var(--primary-teal);
         }
 
@@ -431,8 +444,8 @@
                                             </a>
                                         </div>
                                         <div class="col-md-3 mb-3">
-                                            <a href="/disposal" class="quick-action d-block">
-                                                <i class="bi bi-trash"></i>
+                                            <a href="{{ route('disposal.index') }}" class="quick-action d-block">
+                                                <i class="bi bi-plus-lg"></i>
                                                 <h6>Disposal Schedules</h6>
                                             </a>
                                         </div>

@@ -19,6 +19,18 @@ class DisposalController extends Controller
         return view('disposal.index', compact('schedules'));
     }
 
+    public function create()
+    {
+        $pendingSchedules = Schedule::forContractor(Auth::id())
+            ->where('status', 'completed')
+            ->whereNull('disposal_site')
+            ->with('client')
+            ->orderBy('pickup_date', 'desc')
+            ->paginate(15);
+
+        return view('disposal.create', compact('pendingSchedules'));
+    }
+
     public function show(Schedule $schedule)
     {
         if ($schedule->contractor_id !== Auth::id()) {

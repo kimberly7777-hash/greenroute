@@ -235,13 +235,13 @@
     <div class="container">
         <!-- Page Header -->
         <div class="page-header">
-            <div>
-                <h1 class="page-title">Disposal Schedule</h1>
-                <p class="text-muted">Record disposal details for completed collections and manage matches to disposal sites.</p>
-            </div>
-            <div>
-                <a href="{{ route('disposal.index') }}" class="btn btn-primary">
-                    <i class="bi bi-trash me-1"></i>Record Disposal Data
+            <h1 class="page-title">Disposal Schedules</h1>
+            <div class="d-flex gap-2">
+                <a href="{{ route('dashboard.contractor') }}" class="btn btn-outline-dark d-flex align-items-center gap-2" style="border-color: #cbd5e1;" target="_parent">
+                    <i class="bi bi-house-door-fill" style="color: var(--primary-color);"></i> Home
+                </a>
+                <a href="{{ route('disposal.create') }}" class="btn-success text-decoration-none d-flex align-items-center">
+                    <i class="bi bi-plus-lg me-2"></i>Add Disposal Schedule
                 </a>
             </div>
         </div>
