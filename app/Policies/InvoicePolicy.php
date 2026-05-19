@@ -21,7 +21,15 @@ class InvoicePolicy
      */
     public function view(User $user, Invoice $invoice): bool
     {
-        return $user->isContractor() && $user->id === $invoice->contractor_id;
+        if ($user->isContractor()) {
+            return $user->id === $invoice->contractor_id;
+        }
+
+        if ($user->isClient()) {
+            return optional($user->client)->id === $invoice->client_id;
+        }
+
+        return false;
     }
 
     /**

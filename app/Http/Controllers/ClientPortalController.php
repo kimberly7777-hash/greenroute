@@ -113,6 +113,8 @@ class ClientPortalController extends Controller
             // Payment statistics from contractor
             $totalPaid = $paidInvoices->sum('total_amount');
             $totalPending = $pendingInvoices->sum('total_amount');
+            $accountAmount = $totalPaid;
+            $upcomingScheduleCount = $upcomingSchedules->count();
         } else {
             // No contractor assigned or no client data
             $upcomingSchedules = collect();
@@ -127,6 +129,8 @@ class ClientPortalController extends Controller
             $recentFeedback = collect();
             $totalPaid = 0;
             $totalPending = 0;
+            $accountAmount = 0;
+            $upcomingScheduleCount = 0;
         }
 
         return view('dashboards.client', compact(
@@ -140,7 +144,9 @@ class ClientPortalController extends Controller
             'monthlyPayments',
             'recentFeedback',
             'totalPaid',
-            'totalPending'
+            'totalPending',
+            'accountAmount',
+            'upcomingScheduleCount'
         ));
     }
 
@@ -189,6 +195,30 @@ class ClientPortalController extends Controller
             ->paginate(15);
 
         return view('client_portal.schedules', compact('client', 'schedules'));
+    }
+
+    public function cancelSchedule(Request $request, Schedule $schedule)
+    {
+        $client = $this->resolveClient();
+        abort_unless($client, 404);
+
+        if ($schedule->client_id !== $client->id || $schedule->contractor_id !== $client->contractor_id) {
+            abort(404);
+        }
+
+        if ($schedule->status !== 'scheduled') {
+            return redirect()->route('client.schedules')
+                ->with('error', 'Only scheduled pickups can be rejected.');
+        }
+
+        $notes = trim($schedule->notes ?? '');
+        $schedule->update([
+            'status' => 'cancelled',
+            'notes' => $notes ? $notes . ' ' . 'Cancelled by client due to unavailability.' : 'Cancelled by client due to unavailability.'
+        ]);
+
+        return redirect()->route('client.schedules')
+            ->with('success', 'The schedule has been rejected and cancelled. Your contractor has been notified.');
     }
 
     public function requestService()

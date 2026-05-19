@@ -28,6 +28,16 @@
             </div>
         </div>
 
+        @if(session('success'))
+            <div class="mb-6 rounded-lg bg-green-50 border border-green-200 p-4 text-green-900">
+                {{ session('success') }}
+            </div>
+        @elseif(session('error'))
+            <div class="mb-6 rounded-lg bg-red-50 border border-red-200 p-4 text-red-900">
+                {{ session('error') }}
+            </div>
+        @endif
+
         <!-- Filters -->
         <div class="bg-white rounded-lg shadow p-4 mb-6">
             <form method="GET" action="{{ route('client.schedules') }}" class="flex gap-4">
@@ -109,13 +119,20 @@
                     </div>
                     @endif
 
-                    <div class="mt-4 flex justify-between items-center">
+                    <div class="mt-4 flex flex-col md:flex-row md:justify-between md:items-center gap-3">
                         <div class="text-sm text-gray-600">
                             Contractor: <span class="font-medium text-gray-900">{{ $schedule->contractor->name ?? 'N/A' }}</span>
                         </div>
-                        <a href="{{ route('client.schedules.show', $schedule->id) }}" class="text-blue-600 hover:text-blue-800 font-medium text-sm">
-                            View Details →
-                        </a>
+                        <div class="flex items-center gap-3">
+                            @if($schedule->status === 'scheduled')
+                                <form method="POST" action="{{ route('client.schedules.cancel', $schedule->id) }}" onsubmit="return confirm('Reject this scheduled pickup? It will be cancelled and your contractor notified.')">
+                                    @csrf
+                                    <button type="submit" class="px-3 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 text-sm font-medium">
+                                        Reject Schedule
+                                    </button>
+                                </form>
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>

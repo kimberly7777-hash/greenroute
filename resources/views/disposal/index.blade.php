@@ -235,7 +235,15 @@
     <div class="container">
         <!-- Page Header -->
         <div class="page-header">
-            <h1 class="page-title">Disposal Schedule</h1>
+            <div>
+                <h1 class="page-title">Disposal Schedule</h1>
+                <p class="text-muted">Record disposal details for completed collections and manage matches to disposal sites.</p>
+            </div>
+            <div>
+                <a href="{{ route('disposal.index') }}" class="btn btn-primary">
+                    <i class="bi bi-trash me-1"></i>Record Disposal Data
+                </a>
+            </div>
         </div>
 
         <!-- Disposal Table - No Cards -->

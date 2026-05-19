@@ -431,6 +431,12 @@
                                             </a>
                                         </div>
                                         <div class="col-md-3 mb-3">
+                                            <a href="/disposal" class="quick-action d-block">
+                                                <i class="bi bi-trash"></i>
+                                                <h6>Disposal Schedules</h6>
+                                            </a>
+                                        </div>
+                                        <div class="col-md-3 mb-3">
                                             <a href="/reports" class="quick-action d-block">
                                                 <i class="bi bi-graph-up"></i>
                                                 <h6>View Reports</h6>

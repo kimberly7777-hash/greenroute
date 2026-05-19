@@ -329,7 +329,7 @@
                     <h3><i class="bi bi-journal-text me-2"></i>Additional Notes</h3>
                     
                     <div class="form-group">
-                        <label>General Notes</label>
+                        <label>General Nos</label>
                         <textarea name="notes" class="form-control" rows="4" placeholder="Any additional information about this schedule">{{ old('notes', $schedule->notes) }}</textarea>
                         @error('notes')
                             <div class="error-message">{{ $message }}</div>

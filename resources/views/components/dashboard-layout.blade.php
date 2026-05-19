@@ -172,44 +172,49 @@
 
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb mb-0">
-                            {{ $breadcrumb }}
+                            {{ $breadcrumb ?? '' }}
                         </ol>
                     </nav>
                 </div>
 
                 <div class="d-flex align-items-center gap-3">
-                    <!-- Notifications -->
-                    <div class="position-relative">
-                        <button class="btn btn-link text-muted p-2" type="button">
-                            <i class="bi bi-bell fs-5"></i>
-                            @if(isset($notificationCount))
-                                <span class="notification-badge">{{ $notificationCount }}</span>
-                            @endif
-                        </button>
-                    </div>
+                    @unless($hideTopActions ?? false)
+                        <!-- Notifications -->
+                        <div class="position-relative">
+                            <a href="{{ route('dashboard') }}" class="btn btn-link text-muted p-2">
+                                <i class="bi bi-bell fs-5"></i>
+                                @if(isset($notificationCount))
+                                    <span class="notification-badge">{{ $notificationCount }}</span>
+                                @endif
+                            </a>
+                        </div>
+                    @endunless
 
                     <!-- User Menu -->
-                    <div class="dropdown">
-                        <button class="btn btn-link text-muted p-2 dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                            <div class="user-avatar">
-                                {{ substr(Auth::user()->name, 0, 1) }}
-                            </div>
-                        </button>
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i>Profile</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-gear me-2"></i>Settings</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li>
-                                <form method="POST" action="{{ route('logout') }}">
-                                    @csrf
-                                    <button type="submit" class="dropdown-item text-danger">
-                                        <i class="bi bi-box-arrow-right me-2"></i>Logout
-                                    </button>
-                                </form>
-                            </li>
-                        </ul>
+                        <div class="dropdown">
+                            <button class="btn btn-link text-muted p-2 dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                <div class="user-avatar">
+                                    {{ substr(Auth::user()->name, 0, 1) }}
+                                </div>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="{{ route('profile.edit') }}"><i class="bi bi-person me-2"></i>Profile</a></li>
+                                @unless($hideTopActions ?? false)
+                                    <li><a class="dropdown-item" href="{{ route('dashboard') }}"><i class="bi bi-bell me-2"></i>Notifications</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('profile.edit') }}"><i class="bi bi-gear me-2"></i>Settings</a></li>
+                                @endunless
+                                <li><hr class="dropdown-divider"></li>
+                                <li>
+                                    <form method="POST" action="{{ route('logout') }}">
+                                        @csrf
+                                        <button type="submit" class="dropdown-item text-danger">
+                                            <i class="bi bi-box-arrow-right me-2"></i>Logout
+                                        </button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
             </div>
         </div>
 

@@ -74,6 +74,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('profile', [ClientPortalController::class, 'profile'])->name('client.profile');
         Route::put('profile', [ClientPortalController::class, 'updateProfile'])->name('client.profile.update');
         Route::get('schedules', [ClientPortalController::class, 'schedules'])->name('client.schedules');
+        Route::post('schedules/{schedule}/cancel', [ClientPortalController::class, 'cancelSchedule'])->name('client.schedules.cancel');
         Route::get('request-service', [ClientPortalController::class, 'requestService'])->name('client.request.service');
         Route::post('request-service', [ClientPortalController::class, 'storeServiceRequest'])->name('client.request.service.store');
         Route::get('equipment', [ClientPortalController::class, 'equipment'])->name('client.equipment');
@@ -87,6 +88,7 @@ Route::middleware(['auth'])->group(function () {
 
         // Payment Routes
         Route::get('payments/{invoice}/checkout', [App\Http\Controllers\PaymentController::class, 'checkout'])->name('client.payments.checkout');
+        Route::post('payments/{invoice}/auto', [App\Http\Controllers\PaymentController::class, 'autoPay'])->name('client.payments.auto');
         Route::post('payments/{invoice}/mobile', [App\Http\Controllers\PaymentController::class, 'payMobile'])->name('client.payments.mobile');
         Route::post('payments/{invoice}/bank', [App\Http\Controllers\PaymentController::class, 'payBank'])->name('client.payments.bank');
     });

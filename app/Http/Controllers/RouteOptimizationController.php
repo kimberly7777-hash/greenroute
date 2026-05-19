@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Client;
 use App\Models\Location;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class RouteOptimizationController extends Controller
@@ -37,14 +36,8 @@ class RouteOptimizationController extends Controller
         $region = $locationParts[0] ?? '';
         $district = $locationParts[1] ?? '';
 
-        // Find clients whose address matches the selected region/district
-        $clients = Client::where('contractor_id', Auth::id())
-            ->where(function($query) use ($region, $district) {
-                $query->where('address', 'like', '%' . $region . '%')
-                      ->orWhere('address', 'like', '%' . $district . '%')
-                      ->orWhere('city', 'like', '%' . $district . '%')
-                      ->orWhere('state', 'like', '%' . $region . '%');
-            })
+        // Find clients whose region and district exactly match the selected location
+        $clients = Client::byLocation($region, $district)
             ->whereNotNull('latitude')
             ->whereNotNull('longitude')
             ->get();

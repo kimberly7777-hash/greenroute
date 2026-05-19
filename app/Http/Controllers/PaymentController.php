@@ -33,6 +33,41 @@ class PaymentController extends Controller
     }
 
     /**
+     * Auto-complete checkout and mark invoice paid
+     */
+    public function autoPay(Invoice $invoice)
+    {
+        if ($invoice->status === 'paid') {
+            return response()->json([
+                'success' => true,
+                'message' => 'This invoice has already been paid.',
+                'reference' => null,
+            ]);
+        }
+
+        $reference = 'AUTO-' . Str::upper(Str::random(10));
+
+        $transaction = PaymentTransaction::create([
+            'invoice_id' => $invoice->id,
+            'transaction_reference' => $reference,
+            'amount' => $invoice->total_amount,
+            'currency' => 'TZS',
+            'provider' => 'Auto Checkout',
+            'status' => 'success',
+            'paid_at' => now(),
+            'payment_details' => ['auto_payment' => true],
+        ]);
+
+        $invoice->markAsPaid('Auto Checkout');
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Payment was successfully completed.',
+            'reference' => $reference,
+        ]);
+    }
+
+    /**
      * Process Mobile Money Payment
      */
     public function payMobile(Request $request, Invoice $invoice)

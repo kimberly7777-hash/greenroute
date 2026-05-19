@@ -13,6 +13,11 @@
     </x-slot>
 
     <div class="container-fluid">
+        @if(session('success'))
+            <div class="alert alert-success">{{ session('success') }}</div>
+        @elseif(session('error'))
+            <div class="alert alert-danger">{{ session('error') }}</div>
+        @endif
         <div class="card border-0 shadow-sm">
             <div class="card-body p-0">
                 <div class="table-responsive">
@@ -26,6 +31,7 @@
                                 <th>Contractor</th>
                                 <th>Service</th>
                                 <th>Status</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -40,8 +46,18 @@
                                     </td>
                                     <td><span class="badge bg-primary">{{ ucfirst($schedule->service_type) }}</span></td>
                                     <td>
-                                        @php $st=$schedule->status; @endphp
-                                        <span class="badge {{ $st==='scheduled' ? 'bg-warning' : ($st==='completed' ? 'bg-success' : 'bg-secondary') }}">{{ ucfirst(str_replace('_',' ',$st)) }}</span>
+                                        @php $st = $schedule->status; @endphp
+                                        <span class="badge {{ $st === 'scheduled' ? 'bg-warning' : ($st === 'completed' ? 'bg-success' : ($st === 'cancelled' ? 'bg-danger' : 'bg-secondary')) }}">{{ ucfirst(str_replace('_',' ',$st)) }}</span>
+                                    </td>
+                                    <td>
+                                        @if($schedule->status === 'scheduled')
+                                            <form method="POST" action="{{ route('client.schedules.cancel', $schedule->id) }}" onsubmit="return confirm('Reject this scheduled pickup? It will be cancelled and your contractor notified.')">
+                                                @csrf
+                                                <button type="submit" class="btn btn-sm btn-danger">Reject</button>
+                                            </form>
+                                        @else
+                                            <span class="text-muted">N/A</span>
+                                        @endif
                                     </td>
                                 </tr>
                             @empty
