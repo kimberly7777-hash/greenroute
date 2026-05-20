@@ -122,7 +122,24 @@
         .badge.bg-primary { background: var(--primary-color) !important; }
         .badge.bg-success { background: #28a745 !important; }
         .badge.bg-warning { background: #ffc107 !important; color: #000 !important; }
-        
+
+        .btn-success {
+            background: var(--primary-color) !important;
+            border: none !important;
+            border-radius: 10px;
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(5, 92, 92, 0.3);
+            transition: all 0.3s ease;
+            color: white !important;
+        }
+
+        .btn-success:hover {
+            background: #044a4a !important;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(5, 92, 92, 0.4);
+        }
+
         .btn-group .btn {
             border-radius: 8px;
             margin: 0 2px;
@@ -240,7 +257,7 @@
                 <a href="{{ route('dashboard.contractor') }}" class="btn btn-outline-dark d-flex align-items-center gap-2" style="border-color: #cbd5e1;" target="_parent">
                     <i class="bi bi-house-door-fill" style="color: var(--primary-color);"></i> Home
                 </a>
-                <a href="{{ route('disposal.create') }}" class="btn-success text-decoration-none d-flex align-items-center">
+                <a href="{{ route('disposal.create') }}" class="btn btn-success text-decoration-none d-flex align-items-center">
                     <i class="bi bi-plus-lg me-2"></i>Add Disposal Schedule
                 </a>
             </div>

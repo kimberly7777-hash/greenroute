@@ -313,6 +313,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::middleware(['auth'])->prefix('disposal')->group(function () {
         Route::get('/', [App\Http\Controllers\DisposalController::class, 'index'])->name('disposal.index');
         Route::get('/create', [App\Http\Controllers\DisposalController::class, 'create'])->name('disposal.create');
+        Route::post('/', [App\Http\Controllers\DisposalController::class, 'store'])->name('disposal.store');
         Route::get('/{schedule}', [App\Http\Controllers\DisposalController::class, 'show'])->name('disposal.show');
         Route::get('/{schedule}/edit', [App\Http\Controllers\DisposalController::class, 'edit'])->name('disposal.edit');
         Route::put('/{schedule}', [App\Http\Controllers\DisposalController::class, 'update'])->name('disposal.update');
