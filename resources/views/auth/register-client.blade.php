@@ -128,27 +128,28 @@
         </p>
     </div>
 
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet" />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
     <script>
-        let map, marker, geocoder;
+        mapboxgl.accessToken = '{{ config('services.mapbox.token') }}';
+
+        let map, marker;
         
         function initMap() {
-            if (typeof google !== 'undefined' && google.maps) {
-                // Initialize map centered on Tanzania
-                map = new google.maps.Map(document.getElementById('map'), {
-                    zoom: 13,
-                    center: { lat: -3.3731, lng: 36.8822 } // Moshi, Tanzania coordinates
-                });
-                
-                geocoder = new google.maps.Geocoder();
-                marker = new google.maps.Marker({ map: map });
-            } else {
-                // Fallback when Google Maps is not available
-                document.getElementById('map').innerHTML = '<div class="d-flex align-items-center justify-content-center h-100 bg-light rounded"><div class="text-center"><i class="bi bi-geo-alt text-muted" style="font-size: 3rem;"></i><p class="text-muted mt-2">Map preview unavailable<br><small>GPS location capture still works</small></p></div></div>';
-            }
-            
+            map = new mapboxgl.Map({
+                container: 'map',
+                style: 'mapbox://styles/mapbox/streets-v11',
+                center: [36.8822, -3.3731],
+                zoom: 13
+            });
+
+            marker = new mapboxgl.Marker({ color: '#198754' })
+                .setLngLat([36.8822, -3.3731])
+                .addTo(map);
+
+            map.addControl(new mapboxgl.NavigationControl(), 'top-right');
 
             document.getElementById('watchLocation').addEventListener('click', watchPreciseLocation);
-            
             document.getElementById('locationStatus').innerHTML = '📍 Click "Get My Precise Location" to detect your exact GPS coordinates in Moshi, Tanzania';
         }
         
@@ -276,24 +277,17 @@
         }
         
         function updateLocation(lat, lng, accuracy, source) {
-            const location = { lat: lat, lng: lng };
-            
-            // Update map view if available
             if (map && marker) {
-                map.setCenter(location);
-                map.setZoom(18);
-                marker.setPosition(location);
+                marker.setLngLat([lng, lat]);
+                map.flyTo({ center: [lng, lat], zoom: 18 });
             }
-            
-            // Store coordinates with high precision
+
             document.getElementById('latitude').value = lat.toFixed(8);
             document.getElementById('longitude').value = lng.toFixed(8);
-            
-            // Auto-fill address using reverse geocoding
+
             reverseGeocodeAddress(lat, lng);
-            
+
             console.log(`GPS Update: ${lat.toFixed(8)}, ${lng.toFixed(8)} (±${Math.round(accuracy)}m) - ${source}`);
-            
             console.log('GPS Location:', {
                 coordinates: `${lat.toFixed(8)}, ${lng.toFixed(8)}`,
                 accuracy: `±${Math.round(accuracy)}m`,
@@ -397,15 +391,7 @@
             return true;
         }
     </script>
-    
-    @if(config('services.google_maps.api_key'))
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ config('services.google_maps.api_key') }}&callback=initMap&libraries=geometry"></script>
-    @else
-        <script>
-            function initMap() {
-                document.getElementById('map').innerHTML = '<div class="d-flex align-items-center justify-content-center h-100 bg-light rounded"><div class="text-center"><i class="bi bi-geo-alt text-muted" style="font-size: 3rem;"></i><p class="text-muted mt-2">Map preview unavailable<br><small>GPS location capture still works</small></p></div></div>';
-            }
-            initMap();
-        </script>
-    @endif
+    <script>
+        document.addEventListener('DOMContentLoaded', initMap);
+    </script>
 </x-guest-layout>

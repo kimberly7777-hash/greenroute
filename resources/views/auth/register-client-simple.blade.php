@@ -90,34 +90,44 @@
         </button>
     </form>
 
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet" />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
     <script>
+        mapboxgl.accessToken = '{{ config('services.mapbox.token') }}';
+
         let map, marker;
-        
+
         function initMap() {
-            map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 6,
-                center: { lat: -6.369028, lng: 34.888822 }
+            map = new mapboxgl.Map({
+                container: 'map',
+                style: 'mapbox://styles/mapbox/streets-v11',
+                center: [34.888822, -6.369028],
+                zoom: 6
             });
-            
-            marker = new google.maps.Marker({ map: map });
+
+            map.addControl(new mapboxgl.NavigationControl({ visualizePitch: true }), 'top-right');
+
+            marker = new mapboxgl.Marker({ color: '#198754' })
+                .setLngLat([34.888822, -6.369028])
+                .addTo(map);
+
             document.getElementById('getLocation').addEventListener('click', getDeviceLocation);
         }
-        
+
         function getDeviceLocation() {
             document.getElementById('locationStatus').innerHTML = 'Getting your device location...';
-            
+
             navigator.geolocation.getCurrentPosition(
                 function(position) {
                     const lat = position.coords.latitude;
                     const lng = position.coords.longitude;
-                    
+
                     document.getElementById('latitude').value = lat;
                     document.getElementById('longitude').value = lng;
-                    
-                    map.setCenter({ lat: lat, lng: lng });
-                    map.setZoom(16);
-                    marker.setPosition({ lat: lat, lng: lng });
-                    
+
+                    map.flyTo({ center: [lng, lat], zoom: 16 });
+                    marker.setLngLat([lng, lat]);
+
                     document.getElementById('locationStatus').innerHTML = 'Location captured: ' + lat.toFixed(6) + ', ' + lng.toFixed(6);
                     console.log('Device Location:', lat, lng);
                 },
@@ -131,11 +141,11 @@
                 }
             );
         }
-        
+
         function validateLocation() {
             const lat = document.getElementById('latitude').value;
             const lng = document.getElementById('longitude').value;
-            
+
             if (!lat || !lng) {
                 alert('Please get your location first.');
                 return false;
@@ -143,6 +153,8 @@
             return true;
         }
     </script>
-    
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ config('services.google_maps.api_key') }}&callback=initMap"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', initMap);
+    </script>
 </x-guest-layout>

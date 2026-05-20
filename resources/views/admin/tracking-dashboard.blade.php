@@ -102,41 +102,42 @@
         </div>
     </div>
 
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet" />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
     <script>
-        let map, markers = [];
-        
+        mapboxgl.accessToken = '{{ config('services.mapbox.token') }}';
+        let map, markers = {};
+
         function initMap() {
-            map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 10,
-                center: { lat: 40.7128, lng: -74.0060 }
+            map = new mapboxgl.Map({
+                container: 'map',
+                style: 'mapbox://styles/mapbox/streets-v11',
+                center: [39.2083, -6.7924],
+                zoom: 10
             });
-            
+
+            map.addControl(new mapboxgl.NavigationControl(), 'top-right');
             loadContractorLocations();
             setInterval(loadContractorLocations, 30000);
         }
-        
+
         function loadContractorLocations() {
             fetch('/admin/contractors/locations')
                 .then(response => response.json())
                 .then(data => {
                     clearMarkers();
-                    
+
                     data.forEach(contractor => {
-                        const marker = new google.maps.Marker({
-                            position: { lat: parseFloat(contractor.latitude), lng: parseFloat(contractor.longitude) },
-                            map: map,
-                            title: contractor.name,
-                            icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
-                        });
-                        
-                        const infoWindow = new google.maps.InfoWindow({
-                            content: `<div><h3>${contractor.name}</h3><p>Last seen: ${new Date(contractor.updated_at).toLocaleString()}</p></div>`
-                        });
-                        
-                        marker.addListener('click', () => infoWindow.open(map, marker));
-                        markers.push(marker);
+                        const lng = parseFloat(contractor.longitude);
+                        const lat = parseFloat(contractor.latitude);
+                        const marker = new mapboxgl.Marker({ color: '#22c55e' })
+                            .setLngLat([lng, lat])
+                            .setPopup(new mapboxgl.Popup({ offset: 25 }).setHTML(`<div><h3>${contractor.name}</h3><p>Last seen: ${new Date(contractor.updated_at).toLocaleString()}</p></div>`))
+                            .addTo(map);
+
+                        markers[contractor.id] = marker;
                     });
-                    
+
                     updateStats(data);
                     document.getElementById('lastUpdate').textContent = new Date().toLocaleTimeString();
                 })
@@ -146,25 +147,25 @@
                     document.getElementById('totalLocations').textContent = '0';
                 });
         }
-        
+
         function clearMarkers() {
-            markers.forEach(marker => marker.setMap(null));
-            markers = [];
+            Object.values(markers).forEach(marker => marker.remove());
+            markers = {};
         }
-        
+
         function updateStats(data) {
             document.getElementById('activeContractors').textContent = data.length;
             document.getElementById('totalLocations').textContent = data.length;
-            
+
             if (data.length > 0) {
-                const latest = data.reduce((prev, current) => 
+                const latest = data.reduce((prev, current) =>
                     new Date(current.updated_at) > new Date(prev.updated_at) ? current : prev
                 );
-                document.getElementById('lastLocationUpdate').textContent = 
+                document.getElementById('lastLocationUpdate').textContent =
                     new Date(latest.updated_at).toLocaleString();
             }
         }
+
+        document.addEventListener('DOMContentLoaded', initMap);
     </script>
-    
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ config('services.google.maps_api_key') }}&callback=initMap"></script>
 </x-app-layout>

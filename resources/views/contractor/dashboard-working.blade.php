@@ -311,11 +311,11 @@
                 
                 <!-- Map Container -->
                 <div class="map-container">
-                    <p class="map-message">Map will load here once Google Maps APIs are properly configured</p>
+                    <p class="map-message">Map will load here once mapbox APIs are properly configured</p>
                     <div id="mapPlaceholder" class="map-placeholder">
                         <div class="text-center">
                             <i class="bi bi-map" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.5;"></i>
-                            <div>Google Maps Loading...</div>
+                            <div>Mapbox Maps Loading...</div>
                         </div>
                     </div>
                 </div>

@@ -268,53 +268,28 @@
         </div>
     </div>
 
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet" />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
     <script>
-        let map, markers = [], currentLocation, routePath;
-        
+        mapboxgl.accessToken = '{{ config('services.mapbox.token') }}';
+        let map, markers = [], currentLocation, routeSourceId = 'route-source';
+
         function initMap() {
-            // Check if Google Maps API loaded successfully
-            if (typeof google === 'undefined' || !google.maps) {
-                console.error('Google Maps API failed to load');
-                document.getElementById('map').innerHTML = '<div class="d-flex align-items-center justify-content-center h-100 bg-light"><div class="text-center"><i class="bi bi-exclamation-triangle display-1 text-warning"></i><p class="mt-3 text-muted">Google Maps failed to load</p><p class="small text-muted">Please check your internet connection and API key</p></div></div>';
-                return;
-            }
-            
-            // Initialize the map
-            map = new google.maps.Map(document.getElementById('map'), {
+            map = new mapboxgl.Map({
+                container: 'map',
+                style: 'mapbox://styles/mapbox/streets-v11',
                 zoom: 12,
-                center: { lat: 40.7128, lng: -74.0060 },
-                styles: [
-                    {
-                        "featureType": "administrative",
-                        "elementType": "geometry",
-                        "stylers": [{"visibility": "off"}]
-                    },
-                    {
-                        "featureType": "poi",
-                        "stylers": [{"visibility": "off"}]
-                    },
-                    {
-                        "featureType": "road",
-                        "elementType": "labels.icon",
-                        "stylers": [{"visibility": "off"}]
-                    },
-                    {
-                        "featureType": "transit",
-                        "stylers": [{"visibility": "off"}]
-                    }
-                ]
+                center: [39.2083, -6.7924]
             });
-            
-            // Load initial data
+
+            map.addControl(new mapboxgl.NavigationControl(), 'top-right');
             loadClientLocations();
             getCurrentLocation();
-            
-            // Set up event listeners
             document.getElementById('updateLocation').addEventListener('click', updateMyLocation);
             document.getElementById('optimizeRoute').addEventListener('click', optimizeRoute);
             document.getElementById('clearRoute').addEventListener('click', clearRoute);
         }
-        
+
         function loadClientLocations() {
             fetch('/contractor/clients/locations')
                 .then(response => {
@@ -324,59 +299,28 @@
                     return response.json();
                 })
                 .then(clients => {
-                    // Clear existing markers
-                    markers.forEach(marker => marker.setMap(null));
-                    markers = [];
-                    
-                    // Add client markers
+                    clearClientMarkers();
                     clients.forEach(client => {
-                        const marker = new google.maps.Marker({
-                            position: { 
-                                lat: parseFloat(client.latitude), 
-                                lng: parseFloat(client.longitude) 
-                            },
-                            map: map,
-                            title: client.name,
-                            icon: {
-                                path: google.maps.SymbolPath.CIRCLE,
-                                scale: 8,
-                                fillColor: '#055c5c',
-                                fillOpacity: 1,
-                                strokeColor: '#ffffff',
-                                strokeWeight: 2
-                            }
-                        });
-                        
-                        // Add info window
-                        const infoWindow = new google.maps.InfoWindow({
-                            content: `
+                        const lng = parseFloat(client.longitude);
+                        const lat = parseFloat(client.latitude);
+                        const marker = new mapboxgl.Marker({ color: '#055c5c' })
+                            .setLngLat([lng, lat])
+                            .setPopup(new mapboxgl.Popup({ offset: 25 }).setHTML(`
                                 <div style="padding: 1rem; min-width: 200px;">
                                     <h4 style="color: #055c5c; margin-bottom: 0.5rem; font-weight: 600;">${client.name}</h4>
                                     <p style="margin: 0.25rem 0; color: #666;">${client.address || ''}</p>
                                     <p style="margin: 0.25rem 0; color: #666;">${client.phone || ''}</p>
                                 </div>
-                            `
-                        });
-                        
-                        marker.addListener('click', () => {
-                            infoWindow.open(map, marker);
-                        });
-                        
+                            `))
+                            .addTo(map);
                         markers.push(marker);
                     });
-                    
+
                     document.getElementById('clientCount').textContent = clients.length;
-                    
-                    // Fit map to show all markers
-                    if (clients.length > 0) {
-                        const bounds = new google.maps.LatLngBounds();
-                        clients.forEach(client => {
-                            bounds.extend(new google.maps.LatLng(
-                                parseFloat(client.latitude), 
-                                parseFloat(client.longitude)
-                            ));
-                        });
-                        map.fitBounds(bounds);
+                    if (markers.length > 0) {
+                        const bounds = new mapboxgl.LngLatBounds();
+                        markers.forEach(marker => bounds.extend(marker.getLngLat()));
+                        map.fitBounds(bounds, { padding: 50 });
                     }
                 })
                 .catch(error => {
@@ -385,7 +329,12 @@
                     showNotification('Failed to load client locations', 'error');
                 });
         }
-        
+
+        function clearClientMarkers() {
+            markers.forEach(marker => marker.remove());
+            markers = [];
+        }
+
         function getCurrentLocation() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(position => {
@@ -393,40 +342,24 @@
                         lat: position.coords.latitude,
                         lng: position.coords.longitude
                     };
-                    
-                    // Add current location marker
-                    new google.maps.Marker({
-                        position: currentLocation,
-                        map: map,
-                        title: 'My Current Location',
-                        icon: {
-                            url: 'data:image/svg+xml;base64,' + btoa(`
-                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="10" cy="10" r="8" fill="#640404"/>
-                                    <circle cx="10" cy="10" r="3" fill="white"/>
-                                </svg>
-                            `),
-                            scaledSize: new google.maps.Size(20, 20),
-                            anchor: new google.maps.Point(10, 10)
-                        }
-                    });
-                    
-                    // Center map on current location
-                    map.setCenter(currentLocation);
+
+                    new mapboxgl.Marker({ color: '#640404' })
+                        .setLngLat([currentLocation.lng, currentLocation.lat])
+                        .setPopup(new mapboxgl.Popup({ offset: 25 }).setText('My Current Location'))
+                        .addTo(map);
+                    map.flyTo({ center: [currentLocation.lng, currentLocation.lat], zoom: 14 });
                 }, error => {
                     console.warn('Error getting current location:', error);
                 });
             }
         }
-        
+
         function updateMyLocation() {
             const button = document.getElementById('updateLocation');
             const originalText = button.innerHTML;
-            
-            // Show loading state
             button.innerHTML = '<i class="bi bi-arrow-repeat spinner"></i> Updating...';
             button.disabled = true;
-            
+
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(position => {
                     fetch('/location/update', {
@@ -449,7 +382,7 @@
                     .then(data => {
                         if (data.success) {
                             showNotification('Location updated successfully!', 'success');
-                            getCurrentLocation(); // Refresh location on map
+                            getCurrentLocation();
                         } else {
                             throw new Error('Update failed');
                         }
@@ -459,7 +392,6 @@
                         showNotification('Failed to update location', 'error');
                     })
                     .finally(() => {
-                        // Restore button
                         button.innerHTML = originalText;
                         button.disabled = false;
                     });
@@ -478,7 +410,6 @@
                         default:
                             errorMessage += 'An unknown error occurred.';
                     }
-                    
                     showNotification(errorMessage, 'error');
                     button.innerHTML = originalText;
                     button.disabled = false;
@@ -489,70 +420,93 @@
                 button.disabled = false;
             }
         }
-        
+
         function optimizeRoute() {
             const button = document.getElementById('optimizeRoute');
             const originalText = button.innerHTML;
-            
-            // Show loading state
             button.innerHTML = '<i class="bi bi-arrow-repeat spinner"></i> Optimizing...';
             button.disabled = true;
-            
-            // Simulate route optimization
+
             setTimeout(() => {
-                // Create a sample route (in real implementation, this would come from your backend)
                 if (markers.length > 1) {
-                    const routeCoordinates = markers.map(marker => marker.getPosition());
+                    const routeCoordinates = markers.map(marker => [marker.getLngLat().lng, marker.getLngLat().lat]);
                     
-                    // Clear existing route
-                    if (routePath) {
-                        routePath.setMap(null);
-                    }
-                    
-                    // Draw new route
-                    routePath = new google.maps.Polyline({
-                        path: routeCoordinates,
-                        geodesic: true,
-                        strokeColor: '#055c5c',
-                        strokeOpacity: 0.8,
-                        strokeWeight: 4
-                    });
-                    
-                    routePath.setMap(map);
-                    
-                    // Calculate approximate distance
+                    clearRoute();
+                    addRoutePath(routeCoordinates);
                     const distance = calculateRouteDistance(routeCoordinates);
                     document.getElementById('routeDistance').textContent = distance + ' km';
-                    
                     showNotification('Route optimized successfully!', 'success');
                 } else {
                     showNotification('Need at least 2 clients to optimize route', 'warning');
                 }
-                
-                // Restore button
+
                 button.innerHTML = originalText;
                 button.disabled = false;
             }, 2000);
         }
-        
+                    
+                    // Remove old duplicate route block
+                }
+            }, 2000);
+        }
+
+        function addRoutePath(coordinates) {
+            const routeGeoJSON = {
+                type: 'Feature',
+                geometry: {
+                    type: 'LineString',
+                    coordinates: coordinates
+                }
+            };
+
+            if (map.getSource(routeSourceId)) {
+                map.getSource(routeSourceId).setData(routeGeoJSON);
+            } else {
+                map.addSource(routeSourceId, {
+                    type: 'geojson',
+                    data: routeGeoJSON
+                });
+
+                map.addLayer({
+                    id: routeSourceId,
+                    type: 'line',
+                    source: routeSourceId,
+                    layout: {
+                        'line-join': 'round',
+                        'line-cap': 'round'
+                    },
+                    paint: {
+                        'line-color': '#055c5c',
+                        'line-width': 4,
+                        'line-opacity': 0.8
+                    }
+                });
+            }
+
+            if (coordinates.length > 0) {
+                const bounds = coordinates.reduce((bounds, coord) => bounds.extend(coord), new mapboxgl.LngLatBounds(coordinates[0], coordinates[0]));
+                map.fitBounds(bounds, { padding: 50 });
+            }
+        }
+
         function clearRoute() {
-            if (routePath) {
-                routePath.setMap(null);
-                routePath = null;
-                document.getElementById('routeDistance').textContent = '-- km';
-                showNotification('Route cleared', 'info');
+            if (map.getLayer(routeSourceId)) {
+                map.removeLayer(routeSourceId);
+            }
+            if (map.getSource(routeSourceId)) {
+                map.removeSource(routeSourceId);
+            }
+            document.getElementById('routeDistance').textContent = '-- km';
+            showNotification('Route cleared', 'info');
             }
         }
         
         function calculateRouteDistance(coordinates) {
-            // Simple distance calculation (in real implementation, use proper routing)
             let totalDistance = 0;
             for (let i = 1; i < coordinates.length; i++) {
-                const lat1 = coordinates[i-1].lat();
-                const lng1 = coordinates[i-1].lng();
-                const lat2 = coordinates[i].lat();
-                const lng2 = coordinates[i].lng();
-                
+                const [lng1, lat1] = coordinates[i - 1];
+                const [lng2, lat2] = coordinates[i];
+
                 const R = 6371; // Earth's radius in km
                 const dLat = (lat2 - lat1) * Math.PI / 180;
                 const dLng = (lng2 - lng1) * Math.PI / 180;
@@ -639,13 +593,8 @@
         document.head.appendChild(style);
     </script>
     
-    <script>
-        // Global error handler for Google Maps API
-        window.gm_authFailure = function() {
-            console.error('Google Maps API authentication failed');
-            document.getElementById('map').innerHTML = '<div class="d-flex align-items-center justify-content-center h-100 bg-light"><div class="text-center"><i class="bi bi-exclamation-triangle display-1 text-danger"></i><p class="mt-3 text-muted">Google Maps API authentication failed</p><p class="small text-muted">Please check your API key configuration</p></div></div>';
-        };
-    </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ config('services.google.maps_api_key') }}&callback=initMap&libraries=geometry"></script>
 </body>
+    <script>
+        document.addEventListener('DOMContentLoaded', initMap);
+    </script>
 </html>

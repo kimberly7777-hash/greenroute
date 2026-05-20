@@ -402,84 +402,44 @@
         </div>
     </div>
 
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet" />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
     <script>
+        mapboxgl.accessToken = '{{ config('services.mapbox.token') }}';
         let map, truckMarkers = {};
-        
+
         function initMap() {
-            // Check if Google Maps API loaded successfully
-            if (typeof google === 'undefined' || !google.maps) {
-                console.error('Google Maps API failed to load');
-                document.getElementById('map').innerHTML = '<div class="d-flex align-items-center justify-content-center h-100 bg-light"><div class="text-center"><i class="bi bi-exclamation-triangle display-1 text-warning"></i><p class="mt-3 text-muted">Google Maps failed to load</p><p class="small text-muted">Please check your internet connection and API key</p></div></div>';
-                return;
-            }
-            
-            map = new google.maps.Map(document.getElementById('map'), {
+            map = new mapboxgl.Map({
+                container: 'map',
+                style: 'mapbox://styles/mapbox/streets-v11',
                 zoom: 12,
-                center: { lat: -6.7924, lng: 39.2083 },
-                styles: [
-                    {
-                        "featureType": "administrative",
-                        "elementType": "geometry",
-                        "stylers": [{"visibility": "off"}]
-                    },
-                    {
-                        "featureType": "poi",
-                        "stylers": [{"visibility": "off"}]
-                    },
-                    {
-                        "featureType": "road",
-                        "elementType": "labels.icon",
-                        "stylers": [{"visibility": "off"}]
-                    },
-                    {
-                        "featureType": "transit",
-                        "stylers": [{"visibility": "off"}]
-                    }
-                ]
+                center: [39.2083, -6.7924]
             });
-            
+
+            map.addControl(new mapboxgl.NavigationControl(), 'top-right');
             loadTruckLocations();
-            setInterval(refreshLocations, 30000); // Refresh every 30 seconds
+            setInterval(refreshLocations, 30000);
         }
-        
+
         function loadTruckLocations() {
             fetch('/trucks/locations')
                 .then(response => response.json())
                 .then(trucks => {
-                    trucks.forEach(truck => {
-                        updateTruckMarker(truck);
-                    });
+                    clearTruckMarkers();
+                    trucks.forEach(truck => updateTruckMarker(truck));
                 });
         }
-        
+
         function updateTruckMarker(truck) {
             if (truckMarkers[truck.id]) {
-                truckMarkers[truck.id].setMap(null);
+                truckMarkers[truck.id].remove();
             }
-            
-            // Create custom truck icon
-            const truckIcon = {
-                path: 'M-20,0 L20,0 L20,40 L-20,40 Z M-15,40 L15,40 L15,60 L-15,60 Z',
-                fillColor: '#055c5c',
-                fillOpacity: 1,
-                strokeColor: '#ffffff',
-                strokeWeight: 2,
-                scale: 1,
-                anchor: new google.maps.Point(0, 30)
-            };
-            
-            const marker = new google.maps.Marker({
-                position: { 
-                    lat: parseFloat(truck.current_latitude), 
-                    lng: parseFloat(truck.current_longitude) 
-                },
-                map: map,
-                title: truck.plate_number,
-                icon: truckIcon
-            });
-            
-            const infoWindow = new google.maps.InfoWindow({
-                content: `
+
+            const lng = parseFloat(truck.current_longitude);
+            const lat = parseFloat(truck.current_latitude);
+            const marker = new mapboxgl.Marker({ color: '#055c5c' })
+                .setLngLat([lng, lat])
+                .setPopup(new mapboxgl.Popup({ offset: 25 }).setHTML(`
                     <div style="padding: 1rem; min-width: 200px;">
                         <div style="font-weight: 700; color: #055c5c; margin-bottom: 0.5rem;">${truck.plate_number}</div>
                         <div><strong>Driver:</strong> ${truck.driver_name}</div>
@@ -487,32 +447,33 @@
                         <div><strong>Distance Today:</strong> ${parseFloat(truck.daily_distance).toFixed(2)} km</div>
                         <div><strong>Last Updated:</strong> ${new Date(truck.last_updated).toLocaleTimeString()}</div>
                     </div>
-                `
-            });
-            
-            marker.addListener('click', () => {
-                infoWindow.open(map, marker);
-            });
-            
+                `))
+                .addTo(map);
+
+            marker.getElement().style.backgroundColor = 'transparent';
             truckMarkers[truck.id] = marker;
         }
-        
+
+        function clearTruckMarkers() {
+            Object.values(truckMarkers).forEach(marker => marker.remove());
+            truckMarkers = {};
+        }
+
         function trackTruck(truckId) {
             if (truckMarkers[truckId]) {
-                map.setCenter(truckMarkers[truckId].getPosition());
-                map.setZoom(15);
+                const position = truckMarkers[truckId].getLngLat();
+                map.flyTo({ center: [position.lng, position.lat], zoom: 15 });
             }
         }
-        
+
         function refreshLocations() {
             loadTruckLocations();
         }
-        
+
         function simulateMovement(truckId) {
-            // Simulate truck movement for demo purposes
             const lat = -6.7924 + (Math.random() - 0.5) * 0.1;
             const lng = 39.2083 + (Math.random() - 0.5) * 0.1;
-            
+
             fetch(`/trucks/${truckId}/location`, {
                 method: 'POST',
                 headers: {
@@ -532,14 +493,20 @@
             });
         }
     </script>
-    
     <script>
-        // Global error handler for Google Maps API
-        window.gm_authFailure = function() {
-            console.error('Google Maps API authentication failed');
-            document.getElementById('map').innerHTML = '<div class="d-flex align-items-center justify-content-center h-100 bg-light"><div class="text-center"><i class="bi bi-exclamation-triangle display-1 text-danger"></i><p class="mt-3 text-muted">Google Maps API authentication failed</p><p class="small text-muted">Please check your API key configuration</p></div></div>';
-        };
+        function reportMapError() {
+            console.error('Mapbox API authentication failed');
+            document.getElementById('map').innerHTML = '<div class="d-flex align-items-center justify-content-center h-100 bg-light"><div class="text-center"><i class="bi bi-exclamation-triangle display-1 text-danger"></i><p class="mt-3 text-muted">Mapbox API authentication failed</p><p class="small text-muted">Please check your token configuration</p></div></div>';
+        }
+
+        window.addEventListener('error', function(event) {
+            if (event.message && event.message.includes('Mapbox')) {
+                reportMapError();
+            }
+        });
     </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ config('services.google.maps_api_key') }}&callback=initMap"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', initMap);
+    </script>
 </body>
 </html>

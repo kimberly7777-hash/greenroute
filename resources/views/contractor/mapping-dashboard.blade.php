@@ -801,29 +801,37 @@
         }
 
         // Map functions
+        let dashboardMap;
+
         function initMap() {
-            const map = new google.maps.Map(document.getElementById('dashboardMap'), {
-                zoom: 12,
-                center: { lat: -6.7924, lng: 39.2083 }
+            dashboardMap = new mapboxgl.Map({
+                container: 'dashboardMap',
+                style: 'mapbox://styles/mapbox/streets-v11',
+                center: [39.2083, -6.7924],
+                zoom: 12
             });
 
-            // Add a sample marker
-            new google.maps.Marker({
-                position: { lat: -6.7924, lng: 39.2083 },
-                map: map,
-                title: 'Current Location'
-            });
+            dashboardMap.addControl(new mapboxgl.NavigationControl(), 'top-right');
+
+            new mapboxgl.Marker({ color: '#198754' })
+                .setLngLat([39.2083, -6.7924])
+                .setPopup(new mapboxgl.Popup({ offset: 25 }).setText('Current Location'))
+                .addTo(dashboardMap);
         }
 
         function initGPSMap() {
             // GPS map initialization would go here
         }
 
-        // Initialize the map on page load
         document.addEventListener('DOMContentLoaded', function() {
             loadDashboardData();
+            initMap();
         });
     </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ config('services.google.maps_api_key') }}&callback=initMap"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet" />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+    <script>
+        mapboxgl.accessToken = '{{ config('services.mapbox.token') }}';
+    </script>
 </body>
 </html>

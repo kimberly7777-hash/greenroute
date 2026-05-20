@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Google Maps API Test</title>
+    <title>Mapbox API Test</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         #map {
@@ -18,55 +18,55 @@
     </style>
 </head>
 <body>
-    <h1>Google Maps API Test</h1>
+    <h1>Mapbox API Test</h1>
     <div id="status" class="status">Loading...</div>
     <div id="map"></div>
 
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet" />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
     <script>
+        mapboxgl.accessToken = '{{ config('services.mapbox.token') }}';
+
         function initMap() {
             const statusDiv = document.getElementById('status');
-            
+
             try {
-                if (typeof google === 'undefined' || !google.maps) {
-                    throw new Error('Google Maps API not loaded');
-                }
-                
-                const map = new google.maps.Map(document.getElementById('map'), {
+                const map = new mapboxgl.Map({
+                    container: 'map',
+                    style: 'mapbox://styles/mapbox/streets-v11',
                     zoom: 10,
-                    center: { lat: -6.7924, lng: 39.2083 }
+                    center: [39.2083, -6.7924]
                 });
-                
-                new google.maps.Marker({
-                    position: { lat: -6.7924, lng: 39.2083 },
-                    map: map,
-                    title: 'Test Location'
-                });
-                
+
+                new mapboxgl.Marker()
+                    .setLngLat([39.2083, -6.7924])
+                    .setPopup(new mapboxgl.Popup({ offset: 25 }).setText('Test Location'))
+                    .addTo(map);
+
                 statusDiv.className = 'status success';
-                statusDiv.innerHTML = '✓ Google Maps API is working correctly!';
-                
+                statusDiv.innerHTML = '✓ Mapbox API is working correctly!';
             } catch (error) {
                 statusDiv.className = 'status error';
                 statusDiv.innerHTML = '✗ Error: ' + error.message;
             }
         }
-        
-        window.gm_authFailure = function() {
+
+        function authFailure() {
             const statusDiv = document.getElementById('status');
             statusDiv.className = 'status error';
-            statusDiv.innerHTML = '✗ Google Maps API authentication failed. Check your API key.';
-        };
-        
+            statusDiv.innerHTML = '✗ Mapbox authentication failed. Check your token.';
+        }
+
         // Fallback if initMap is not called within 10 seconds
         setTimeout(function() {
             const statusDiv = document.getElementById('status');
             if (statusDiv.innerHTML === 'Loading...') {
                 statusDiv.className = 'status error';
-                statusDiv.innerHTML = '✗ Google Maps API failed to load within 10 seconds.';
+                statusDiv.innerHTML = '✗ Mapbox API failed to load within 10 seconds.';
             }
         }, 10000);
+
+        document.addEventListener('DOMContentLoaded', initMap);
     </script>
-    
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}&callback=initMap"></script>
 </body>
 </html>

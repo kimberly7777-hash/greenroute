@@ -38,30 +38,29 @@ class LocationController extends Controller
 
         $lat = $request->latitude;
         $lng = $request->longitude;
-        $apiKey = config('services.google_maps.api_key');
+        $apiKey = config('services.mapbox.token');
 
         // Check if API key is configured
-        if (empty($apiKey) || $apiKey === 'your_google_maps_api_key_here') {
+        if (empty($apiKey) || $apiKey === 'your_mapbox_token_here') {
             return $this->generateFallbackAddress($lat, $lng);
         }
 
         try {
-            $response = Http::timeout(10)->get('https://maps.googleapis.com/maps/api/geocode/json', [
-                'latlng' => "{$lat},{$lng}",
-                'key' => $apiKey,
+            $response = Http::timeout(10)->get("https://api.mapbox.com/geocoding/v5/mapbox.places/{$lng},{$lat}.json", [
+                'access_token' => $apiKey,
                 'language' => 'en'
             ]);
 
             $data = $response->json();
 
-            if ($data['status'] === 'OK' && !empty($data['results'])) {
-                $result = $data['results'][0];
-                $formattedAddress = $result['formatted_address'];
+            if (!empty($data['features']) && count($data['features']) > 0) {
+                $result = $data['features'][0];
+                $formattedAddress = $result['place_name'];
 
                 return response()->json([
                     'success' => true,
                     'address' => $formattedAddress,
-                    'components' => $result['address_components'] ?? []
+                    'components' => $result['context'] ?? []
                 ]);
             }
 

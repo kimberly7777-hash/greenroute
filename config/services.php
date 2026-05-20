@@ -51,4 +51,8 @@ return [
         'maps_api_key' => env('GOOGLE_MAPS_API_KEY'),
     ],
 
+    'mapbox' => [
+        'token' => env('MAPBOX_ACCESS_TOKEN', 'pk.eyJ1IjoiYXNzaWVpYnJhaGltNyIsImEiOiJjbXBlaDVlMmcwMGliMnhzMGhscDJyN2xtIn0.OyBRafQTnq18_FAOZXdQ'),
+    ],
+
 ];
