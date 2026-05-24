@@ -330,6 +330,13 @@
                     <a href="/contractor/clients/{{ $client->id }}/edit" class="btn-warning">
                         <i class="bi bi-pencil"></i> Edit Client
                     </a>
+                    <form action="{{ route('contractor.clients.destroy', $client) }}" method="POST" onsubmit="return confirm('Delete this client?');" style="display: inline-block; margin: 0;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">
+                            <i class="bi bi-trash"></i> Delete Client
+                        </button>
+                    </form>
                     <a href="javascript:history.back()" class="btn-secondary">
                         <i class="bi bi-arrow-left"></i> Back to List
                     </a>

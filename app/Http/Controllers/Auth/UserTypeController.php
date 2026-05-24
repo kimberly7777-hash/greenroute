@@ -309,36 +309,29 @@ class UserTypeController extends Controller
      */
     public function authenticateClient(Request $request)
     {
-        $identity = $request->input('email');
-
         $credentials = $request->validate([
-            'email' => ['required', 'string'],
+            'registration_number' => ['required', 'string'],
             'password' => ['required'],
         ]);
 
         $remember = $request->boolean('remember');
 
-        $user = User::clientIdentity($identity)->first();
-        if ($user) {
-            $credentials['email'] = $user->email;
+        $client = \App\Models\Client::where('registration_number', $credentials['registration_number'])->first();
+        if (!$client || !$client->user) {
+            return back()->withErrors([
+                'registration_number' => 'No active client account found with this registration number. Please verify with your contractor.',
+            ]);
         }
 
-        if (Auth::attempt($credentials, $remember)) {
-            $request->session()->regenerate();
+        $userEmail = $client->user->email;
 
-            // Check if user is a client
-            if (Auth::user()->user_type === 'client') {
-                return redirect()->intended(route('client.dashboard'));
-            } else {
-                Auth::logout();
-                return back()->withErrors([
-                    'email' => 'These credentials do not match our records for a client account.',
-                ]);
-            }
+        if (Auth::attempt(['email' => $userEmail, 'password' => $credentials['password'], 'user_type' => 'client'], $remember)) {
+            $request->session()->regenerate();
+            return redirect()->intended(route('client.dashboard'));
         }
 
         return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
+            'registration_number' => 'The provided credentials do not match our records.',
         ]);
     }
 

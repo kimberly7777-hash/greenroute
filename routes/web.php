@@ -100,6 +100,11 @@ Route::middleware(['auth', 'verified.contractor'])->group(function () {
 
     // Contractor routes
     Route::prefix('dashboard/contractor')->group(function () {
+        // Service requests review
+        Route::get('clients/requests', [ClientController::class, 'requests'])->name('contractor.clients.requests');
+        Route::post('clients/requests/{id}/accept', [ClientController::class, 'acceptRequest'])->name('contractor.clients.requests.accept');
+        Route::post('clients/requests/{id}/reject', [ClientController::class, 'rejectRequest'])->name('contractor.clients.requests.reject');
+
         Route::resource('clients', ClientController::class)->names([
             'index' => 'contractor.clients.index',
             'create' => 'contractor.clients.create',
@@ -161,6 +166,9 @@ Route::prefix('client')->group(function () {
     Route::get('/set-password', [App\Http\Controllers\Auth\ClientAuthController::class, 'showSetPassword'])->name('client.set-password');
     Route::post('/set-password', [App\Http\Controllers\Auth\ClientAuthController::class, 'setPassword'])->name('client.set-password.submit');
 });
+
+// Public service request submission (from client activation form)
+Route::post('/service-request', [App\Http\Controllers\ServiceRequestController::class, 'store'])->name('service.request.store');
 
 // Contractor registration routes
 Route::get('/register/contractor', [UserTypeController::class, 'createContractor'])->name('register.contractor');

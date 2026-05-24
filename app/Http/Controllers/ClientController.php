@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Client;
 use App\Models\Contractor;
+use App\Models\ServiceRequest;
 use App\Services\ClientInvitationService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use App\Models\User;
+use App\Notifications\ServiceRequestRejected;
+use Illuminate\Support\Facades\Notification;
 
 class ClientController extends Controller
 {
@@ -222,6 +225,115 @@ class ClientController extends Controller
 
         return redirect()->route('contractor.clients.index')
             ->with('success', 'Client deleted successfully.');
+    }
+
+    /**
+     * List pending service requests for contractor
+     */
+    public function requests(Request $request)
+    {
+        $contractor = Contractor::where('user_id', Auth::id())->first();
+        $contractorId = $contractor?->user_id ?: Auth::id();
+
+        $requests = ServiceRequest::where(function ($query) use ($contractorId) {
+                $query->where('contractor_id', $contractorId)
+                      ->orWhereNull('contractor_id');
+            })
+            ->where('status', 'pending')
+            ->get();
+
+        if ($request->wantsJson() || $request->query('format') === 'json') {
+            return response()->json($requests->map(function ($request) {
+                return [
+                    'id' => $request->id,
+                    'name' => $request->name,
+                    'phone' => $request->phone,
+                    'email' => $request->email,
+                    'address' => $request->address,
+                    'latitude' => $request->latitude,
+                    'longitude' => $request->longitude,
+                    'notes' => $request->notes,
+                ];
+            }));
+        }
+
+        return view('contractor.clients-requests', compact('requests'));
+    }
+
+    /**
+     * Accept a service request and create client + user account
+     */
+    public function acceptRequest($id, ClientInvitationService $invitationService)
+    {
+        $sr = ServiceRequest::findOrFail($id);
+        $contractor = Contractor::where('user_id', Auth::id())->first();
+        if (!$contractor) {
+            abort(404);
+        }
+
+        if ($sr->status !== 'pending') {
+            return redirect()->back()->with('error', 'Request already processed.');
+        }
+
+        // Prepare client data
+        $clientData = [
+            'name' => $sr->name,
+            'contact_name' => $sr->name,
+            'email' => $sr->email,
+            'phone' => $sr->phone,
+            'address' => $sr->address ?? '',
+            // Provide defaults for non-nullable DB columns
+            'city' => $sr->city ?? '',
+            'state' => $sr->state ?? '',
+            'zip_code' => $sr->zip_code ?? '',
+            'latitude' => $sr->latitude ?? 0,
+            'longitude' => $sr->longitude ?? 0,
+            'status' => 'active',
+            'contractor_id' => Auth::id(),
+        ];
+
+        $result = $invitationService->createClientWithInvitation($clientData, $contractor, true);
+        $client = $result['client'] ?? null;
+
+        if ($client) {
+            $sr->status = 'accepted';
+            $sr->client_id = $client->id;
+            $sr->save();
+
+            return redirect()->back()->with('success', 'Service request accepted and client created.');
+        }
+
+        return redirect()->back()->with('error', 'Failed to create client account.');
+    }
+
+    /**
+     * Reject a service request and notify client
+     */
+    public function rejectRequest($id, Request $request)
+    {
+        $sr = ServiceRequest::findOrFail($id);
+        $contractor = Contractor::where('user_id', Auth::id())->first();
+        if (!$contractor) {
+            abort(404);
+        }
+
+        if ($sr->status !== 'pending') {
+            return redirect()->back()->with('error', 'Request already processed.');
+        }
+
+        $reason = $request->input('rejection_reason', 'No reason provided');
+        $sr->status = 'rejected';
+        $sr->rejection_reason = $reason;
+        $sr->save();
+
+        try {
+            Notification::route('mail', $sr->email)
+                ->notify(new ServiceRequestRejected($sr, $contractor));
+        } catch (\Exception $e) {
+            \Log::error('Failed to send rejection notification: ' . $e->getMessage());
+        }
+
+        return redirect()->back()->with('success', 'Service request rejected and client notified.');
     }
 
     /**

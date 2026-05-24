@@ -426,12 +426,6 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-3 mb-3">
-                                            <a href="/dashboard/contractor/clients/create" class="quick-action d-block">
-                                                <i class="bi bi-person-plus"></i>
-                                                <h6>Add New Client</h6>
-                                            </a>
-                                        </div>
-                                        <div class="col-md-3 mb-3">
                                             <a href="/billing/create" class="quick-action d-block">
                                                 <i class="bi bi-receipt"></i>
                                                 <h6>Create Invoice</h6>
@@ -505,8 +499,11 @@
                 <!-- Client Database Tab -->
                 <div id="clients-tab" class="tab-content" style="display: none;">
                     <div class="card mb-4">
-                        <div class="card-header">
+                        <div class="card-header d-flex justify-content-between align-items-center">
                             <h5 class="mb-0">Search Client Database</h5>
+                            <button class="btn btn-sm btn-outline-teal" onclick="loadPendingRequests()">
+                                <i class="bi bi-arrow-clockwise me-1"></i>Refresh Requests
+                            </button>
                         </div>
                         <div class="card-body">
                             <div class="row g-3">
@@ -540,12 +537,34 @@
                             </div>
                         </div>
                     </div>
+                    <div class="card mb-4">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0">Pending Client Requests</h5>
+                            <span class="badge badge-teal" id="pendingRequestsCount">0 pending</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Name</th>
+                                            <th>Phone</th>
+                                            <th>Email</th>
+                                            <th>Address</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="pendingRequestsTable">
+                                        <tr><td colspan="6" class="text-center">Loading pending requests...</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                     <div class="card">
                         <div class="card-header d-flex justify-content-between align-items-center">
                             <h5 class="mb-0">Client Database</h5>
-                            <a href="/dashboard/contractor/clients/create" class="btn btn-teal btn-sm">
-                                <i class="bi bi-plus-circle me-1"></i> Add New Client
-                            </a>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -637,6 +656,7 @@
                 // Load specific content for tabs
                 if (selectedTab === 'clients') {
                     loadClientsTable();
+                    loadPendingRequests();
                 } else if (selectedTab === 'gps') {
                     initGPSMap();
                 }
@@ -752,6 +772,11 @@
                                 <td>
                                     <a href="/dashboard/contractor/clients/${client.id}" class="btn btn-sm btn-outline-primary">View</a>
                                     <a href="/dashboard/contractor/clients/${client.id}/edit" class="btn btn-sm btn-outline-warning">Edit</a>
+                                    <form method="POST" action="/dashboard/contractor/clients/${client.id}" class="d-inline ms-1" onsubmit="return confirm('Delete this client?');">
+                                        <input type="hidden" name="_token" value="${csrfToken}">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
+                                    </form>
                                 </td>
                             </tr>
                         `;
@@ -768,6 +793,67 @@
             document.getElementById('searchLocation').value = '';
             document.getElementById('searchRegNumber').value = '';
             loadClientsTable();
+        }
+
+        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+        // Load pending service requests into the client database section
+        function loadPendingRequests() {
+            fetch('/dashboard/contractor/clients/requests?format=json', {
+                    credentials: 'same-origin',
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Server responded with status ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(requests => {
+                    const tbody = document.getElementById('pendingRequestsTable');
+                    const countBadge = document.getElementById('pendingRequestsCount');
+                    tbody.innerHTML = '';
+                    countBadge.textContent = `${requests.length} pending`;
+
+                    if (requests.length === 0) {
+                        tbody.innerHTML = '<tr><td colspan="6" class="text-center">No pending requests at the moment.</td></tr>';
+                        return;
+                    }
+
+                    requests.forEach(req => {
+                        tbody.innerHTML += `
+                            <tr>
+                                <td>${req.id}</td>
+                                <td>${req.name}</td>
+                                <td>${req.phone}</td>
+                                <td>${req.email}</td>
+                                <td>${req.address}</td>
+                                <td>
+                                    <form method="POST" action="/dashboard/contractor/clients/requests/${req.id}/accept" class="d-inline">
+                                        <input type="hidden" name="_token" value="${csrfToken}">
+                                        <button type="submit" class="btn btn-sm btn-success">Accept</button>
+                                    </form>
+                                    <form method="POST" action="/dashboard/contractor/clients/requests/${req.id}/reject" class="d-inline ms-2">
+                                        <input type="hidden" name="_token" value="${csrfToken}">
+                                        <input type="text" name="rejection_reason" class="form-control form-control-sm d-inline-block" placeholder="Reason (optional)" style="width:160px; display:inline-block; vertical-align: middle;">
+                                        <button type="submit" class="btn btn-sm btn-danger ms-1">Reject</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        `;
+                    });
+                })
+                .catch(error => {
+                    const tbody = document.getElementById('pendingRequestsTable');
+                    const countBadge = document.getElementById('pendingRequestsCount');
+                    tbody.innerHTML = '<tr><td colspan="6" class="text-center">Unable to load pending requests.</td></tr>';
+                    if (countBadge) {
+                        countBadge.textContent = '0 pending';
+                    }
+                    console.error('Failed to load pending requests:', error);
+                });
         }
 
         // Load clients table
@@ -790,6 +876,11 @@
                                 <td>
                                     <a href="/dashboard/contractor/clients/${client.id}" class="btn btn-sm btn-outline-primary">View</a>
                                     <a href="/dashboard/contractor/clients/${client.id}/edit" class="btn btn-sm btn-outline-warning">Edit</a>
+                                    <form method="POST" action="/dashboard/contractor/clients/${client.id}" class="d-inline ms-1" onsubmit="return confirm('Delete this client?');">
+                                        <input type="hidden" name="_token" value="${csrfToken}">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
+                                    </form>
                                 </td>
                             </tr>
                         `;

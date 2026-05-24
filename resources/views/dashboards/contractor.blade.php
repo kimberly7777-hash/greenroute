@@ -718,15 +718,7 @@
                     </div>
                     
                     <div class="quick-actions-grid">
-                        <a href="{{ route('clients.create') }}" class="action-btn primary">
-                            <div class="d-flex align-items-center">
-                                <div class="action-icon">
-                                    <i class="bi bi-person-plus"></i>
-                                </div>
-                                <span>Add New Client</span>
-                            </div>
-                            <i class="bi bi-arrow-right"></i>
-                        </a>
+                        <!-- Contractor add-client action removed -->
                         <a href="{{ route('schedules.create') }}" class="action-btn">
                             <div class="d-flex align-items-center">
                                 <div class="action-icon">

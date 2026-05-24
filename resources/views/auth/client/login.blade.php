@@ -278,19 +278,19 @@
                                     @csrf
 
                                     <div class="mb-4">
-                                        <label for="email" class="form-label">
-                                            <i class="bi bi-envelope me-2"></i>Email or Phone Number
+                                        <label for="registration_number" class="form-label">
+                                            <i class="bi bi-hash me-2"></i>Registration Number
                                         </label>
-                                        <input id="email" type="text" name="email"
-                                               value="{{ old('email') }}"
+                                        <input id="registration_number" type="text" name="registration_number"
+                                               value="{{ old('registration_number') }}"
                                                required autofocus
-                                               class="form-control @error('email') is-invalid @enderror"
-                                               placeholder="Enter your email or phone number">
-                                        @error('email')
+                                               class="form-control @error('registration_number') is-invalid @enderror"
+                                               placeholder="Enter your registration number">
+                                        @error('registration_number')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
                                         <small class="form-text text-muted">
-                                            Use the email address provided in your invitation
+                                            Use the registration number sent by your contractor
                                         </small>
                                     </div>
 

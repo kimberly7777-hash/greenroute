@@ -45,6 +45,7 @@ class ClientInvitation extends Notification
         $message = (new MailMessage)
             ->subject('Welcome to ' . config('app.name') . ' - Client Portal Access')
             ->greeting('Hello ' . $this->client->name . '!')
+            ->line('Your service request has been accepted.')
             ->line('You have been added as a client by **' . $this->contractor->company_name . '**.')
             ->line('')
             ->line('### Your Account Details:')

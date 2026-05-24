@@ -455,9 +455,7 @@
                     </select>
                 </div>
                 <div class="col-lg-2 text-lg-end">
-                    <a href="{{ route('contractor.clients.create') }}" class="btn btn-primary">
-                        <i class="bi bi-person-plus me-1"></i> Add Client
-                    </a>
+                    <!-- Contractor client creation disabled -->
                 </div>
             </div>
         </div>
@@ -547,10 +545,7 @@
                         <i class="bi bi-people"></i>
                     </div>
                     <h5 class="empty-title">No clients found</h5>
-                    <p class="empty-description">Start by adding your first client.</p>
-                    <a href="{{ route('contractor.clients.create') }}" class="btn btn-primary">
-                        <i class="bi bi-person-plus me-1"></i> Add Your First Client
-                    </a>
+                    <p class="empty-description">No clients are currently registered. Pending requests can still be accepted from the contractor dashboard.</p>
                 </div>
             @endif
             

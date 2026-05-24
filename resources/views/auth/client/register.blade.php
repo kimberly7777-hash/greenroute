@@ -275,54 +275,44 @@
                                     </div>
                                 @endif
 
-                                <!-- Activation Form -->
-                                <form method="POST" action="{{ route('client.register.submit') }}">
+                                <!-- Request Service Form -->
+                                <form method="POST" action="{{ route('service.request.store') }}">
                                     @csrf
-                                    <div class="mb-4">
-                                        <label for="registration_number" class="form-label">Registration Number</label>
-                                        <input id="registration_number" type="text" name="registration_number" required autofocus
-                                               class="form-control" placeholder="Enter registration number provided by contractor"
-                                               value="{{ old('registration_number') }}">
-                                        <small class="form-text">This unique number was provided by your waste management contractor</small>
-                                    </div>
-                                    
+
                                     <div class="mb-4">
                                         <label for="contact_name" class="form-label">Contact Name</label>
                                         <input id="contact_name" type="text" name="contact_name" required
-                                               class="form-control" placeholder="Enter your full name as registered with contractor"
+                                               class="form-control" placeholder="Enter your full name"
                                                value="{{ old('contact_name') }}">
                                     </div>
-                                    
+
                                     <div class="mb-4">
                                         <label for="phone" class="form-label">Phone Number</label>
                                         <input id="phone" type="text" name="phone" required
                                                class="form-control" placeholder="Enter your active phone number"
                                                value="{{ old('phone') }}">
                                     </div>
-                                    
+
                                     <div class="mb-4">
                                         <label for="email" class="form-label">Email Address</label>
                                         <input id="email" type="email" name="email" required
                                                class="form-control" placeholder="Enter your email address"
                                                value="{{ old('email') }}">
                                     </div>
-                                    
+
                                     <div class="mb-4">
-                                        <label for="password" class="form-label">Password</label>
-                                        <input id="password" type="password" name="password" required
-                                               class="form-control" placeholder="Create a secure password">
-                                        <small class="form-text">Password must be at least 8 characters long</small>
+                                        <label for="address" class="form-label">Address</label>
+                                        <input id="address" type="text" name="address" class="form-control" value="{{ old('address') }}">
                                     </div>
-                                    
+
                                     <div class="mb-4">
-                                        <label for="password_confirmation" class="form-label">Confirm Password</label>
-                                        <input id="password_confirmation" type="password" name="password_confirmation" required
-                                               class="form-control" placeholder="Confirm your password">
+                                        <label for="notes" class="form-label">Notes / Additional Info</label>
+                                        <textarea id="notes" name="notes" class="form-control" rows="3">{{ old('notes') }}</textarea>
                                     </div>
-                                    
+
                                     <div class="d-grid">
                                         <button type="submit" class="btn btn-activate">
-                                            <i class="bi bi-shield-check me-2"></i>Activate Account
+                                            <i class="bi bi-envelope-plus me-2"></i>Request Service
                                         </button>
                                     </div>
                                 </form>

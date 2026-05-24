@@ -159,31 +159,24 @@ class ClientAuthController extends Controller
     public function login(Request $request)
     {
         $request->validate([
-            'email' => ['required', 'string'],
+            'registration_number' => ['required', 'string'],
             'password' => ['required', 'string'],
         ]);
 
-        $identity = $request->input('email');
+        $reg = $request->input('registration_number');
 
-        // Find user by email or by linked client email/phone.
-        $user = User::clientIdentity($identity)->first();
+        // Find client by registration number
+        $client = Client::where('registration_number', $reg)->first();
 
-        if (! $user) {
+        if (! $client || !$client->user) {
             return back()->withErrors([
-                'email' => 'No client account found with this email address or phone number.',
-            ])->withInput($request->only('email'));
+                'registration_number' => 'No active client account found with this registration number. Please verify with your contractor.',
+            ])->withInput($request->only('registration_number'));
         }
 
-        // Check if client record exists and is linked to user
-        $client = Client::where('user_id', $user->id)->first();
-        
-        if (!$client) {
-            return back()->withErrors([
-                'email' => 'Client account not properly set up. Please contact your contractor.',
-            ])->withInput($request->only('email'));
-        }
+        $user = $client->user;
 
-        // Attempt authentication
+        // Attempt authentication using linked user email
         if (Auth::attempt(['email' => $user->email, 'password' => $request->password, 'user_type' => 'client'], $request->boolean('remember'))) {
             $request->session()->regenerate();
             
@@ -197,8 +190,8 @@ class ClientAuthController extends Controller
         }
 
         return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ])->withInput($request->only('email'));
+            'registration_number' => 'The provided credentials do not match our records.',
+        ])->withInput($request->only('registration_number'));
     }
 
     public function showVerifySetup()

@@ -23,14 +23,13 @@
         </div>
     @endif
 
-    <form method="POST" action="{{ route('login.client.authenticate') }}">
+    <form method="POST" action="{{ route('client.login.submit') }}">
         @csrf
-        <input type="hidden" name="user_type" value="client">
         
         <div class="mb-3">
-            <label for="email" class="form-label fw-medium">Email or Phone Number</label>
-            <input id="email" type="text" name="email" value="{{ old('email') }}" required autofocus
-                   class="form-control form-control-lg" placeholder="Enter your email or phone number">
+            <label for="registration_number" class="form-label fw-medium">Registration Number</label>
+            <input id="registration_number" type="text" name="registration_number" value="{{ old('registration_number') }}" required autofocus
+                   class="form-control form-control-lg" placeholder="Enter your registration number">
         </div>
         
         <div class="mb-3">
