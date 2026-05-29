@@ -37,5 +37,6 @@ sed -i "s/:80/:${LISTEN_PORT}/" /etc/apache2/sites-available/000-default.conf
 #Fix Apache MPM conflict
 a2dismod mpm_event mpm_worker 2>/dev/null || true
 a2enmod mpm_prefork 2>/dev/null || true
+
 # Start Apache in foreground
 apache2-foreground
